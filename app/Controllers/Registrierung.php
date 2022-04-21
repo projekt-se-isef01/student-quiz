@@ -1,14 +1,14 @@
 <?php
 namespace App\Controllers;
 
-class Login extends BaseController
+class Registrierung extends BaseController
 {
-    public function view()
+    public function index()
     {
 
 
         echo view('templates/header');
-        echo view('Pages/Login');
+        echo view('Pages/Registrierung');
         echo view('templates/footer');
     }
 }
