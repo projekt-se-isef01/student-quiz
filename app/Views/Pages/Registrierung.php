@@ -5,6 +5,8 @@
     <div class="container mt-5">
         <div class="row justify-content-md-center">
             <div class="col-5">
+              <?php
+              var_dump($db = \Config\Database::connect())?>;
                 <h2>Register User</h2>
                 <?php if(isset($validation)):?>
                 <div class="alert alert-warning">

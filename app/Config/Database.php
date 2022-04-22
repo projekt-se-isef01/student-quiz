@@ -31,14 +31,14 @@ class Database extends Config
      * @var array
      */
     public $default = [
-        'DSN'      => 'mysql:host=localhost;dbname=Student-Quiz',
+        'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => '',
-        'database' => 'Student-Quiz',
-        'DBDriver' => 'pdo',
+        'database' => 'qdata',
+        'DBDriver' => 'mysqli',
         'DBPrefix' => '',
-        'pConnect' => false,
+        'pConnect' => true,
         'DBDebug'  => (ENVIRONMENT !== 'production'),
         'charset'  => 'utf8',
         'DBCollat' => 'utf8_general_ci',
