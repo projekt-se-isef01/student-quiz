@@ -10,14 +10,14 @@ class Startseite extends BaseController
 
 
         echo view('templates/header', );
-        echo view('Pages/Startseite');
+        echo view('Startseite');
         echo view('templates/footer');
     }
     public function view()
     {
 
 ;
-        echo view('Pages/Startseite');
+        echo view('Startseite');
         echo view('templates/footer');
     }
 
