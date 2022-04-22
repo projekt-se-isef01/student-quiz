@@ -20,7 +20,7 @@ class Registrierung extends BaseController
     {
 
         if ($this->request->getMethod() === 'post' && $this->validate([
-                'name' => 'required|min_length[3]|max_length[128]',
+                'name' => 'required|min_length[3]|max_length[128]|is_unique[student.name,id,{id}]',
                 'password' => 'required|min_length[3]|max_length[128]',
                 'confirmpassword' => 'matches[password]'
 
