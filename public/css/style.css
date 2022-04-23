@@ -8,9 +8,28 @@ table {
     border: none;
     text-align: left;
     vertical-align: middle;
+    height: 50px;
 }
 .t1{
     border: none;
     text-align: right;
     vertical-align: middle;
+    height: 50px;
+}
+
+body{
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    font-style: normal;
+    
+}
+
+.button {
+
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100px;
 }

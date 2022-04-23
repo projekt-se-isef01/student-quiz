@@ -17,7 +17,7 @@ class Startseite extends BaseController
     public function view()
     {
 
-;
+
         echo view('Pages/Startseite');
         echo view('templates/footer');
     }

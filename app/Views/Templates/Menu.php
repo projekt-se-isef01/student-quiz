@@ -3,8 +3,8 @@
     <a href="startseite">Home</a>
     <a href="registrierung">Register</a>
     <a href="login">Login</a>
-    <a href="login">Spielmodi</a>
-    <a href="login">Account</a>
-    <a href="login">Statistik</a>
+    <a href="spielmodi">Spielmodi</a>
+    <a href="account">Account</a>
+    <a href="statistik">Statistik</a>
 
 </div>
