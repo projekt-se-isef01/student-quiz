@@ -5,6 +5,6 @@
     <a href="login">Login</a>
     <a href="login">Spielmodi</a>
     <a href="login">Account</a>
-    <a href="login">Statsitik</a>
+    <a href="login">Statistik</a>
 
 </div>
