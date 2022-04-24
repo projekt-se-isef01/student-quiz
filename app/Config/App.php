@@ -25,6 +25,7 @@ class App extends BaseConfig
      */
     public $baseURL = 'http://student-quiz';
 
+
     /**
      * --------------------------------------------------------------------------
      * Index File
@@ -461,4 +462,6 @@ class App extends BaseConfig
      * @var bool
      */
     public $CSPEnabled = false;
+
+
 }
