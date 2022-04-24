@@ -7,7 +7,6 @@
 </head>
 <body>
 
-<h1>Spielmodi</h1>
 
 </body>
 </html>

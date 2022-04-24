@@ -15,7 +15,7 @@
 
         <td class="t1">
 
-            <form method="POST" action="login">
+            <form method="POST" action="/startseite?page=Startseite">
 
                 <input type="submit" name="button1"
                        class="button" value="Login" />

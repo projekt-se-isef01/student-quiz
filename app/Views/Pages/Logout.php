@@ -1,7 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="css/style2.css">
-    <title>Outlog</title>
+    <title>Logout</title>
     <script src="/js/menu.js"></script>
 
 
