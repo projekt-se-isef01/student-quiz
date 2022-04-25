@@ -7,7 +7,8 @@
 </head>
 <body>
 
-<h1>Spielmodi</h1>
+<?php if(isset($title))?>
+<h1><?= $title ?></h1>
 
 </body>
 </html>

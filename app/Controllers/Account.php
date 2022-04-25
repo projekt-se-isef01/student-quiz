@@ -9,17 +9,9 @@ class Account extends BaseController
     {
 
 
-        echo view('templates/header', );
-        echo view('templates/menu');
-        echo view('Pages/Account');
-        echo view('templates/footer');
-    }
-    public function view()
-    {
 
 
-        echo view('Pages/Account');
-        echo view('templates/footer');
+        $this->template('Account');
     }
 
 }

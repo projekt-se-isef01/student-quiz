@@ -1,7 +1,8 @@
-<head>
+<html>
 
+<head>
     <title>Registrierung</title>
-</head>
+    </head>
     <div class="container mt-5">
         <div class="row justify-content-md-center">
             <div class="col-5">

@@ -7,8 +7,6 @@ class Login extends BaseController
     {
 
 
-        echo view('templates/header');
-        echo view('Login');
-        echo view('templates/footer');
+        $this->template('Login');
     }
 }

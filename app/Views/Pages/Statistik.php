@@ -10,7 +10,8 @@
 </head>
 <body>
 
-<h1>Statistik</h1>
+<?php if(isset($title))?>
+<h1><?= $title ?></h1>
 
 </body>
 </html>
