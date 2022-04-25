@@ -1,0 +1,75 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border-width: thin;
+    border-color: #222222;
+    border-style: none;
+}
+
+.t0 {
+    border: none;
+    text-align: left;
+    vertical-align: middle;
+    height: 50px;
+    width: 300px;
+}
+.t1{
+    border: none;
+    text-align: right;
+    vertical-align: middle;
+    height: 50px;
+    width: 300px;
+}
+
+.t2{
+    border: none;
+    text-align: center;
+    font-size: 25px;
+    vertical-align: middle;
+    height: 50px;
+    width: available;
+}
+
+.t3{
+    border: none;
+    text-align: center;
+    height: 200px;
+    width: 300px;
+}
+
+.t4{
+    border: none;
+    text-align: left;
+    vertical-align: top;
+    height: 200px;
+    width: available;
+}
+
+.t5{
+    border: none;
+    text-align: center;
+    height: 200px;
+    width: 300px;
+}
+
+body, .form-control, .btn-dark{
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    font-style: normal;
+    
+}
+.form-control, .btn-dark{
+    width: 250px;
+    height: 25px;
+
+}
+
+.button {
+
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100px;
+}
