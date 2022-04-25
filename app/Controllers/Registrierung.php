@@ -1,14 +1,14 @@
 <?php
 namespace App\Controllers;
-
-
+use CodeIgniter\Model;
+use App\Models\Student;
 
 class Registrierung extends BaseController
 {
     public function index() // zeigt leere Registrierungsseite
     {
         $data=[];
-
+        helper(['form']);
         $this->template('Registrierung', $data);
     }
 
@@ -25,10 +25,11 @@ class Registrierung extends BaseController
             $this->store();
         else {
 
-
             $data['validation'] = $this->validator;
-           $this->template('Registrierung', $data);
+           $this->template( 'Registrierung', $data);
+
         }
+
     }
 
 

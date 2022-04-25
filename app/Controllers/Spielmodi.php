@@ -11,6 +11,8 @@ class Spielmodi extends BaseController
 
         $this->template('Spielmodi');
 
+        $session = session();
+        echo "Hello : ".$session->get('name');
     }
 
 }
