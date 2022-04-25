@@ -2,11 +2,11 @@
 <head>
     <link rel="stylesheet" href="css/style2.css">
      <title>Home</title>
-    <script src="/js/menu.js"></script>
+    <script src="/app/include/menu.js"></script>
 </head>
 <body>
-
-<h1>Home</h1>
+<?php if(isset($title))?>
+<h1><?= $title ?></h1>
 
 
 </body>

@@ -8,19 +8,11 @@ class Logout extends BaseController
     {
 
 
-        echo view('templates/log1');
-        echo view('templates/menu');
-        echo view('Pages/Logout');
+        $this->template('Logout');
 
     }
 
-    public function view()
-    {
 
-
-        echo view('Pages/Logout');
-
-    }
 
 }
 

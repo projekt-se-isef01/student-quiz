@@ -1,23 +1,20 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\Student;
-use function PHPUnit\Framework\matches;
+
 
 class Registrierung extends BaseController
 {
     public function index() // zeigt leere Registrierungsseite
     {
-        helper(['form']);
-        $data = [];
-        echo view('templates/header');
-        echo view('Registrierung', $data);
-        echo view('templates/footer');
+        $data=[];
+
+        $this->template('Registrierung', $data);
     }
 
     public function registrieren()
-
     {
+
 
         if ($this->request->getMethod() === 'post' && $this->validate([
                 'name' => 'required|min_length[3]|max_length[128]|is_unique[student.name,id,{id}]',
@@ -30,22 +27,22 @@ class Registrierung extends BaseController
 
 
             $data['validation'] = $this->validator;
-            echo view('templates/header');
-            echo view('Registrierung', $data);
-            echo view('templates/footer');
+           $this->template('Registrierung', $data);
         }
     }
 
 
-    private function store()
-    {   $student= new Student();
-        $student-> save([
-            'name' => $this->request->getPost('name'),
-            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-        ]);
 
-    }
+        private
+        function store()
+        {
+            $student = new Student();
+            $student->save([
+                'name' => $this->request->getPost('name'),
+                'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+            ]);
 
+        }
 
 
 

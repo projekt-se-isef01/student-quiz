@@ -9,16 +9,8 @@ class Startseite extends BaseController
     {
 
 
-        echo view('templates/header', );
-        echo view('Startseite');
-        echo view('templates/footer');
+        $this->template('Startseite');
     }
-    public function view()
-    {
 
-;
-        echo view('Startseite');
-        echo view('templates/footer');
-    }
 
 }

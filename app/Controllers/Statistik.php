@@ -9,17 +9,7 @@ class Statistik extends BaseController
     {
 
 
-        echo view('templates/header', );
-        echo view('templates/menu');
-        echo view('Pages/Statistik');
-        echo view('templates/footer');
-    }
-    public function view()
-    {
-
-
-        echo view('Pages/Statistik');
-        echo view('templates/footer');
+        $this->template('Statistik');
     }
 
 }

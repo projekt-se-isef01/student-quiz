@@ -36,6 +36,22 @@ class BaseController extends Controller
      * @var array
      */
     protected $helpers = [];
+    public function template($page='Startseite', $data=null)
+    {
+
+
+        if (! is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
+            // Whoops, we don't have a page for that!
+            throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
+        }
+
+        $data['title'] = ucfirst($page); // Capitalize the first letter
+
+        echo view('templates/header', $data);
+        echo view('templates/menu',$data);
+        echo view('pages/' . $page, $data);
+
+    }
 
     /**
      * Constructor.
@@ -47,5 +63,7 @@ class BaseController extends Controller
 
         // Preload any models, libraries, etc, here.
         // E.g.: $this->session = \Config\Services::session();
+
+
     }
 }

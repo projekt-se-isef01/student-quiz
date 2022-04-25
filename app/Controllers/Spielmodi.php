@@ -9,17 +9,8 @@ class Spielmodi extends BaseController
     {
 
 
-        echo view('templates/header', );
-        echo view('templates/menu');
-        echo view('Pages/Spielmodi');
-        echo view('templates/footer');
-    }
-    public function view()
-    {
+        $this->template('Spielmodi');
 
-
-        echo view('Pages/Spielmodi');
-        echo view('templates/footer');
     }
 
 }
