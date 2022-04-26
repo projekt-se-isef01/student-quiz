@@ -28,15 +28,20 @@ class Login extends BaseController
                 $ses_data = [
                     'id' => $data['id'],
                     'name' => $data['name'],
-                    'isLoggedIn' => TRUE
+                    'isLoggedIn' => TRUE,
+
                 ];
                 $session->set($ses_data);
-                return redirect()->to('/Startseite');
+               return redirect()->to ('/Startseite');
 
             }else{
                 $session->setFlashdata('msg', 'Daten nicht korrekt.');
                 return redirect()->to('/Login');
             }
+        }
+        else{
+            $session->setFlashdata('msg', 'Daten nicht korrekt.');
+            return redirect()->to('/Login');
         }
     }
 

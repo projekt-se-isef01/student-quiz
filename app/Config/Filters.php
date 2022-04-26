@@ -2,7 +2,6 @@
 
 namespace Config;
 
-use App\Filters\AuthGard;
 use App\Filters\AuthGuard;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
