@@ -1,5 +1,3 @@
-<script src="/js/menu.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/style2.css">
 
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>

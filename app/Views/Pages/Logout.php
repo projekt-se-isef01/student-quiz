@@ -1,9 +1,3 @@
-<html>
-<head>
-    <link rel="stylesheet" href="css/style.css">
-    <title>Logout</title>
-    <script src="/js/menu.js"></script>
-
 
 
 <script>

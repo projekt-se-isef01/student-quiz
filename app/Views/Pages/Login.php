@@ -1,11 +1,4 @@
-<html>
-<head>
 
-    <title>Login</title>
-
-
-
-</head>
 <body>
 
 <table>

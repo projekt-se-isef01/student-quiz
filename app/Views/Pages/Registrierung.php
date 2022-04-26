@@ -1,10 +1,3 @@
-<html>
-
-<head>
-    <link rel="stylesheet" href="css/style.css">
-    <title>Registrierung</title>
-    <script src="/js/menu.js"></script>
-    </head>
 
 <table>
     <tr>
