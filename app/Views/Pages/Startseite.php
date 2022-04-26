@@ -1,7 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="css/style.css">
-     <title>Home2</title>
+     <title>Home</title>
     <script src="/app/include/menu.js"></script>
 </head>
 <body>
