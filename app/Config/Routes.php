@@ -31,9 +31,11 @@ $routes->setAutoRoute(true);
  * --------------------------------------------------------------------
  */
 
-// We get a performance increase by specifying the default
-// route since we don't have to scan directories.
-
+$routes->get('/', 'Startseite::index');
+$routes->get('Account', 'Account::index',['filter' => 'AuthGuard']);
+$routes->get('Spielmodi', 'Spielmodi::index',['filter' => 'AuthGuard']);
+$routes->get('Logout', 'Logout::index',['filter' => 'AuthGuard']);
+$routes->get('Statistik', 'Statistik::index',['filter' => 'AuthGuard']);
 /*
  * --------------$routes->get('(:any)', 'Pages::view/$1');
 ------------------------------------------------------
