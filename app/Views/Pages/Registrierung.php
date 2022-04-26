@@ -1,9 +1,4 @@
 
-<table>
-    <tr>
-        <td class="t3"></td>
-
-        <td class="t4">
             <div class="container mt-5">
                 <div class="row justify-content-md-center">
                     <div class="col-5">
@@ -33,12 +28,6 @@
                     </div>
                 </div>
             </div>
-        </td>
 
-        <td class="t5"></td>
-    </tr>
-
-
-</table>
 </body>
 </html>
