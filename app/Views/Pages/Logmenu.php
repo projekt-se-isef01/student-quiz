@@ -1,11 +1,4 @@
-<html>
-<head>
-    <link rel="stylesheet" href="css/style.css">
-    <title>Log-Menu</title>
-    <script src="/js/menu.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/style2.css">
-</head>
-<body>
+
 
 <script>
     history.pushState(null, null, document.title);
