@@ -1,6 +1,6 @@
 <body>
 <div>
-<table>
+    <table>
     <tr>
         <td class="t3"></td>
         <td class="t4">

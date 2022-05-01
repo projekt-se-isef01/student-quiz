@@ -1,6 +1,6 @@
 
-            <div class="container mt-5">
-                <div class="row justify-content-md-center">
+<div class="container mt-5"  >
+                <div class="row justify-content-md-center mx-auto" >
                     <div class="col-5">
                         Bitte Daten eingeben:
                         <?php if(isset($validation)):?>
@@ -11,13 +11,13 @@
                         <?php endif;?>
                         <form action="<?php echo base_url(); ?>/Registrierung/registrieren" method="post">
                             <?= csrf_field() ?>
-                            <div class="form-group mb-3">
+                            <div class="mb-3 justify-content-md-center">
                                 <input type="text" name="name" placeholder="name" value="" class="form-control" />
                             </div>
-                            <div class="form-group mb-3">
+                            <div class="mb-3">
                                 <input type="password" name="password" placeholder="password" class="form-control" >
                             </div>
-                            <div class="form-group mb-3">
+                            <div class="mb-3">
                                 <input type="password" name="confirmpassword" placeholder="confirm password" class="form-control" >
                             </div>
                             <br>

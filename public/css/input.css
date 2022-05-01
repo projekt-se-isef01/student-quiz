@@ -1,0 +1,55 @@
+input {
+    width:300px;
+    height:50px;
+    padding:5px;
+    box-sizing:border-box;
+    border:none;
+    outline:0;
+    background:
+            linear-gradient(grey,grey) top   /calc(100% - 30px) 1px,
+            linear-gradient(grey,grey) bottom/calc(100% - 30px) 1px,
+            linear-gradient(grey,grey) left  /1px calc(100% - 30px),
+            linear-gradient(grey,grey) right /1px calc(100% - 30px),
+
+            linear-gradient(to bottom right,
+            transparent calc(50% - 1px),grey,transparent calc(50% + 1px))
+            top left/15px 15px,
+            linear-gradient(to bottom right,
+            transparent calc(50% - 1px),grey,transparent calc(50% + 1px))
+            bottom right/15px 15px,
+            linear-gradient(to bottom left,
+            transparent calc(50% - 1px),grey,transparent calc(50% + 1px))
+            top right/15px 15px,
+            linear-gradient(to bottom left,
+            transparent calc(50% - 1px),grey,transparent calc(50% + 1px))
+            bottom left/15px 15px;
+
+    background-repeat:no-repeat;
+}
+
+@media (min-width: 560px) and (max-width: 750px) {
+    html,
+    body,
+    .intro {
+        height: 830px;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+    html,
+    body,
+    .intro {
+        height: 830px;
+    }
+}
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #667eea;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to bottom, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1))
+}

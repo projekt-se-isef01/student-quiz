@@ -9,7 +9,7 @@ class Login extends BaseController
     {
 
 
-        $this->template2('Login');
+        $this->template('Login');
     }
 
     public function login()
