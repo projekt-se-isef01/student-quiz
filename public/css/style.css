@@ -1,11 +1,33 @@
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-    border-width: thin;
-    border-color: #222222;
-    border-style: none;
+#top, #bottom, #left, #right {
+    background: #677cb1;
+    position: fixed;
 }
+#left, #right {
+    top: 0; bottom: 0;
+    width: 6px;
+}
+#left { left: 0; }
+#right { right: 0; }
+
+#top, #bottom {
+    left: 0; right: 0;
+    height: 6px;
+}
+#top { top: 0; }
+#bottom { bottom: 0; }
+
+nav.head  {
+
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
+table {
+    width: 100%;
+
+
+}
+
 
 .t0 {
     border: none;
@@ -13,6 +35,8 @@ table {
     vertical-align: middle;
     height: 50px;
     width: 300px;
+    padding-left:3%;
+    position: sticky; top: 0;
 }
 .t1{
     border: none;
@@ -29,6 +53,7 @@ table {
     vertical-align: middle;
     height: 50px;
     width: available;
+    color:white;
 }
 
 .t3{

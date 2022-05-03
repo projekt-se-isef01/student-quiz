@@ -1,4 +1,4 @@
-<body>
+
 <div>
     <table>
     <tr>
@@ -10,6 +10,6 @@
     </tr>
 </table>
 </div>
-
+</div>
 </body>
 </html>

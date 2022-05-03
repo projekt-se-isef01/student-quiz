@@ -1,7 +1,4 @@
-<html>
-<head>
-    <link rel="stylesheet" href="css/style.css">
-    <title>Statistik</title>
+ <title>Statistik</title>
     <script src="/js/menu.js"></script>
 
 

@@ -1,33 +1,53 @@
 
-<div class="container mt-5"  >
-                <div class="row justify-content-md-center mx-auto" >
-                    <div class="col-5">
-                        Bitte Daten eingeben:
-                        <?php if(isset($validation)):?>
-                            <div class="alert alert-warning">
-                                <?= session()->getFlashdata('error') ?>
-                                <?= $validation->listErrors() ?>
-                            </div>
-                        <?php endif;?>
-                        <form action="<?php echo base_url(); ?>/Registrierung/registrieren" method="post">
-                            <?= csrf_field() ?>
-                            <div class="mb-3 justify-content-md-center">
-                                <input type="text" name="name" placeholder="name" value="" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <input type="password" name="password" placeholder="password" class="form-control" >
-                            </div>
-                            <div class="mb-3">
-                                <input type="password" name="confirmpassword" placeholder="confirm password" class="form-control" >
-                            </div>
+<section class="intro">
+    <div class="mask d-flex align-items-center h-100">
+        <div class="container " >
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <div class="my-md-5 pb-5">
+
+
+
+                            <svg height="110" width="90" viewBox="0 0 110 120">
+                                <polygon points="50 3,100 28,100 75, 50 100,3 75,3 25" fill="#677cb1" /> <text x=50 y=65 font-size="45" fill="white" text-anchor="middle">?</text>
+                            </svg>
+                            <h1 class="fw-bold mb-0 my-5">Registriere dich</h1>
                             <br>
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-dark">Registrieren</button>
-                            </div>
-                        </form>
+                            <?php if(isset($validation)):?>
+                                <div class="alert alert-warning">
+                                    <?= session()->getFlashdata('error') ?>
+                                    <?= $validation->listErrors() ?>
+                                </div>
+                            <?php endif;?>
+                            <form action="<?php echo base_url(); ?>/Registrierung/registrieren" method="post">
+                                <?= csrf_field() ?>
+                                <div class="form-outline mb-4">
+                                    <input type="text" name="name" placeholder="name" value="" class="form-control  form-control-lg" />
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="password" placeholder="password" class="form-control form-control-lg" >
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="confirmpassword" placeholder="confirm password" class="form-control form-control-lg" >
+                                </div>
+                                <br>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-dark">Registrieren</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+</section>
 
 </body>
 </html>
