@@ -50,5 +50,23 @@
     </div>
 
 </section>
+    <nav class="navbar navbar-light navbar-expand bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://www.svgrepo.com/show/13664/placeholder.svg" class="gslogo" alt="">
+            </a>
+            <!-- -->
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Pricing</a>
+            </div>
+            <!-- -->
+            <span>
+            <a href="https://twitter.com/" rel="nofollow noopener noreferrer"><i class="fab fa-twitter mx-2 gstwitterblue"></i></a>
+            <a href="https://www.linkedin.com/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin mx-2 gslinkedinblue"></i></a>
+        </span>
+        </div>
+    </nav>
 </body>
 </html>
