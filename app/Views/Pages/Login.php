@@ -27,12 +27,12 @@
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="password" name="password" placeholder="Password" value="" class="form-control form-control-lg" style="width: 100%" />
+                                        <input type="password" name="password" placeholder="Passwort" value="" class="form-control form-control-lg" style="width: 100%" />
                                     </div>
                                     <div class="d-grid">
 
 
-                                        <button class="btn btn-secondary" type="submit">Login</button>
+                                        <button class="btn btn-secondary" type="submit"style="height: auto">Login</button>
                                     </div>
                                 </form>
                             </div>
