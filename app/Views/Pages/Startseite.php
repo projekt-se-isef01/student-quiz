@@ -1,6 +1,6 @@
-<body>
+
 <div>
-<table>
+    <table>
     <tr>
         <td class="t3"></td>
         <td class="t4">
@@ -10,6 +10,6 @@
     </tr>
 </table>
 </div>
-
+</div>
 </body>
 </html>

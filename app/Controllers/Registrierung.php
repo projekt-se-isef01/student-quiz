@@ -1,7 +1,8 @@
 <?php
 namespace App\Controllers;
-use CodeIgniter\Model;
 use App\Models\Student;
+use CodeIgniter\Model;
+use App\Models\Fragenkatalog;
 
 class Registrierung extends BaseController
 {
@@ -9,20 +10,27 @@ class Registrierung extends BaseController
     {
         $data=[];
         helper(['form']);
-        $this->template2('Registrierung', $data);
+        $this->template('Registrierung', $data);
     }
 
     public function registrieren()
     {
+        helper(['form']);
+
+        $rules=[
+            'name' => 'required|min_length[3]|max_length[128]|is_unique[student.name,id,{id}]',
+            'password' => 'required|min_length[3]|max_length[128]',
+            'confirmpassword' => 'matches[password]'
+
+        ];
 
 
-        if ($this->request->getMethod() === 'post' && $this->validate([
-                'name' => 'required|min_length[3]|max_length[128]|is_unique[student.name,id,{id}]',
-                'password' => 'required|min_length[3]|max_length[128]',
-                'confirmpassword' => 'matches[password]'
+         if ($this->validate($rules)) {
 
-            ]))
-            $this->store();
+
+             $this->store();
+            }
+
         else {
 
             $data['validation'] = $this->validator;
@@ -34,8 +42,8 @@ class Registrierung extends BaseController
 
 
 
-    private
-    function store()
+
+    private function store()
     {
         $student = new Student();
         $student->save([

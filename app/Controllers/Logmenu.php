@@ -8,7 +8,7 @@ class Logmenu extends BaseController
     public function index()
     {
 
-        echo view('pages/logmenu');
+        $this->template('Logmenu');
 
     }
 

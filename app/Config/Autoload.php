@@ -85,4 +85,5 @@ class Autoload extends AutoloadConfig
      * @var array<int, string>
      */
     public $files = ['/app/views/templates/Header.php'];
+
 }
