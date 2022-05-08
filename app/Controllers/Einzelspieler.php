@@ -8,7 +8,7 @@ use App\Models\Fragenkatalog;
 
 class Einzelspieler extends BaseController
 {
-    public function index($fragenkatalogId = null,$frageId=null)
+    public function index($fragenkatalogId = null)
     {
 
 
@@ -20,12 +20,6 @@ class Einzelspieler extends BaseController
         }
 
 
-        $model = new Antwort();
-        $data['antwort'] = $model->getAntworten($frageId);
-
-        if (empty($data['antwort'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: ' );
-        }
 
         $this->template('Einzelspieler', $data);
 

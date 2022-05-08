@@ -12,4 +12,7 @@ class FragenkatalogModel extends Model
     protected $allowedFields = [
         'fragenkatalogbezeichnung'
     ];
+    public function getKatalog() {
+        return $this->findAll();
+    }
 }

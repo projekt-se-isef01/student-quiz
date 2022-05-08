@@ -7,11 +7,17 @@ class Fragenkatalog extends BaseController
     public function index()
     {
 
-        $this->template('Fragenkatalog');
+        {
+            $model = new FragenkatalogModel();
+
+            $data = [
+                'katalog'  => $model->getKatalog(),
+            ];
+            $this->template('Fragenkatalog',$data);
+
+
+        }
     }
 
-    public function neuerKatalog() {
-        $fragenkatalogmodel=new FragenkatalogModel();
 
-    }
 }
