@@ -5,7 +5,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Fragenkatalog extends Model
+class FragenkatalogModel extends Model
 {
     protected $table = 'fragenkatalog';
 

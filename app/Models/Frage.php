@@ -12,7 +12,14 @@ class Frage extends Model
     protected $allowedFields = [
 
         'frage',
-        'hinweis'
+        'hinweis',
+        'antwort1',
+        'antwort2',
+        'antwort3',
+        'antwort4',
+        'antwort1',
+        '5050Joker1',
+        '5050Joker2'
 
     ];
     public function getFrage($fragenkatalogId=null)

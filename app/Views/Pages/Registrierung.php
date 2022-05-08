@@ -36,7 +36,7 @@
                                 </div>
                                 <br>
                                 <div class="d-grid">
-                                    <button type="submit" class="btn btn-dark" style="width: 100%; height: auto">Registrieren</button>
+                                    <button type="submit" class="btn btn-secondary" style="width: 100%; height: auto">Registrieren</button>
                                 </div>
                             </form>
                         </div>

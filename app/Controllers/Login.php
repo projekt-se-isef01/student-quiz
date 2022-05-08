@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\Fragenkatalog;
+use App\Models\Student;
 
 class Login extends BaseController
 {
@@ -15,7 +15,7 @@ class Login extends BaseController
     public function login()
     {
         $session = session();
-        $student = new Fragenkatalog;
+        $student = new Student();
         $name= $this->request->getVar('name');
         $password = $this->request->getVar('password');
 
