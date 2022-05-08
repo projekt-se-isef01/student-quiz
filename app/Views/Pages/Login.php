@@ -1,10 +1,9 @@
-
     <section class="intro">
     <div class="mask d-flex align-items-center h-100">
         <div class="container " >
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="card" style="border-radius: 1rem;">
+                    <div class="card" style="border-radius: 1rem;margin-top: 2rem; height: 750px;border-width:  0.5rem; border-style: double;border-color: black">
                         <div class="card-body p-5 text-center">
 
                             <div class="my-md-5 pb-5">
@@ -24,22 +23,22 @@
                                 <form  action="<?php echo base_url(); ?>/Login/login" method="post">
                                     <?= csrf_field() ?>
                                     <div class="form-outline mb-4">
-                                        <input type="text" name="name" placeholder="Name" value=""  class="form-control form-control-lg" />
+                                        <input type="text" name="name" placeholder="Name" value=""  class="form-control form-control-lg"  style="width: 100%" />
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="password" name="password" placeholder="Password" value="" class="form-control form-control-lg" />
+                                        <input type="password" name="password" placeholder="Passwort" value="" class="form-control form-control-lg" style="width: 100%" />
                                     </div>
                                     <div class="d-grid">
 
 
-                                        <button class="btn btn-secondary" type="submit">Login</button>
+                                        <button class="btn btn-secondary" type="submit"style="height: auto">Login</button>
                                     </div>
                                 </form>
                             </div>
 
                             <div>
-                                <p class="mb-0">Schon registriert? <a href="#!" class="text-body fw-bold">Zur Registrierung</a></p>
+                                <p class="mb-0">Noch nicht registriert? <a href="registrierung" class="text-body fw-bold"><br>Zur Registrierung</a></p>
                             </div>
 
                         </div>
@@ -56,11 +55,7 @@
                 <img src="https://www.svgrepo.com/show/13664/placeholder.svg" class="gslogo" alt="">
             </a>
             <!-- -->
-            <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                <a class="nav-link" href="#">Features</a>
-                <a class="nav-link" href="#">Pricing</a>
-            </div>
+
             <!-- -->
             <span>
             <a href="https://twitter.com/" rel="nofollow noopener noreferrer"><i class="fab fa-twitter mx-2 gstwitterblue"></i></a>

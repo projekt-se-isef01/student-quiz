@@ -5,7 +5,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
 
-                <div class="card" style="border-radius: 1rem;">
+                <div class="card" style="border-radius: 1rem;margin-top: 2rem; height: 750px;border-width:  0.5rem; border-style: double;border-color: black">
                     <div class="card-body p-5 text-center">
 
                         <div class="my-md-5 pb-5">
@@ -26,17 +26,17 @@
                             <form action="<?php echo base_url(); ?>/Registrierung/registrieren" method="post">
                                 <?= csrf_field() ?>
                                 <div class="form-outline mb-4">
-                                    <input type="text" name="name" placeholder="name" value="" class="form-control  form-control-lg" />
+                                    <input type="text" name="name" placeholder="Name" value="" class="form-control  form-control-lg" style="width: 100%" />
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="password" name="password" placeholder="password" class="form-control form-control-lg" >
+                                    <input type="password" name="password" placeholder="Passwort" class="form-control form-control-lg" style="width: 100%" />
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="password" name="confirmpassword" placeholder="confirm password" class="form-control form-control-lg" >
+                                    <input type="password" name="confirmpassword" placeholder="Passwort bestätigen" class="form-control form-control-lg" style="width: 100%" />
                                 </div>
                                 <br>
                                 <div class="d-grid">
-                                    <button type="submit" class="btn btn-dark">Registrieren</button>
+                                    <button type="submit" class="btn btn-dark" style="width: 100%; height: auto">Registrieren</button>
                                 </div>
                             </form>
                         </div>
