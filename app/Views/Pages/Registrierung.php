@@ -23,7 +23,7 @@
                                     <?= $validation->listErrors() ?>
                                 </div>
                             <?php endif;?>
-                            <form action="<?php echo base_url(); ?>/Registrierung/registrieren" method="post">
+                            <form id=formreg" name="formreg" action="<?php echo base_url(); ?>/Registrierung/registrieren" method="post">
                                 <?= csrf_field() ?>
                                 <div class="form-outline mb-4">
                                     <input type="text" name="name" placeholder="Name" value="" class="form-control  form-control-lg" style="width: 100%" />

@@ -22,12 +22,15 @@ class Frage extends Model
         '5050Joker2'
 
     ];
-    public function getFrage($fragenkatalogId=null)
+    public function getFrage($fragenkatalogbezeichnung)
     {
-        $query=$this->where('fragenkatalogId',$fragenkatalogId)->findAll();
-        var_dump( $query);
-
-        return $query;
+        $db=\Config\Database::connect();
+        $builder = $db->table('frage');
+        $builder->select('*');
+        $builder->join('fragenkatalog', 'fragenkatalog.fragenkatalogId = frage.fragenkatalogId');
+        $query=$builder->get();
+        $results = $query->getResultArray();
+        return $results;
     }
 
 }

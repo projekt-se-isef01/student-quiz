@@ -12,7 +12,13 @@ class FragenkatalogModel extends Model
     protected $allowedFields = [
         'fragenkatalogbezeichnung'
     ];
-    public function getKatalog() {
-        return $this->findAll();
+    public function getKatalog($fragenkatalogbezeichnung=false) {
+
+        if ($fragenkatalogbezeichnung === false) {
+            return $this->findAll();
+        }
+
+        return $this->where(['fragenkatalogbezeichnung' => $fragenkatalogbezeichnung])->first();
     }
+
 }

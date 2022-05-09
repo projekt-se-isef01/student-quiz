@@ -36,7 +36,9 @@ $routes->get('Account', 'Account::index',['filter' => 'AuthGuard']);
 $routes->get('Spielmodi', 'Spielmodi::index',['filter' => 'AuthGuard']);
 $routes->get('Logout', 'Logout::index',['filter' => 'AuthGuard']);
 $routes->get('Statistik', 'Statistik::index',['filter' => 'AuthGuard']);
+$routes->get('Fragenkatalog/(:segment)', 'Fragenkatalog::view/$1');
 /*
+ *
  * --------------$routes->get('(:any)', 'Pages::view/$1');
 ------------------------------------------------------
  * Additional Routing
