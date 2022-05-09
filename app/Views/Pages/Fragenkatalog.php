@@ -5,32 +5,27 @@
 
 
 <h2><?= esc($fragenkatalog['fragenkatalogbezeichnung']) ?></h2>
-<?php endif ?>
-    <?php if (! empty($frage) && is_array($frage) ): ?>
 
-        <?php foreach ($frage as $frage_item): ?>
+<?php endif;?>
+    <?php if(!empty($frage)): ?>
+        <?php foreach($frage as $frage): ?>
 
-            <?= esc($frage_item['frage']) ?>"
 
-        <?php endforeach ?>
 
-    <?php endif ?>
+
             <div class="container">
-
+                <form>
                 <div class="row g-2">
                     <div class="col-6">
                         <div class="form-floating">
 
-                            <textarea  class="form-control"  style="height: 100px" value="">
-                                <?php if (! empty($frage) ): ?>
+                            <textarea  class="form-control"  style="height: 100px" value="<?= esc($frage['frage'])?>" ;
+">
 
-                                <?php foreach ($frage as $frage_item): ?>
 
-                                <?= esc($frage_item['frage']) ?>"
 
-                                    <?php endforeach ?>
 
-                                <?php endif ?>
+
                             </textarea>
                             <label for="floatingInputGrid">Antwort 1</label>
 
@@ -60,7 +55,20 @@
 
                         </div>
                     </div>
-                </div>
-            </div>
 
+                </div>
+    </form>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-end">
+        <?php if (!empty($pager)):?>
+
+        <?= $pager->links() ?>
+        <?php endif ?>
+
+</div>
 </div>

@@ -24,13 +24,16 @@ class Frage extends Model
     ];
     public function getFrage($fragenkatalogbezeichnung)
     {
-        $db=\Config\Database::connect();
-        $builder = $db->table('frage');
-        $builder->select('*');
-        $builder->join('fragenkatalog', 'fragenkatalog.fragenkatalogId = frage.fragenkatalogId');
-        $query=$builder->get();
-        $results = $query->getResultArray();
+       $results=$this
+                        ->table('frage')
+                        ->select('*')
+                        ->join('fragenkatalog', 'fragenkatalog.fragenkatalogId = frage.fragenkatalogId')
+                        ->where('fragenkatalog.fragenkatalogbezeichnung',$fragenkatalogbezeichnung);
+
+
         return $results;
+
+
     }
 
 }

@@ -26,11 +26,18 @@ class Fragenkatalog extends BaseController
         $fragemodel= model(Frage::class);
 
         $data['fragenkatalog'] = $model->getKatalog($fragenkatalogbezeichnung);
-        $data['frage']=$fragemodel->getFrage($fragenkatalogbezeichnung);
-        if (empty($data['fragenkatalog'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Kann den Katalog: ' . $fragenkatalogbezeichnung .'nicht finden');
-        }
 
+        if (empty($data['fragenkatalog'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Kann den Katalog: ' . $fragenkatalogbezeichnung .' nicht finden');
+        }
+        if (empty($data = [
+            'frage' => $fragemodel->getFrage($fragenkatalogbezeichnung)->paginate(1),
+
+            'pager' => $fragemodel->pager,
+
+        ])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Kann den Katalog: ' . $fragenkatalogbezeichnung .' nicht finden');
+        }
         $data['title'] = ['fragenkatalogbezeichnung'];
 
        $this->template('Fragenkatalog',$data);
