@@ -1,8 +1,6 @@
 <?php
 namespace App\Controllers;
 use App\Models\Student;
-use CodeIgniter\Model;
-use App\Models\Fragenkatalog;
 
 class Registrierung extends BaseController
 {
@@ -29,6 +27,7 @@ class Registrierung extends BaseController
 
 
              $this->store();
+             return redirect()->to ('/Startseite');
             }
 
         else {

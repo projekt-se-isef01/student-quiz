@@ -9,6 +9,8 @@ class Frage extends Model
 {
     protected $table = 'frage';
 
+    protected $primaryKey='frageId';
+
     protected $allowedFields = [
 
         'frage',

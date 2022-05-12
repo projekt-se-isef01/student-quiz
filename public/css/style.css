@@ -29,7 +29,9 @@ table {
 
 }
 
-
+h2 {
+    text-align: center;
+}
 .t0 {
     border: none;
     text-align: left;
