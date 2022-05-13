@@ -32,11 +32,15 @@ $routes->setAutoRoute(true);
  */
 
 $routes->get('/', 'Startseite::index');
-$routes->get('Account', 'Account::index',['filter' => 'AuthGuard']);
+$routes->get('Accounts', 'Account::index',['filter' => 'AuthGuard']);
 $routes->get('Spielmodi', 'Spielmodi::index',['filter' => 'AuthGuard']);
 $routes->get('Logout', 'Logout::index',['filter' => 'AuthGuard']);
 $routes->get('Statistik', 'Statistik::index',['filter' => 'AuthGuard']);
-$routes->get('Fragenkatalog/(:segment)', 'Fragenkatalog::view/$1');
+$routes->get('FragenkatalogÜbersicht/', 'FragenkatalogÜbersicht::index');
+$routes->get('Fragenkatalog/edit/(:num)', 'Fragenkatalog::edit/$1');
+
+$routes->get('Fragenkatalog/(:any)', 'Fragenkatalog::index/$1');
+
 /*
  *
  * --------------$routes->get('(:any)', 'Pages::view/$1');

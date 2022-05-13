@@ -20,8 +20,10 @@ class Frage extends Model
         'antwort3',
         'antwort4',
         'antwort1',
+        'antwortLoesung',
         '5050Joker1',
-        '5050Joker2'
+        '5050Joker2',
+
 
     ];
     public function getFrage($fragenkatalogbezeichnung)
@@ -31,11 +33,11 @@ class Frage extends Model
                         ->select('*')
                         ->join('fragenkatalog', 'fragenkatalog.fragenkatalogId = frage.fragenkatalogId')
                         ->where('fragenkatalog.fragenkatalogbezeichnung',$fragenkatalogbezeichnung);
-
-
-        return $results;
-
+        return $results->get()->getResultArray();
 
     }
+    public function findFrage($frageId) {
+       return $this->where('frageId',$frageId)->first();
 
+}
 }

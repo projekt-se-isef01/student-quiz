@@ -1,7 +1,7 @@
 <div class="container" xmlns="http://www.w3.org/1999/html">
-<?php if (! empty($frage)):?>
+<?php if (! empty($frage)&& is_array($frage)):?>
     <?php foreach($frage as $frage): ?>
-
+    <table id="Fragen" class="display" style="width:100%">
         <h2 class="text-center"><?= esc($frage['fragenkatalogbezeichnung']) ?></h2>
             <div class="container">
                     <input type="text" hidden="hidden" name="frageId">
@@ -92,19 +92,24 @@
                                     <label for="floatingInputGrid">50:50 Joker</label>
 
                                 </div>
-                                <a href="<?php echo base_url();?>/Fragenkatalog/"
+                                <a class="btn btn-sm btn-info" href="<?= site_url('Fragenkatalog/edit/'.$frage['frageId']) ?>">Edit</a>
+                                <a class="btn btn-sm btn-info" href="<?= site_url('Fragenkatalog/add') ?>">Add</a>
+
                             </div>
-    </form>
+                                </table>
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
 
 
-    <!-- Pagination -->
-    <div class="d-flex justify-content-end">
-        <?php if (!empty($pager)):?>
-            <?= $pager->makeLinks(1, 1, 1000,'default_full') ?>
-        <?php endif ?>
 
 </div>
 </div>
+            </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script>$(document).ready( function () {
+$('#Fragen').DataTable();
+} );</script>

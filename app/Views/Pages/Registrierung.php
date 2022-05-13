@@ -19,7 +19,6 @@
                             <br>
                             <?php if(isset($validation)):?>
                                 <div class="alert alert-warning">
-                                    <?= session()->getFlashdata('error') ?>
                                     <?= $validation->listErrors() ?>
                                 </div>
                             <?php endif;?>

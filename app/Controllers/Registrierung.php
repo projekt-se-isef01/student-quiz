@@ -27,7 +27,6 @@ class Registrierung extends BaseController
 
 
              $this->store();
-             return redirect()->to ('/Startseite');
             }
 
         else {
