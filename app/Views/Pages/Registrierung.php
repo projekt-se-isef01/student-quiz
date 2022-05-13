@@ -19,11 +19,10 @@
                             <br>
                             <?php if(isset($validation)):?>
                                 <div class="alert alert-warning">
-                                    <?= session()->getFlashdata('error') ?>
                                     <?= $validation->listErrors() ?>
                                 </div>
                             <?php endif;?>
-                            <form action="<?php echo base_url(); ?>/Registrierung/registrieren" method="post">
+                            <form id=formreg" name="formreg" action="<?php echo base_url(); ?>/Registrierung/registrieren" method="post">
                                 <?= csrf_field() ?>
                                 <div class="form-outline mb-4">
                                     <input type="text" name="name" placeholder="Name" value="" class="form-control  form-control-lg" style="width: 100%" />
@@ -36,7 +35,7 @@
                                 </div>
                                 <br>
                                 <div class="d-grid">
-                                    <button type="submit" class="btn btn-dark" style="width: 100%; height: auto">Registrieren</button>
+                                    <button type="submit" class="btn btn-secondary" style="width: 100%; height: auto">Registrieren</button>
                                 </div>
                             </form>
                         </div>

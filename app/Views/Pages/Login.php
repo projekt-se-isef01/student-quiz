@@ -1,4 +1,4 @@
-    <section class="intro">
+<section class="intro">
     <div class="mask d-flex align-items-center h-100">
         <div class="container " >
             <div class="row justify-content-center">
@@ -49,19 +49,6 @@
     </div>
 
 </section>
-    <nav class="navbar navbar-light navbar-expand bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="https://www.svgrepo.com/show/13664/placeholder.svg" class="gslogo" alt="">
-            </a>
-            <!-- -->
 
-            <!-- -->
-            <span>
-            <a href="https://twitter.com/" rel="nofollow noopener noreferrer"><i class="fab fa-twitter mx-2 gstwitterblue"></i></a>
-            <a href="https://www.linkedin.com/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin mx-2 gslinkedinblue"></i></a>
-        </span>
-        </div>
-    </nav>
 </body>
 </html>

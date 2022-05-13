@@ -9,18 +9,35 @@ class Frage extends Model
 {
     protected $table = 'frage';
 
+    protected $primaryKey='frageId';
+
     protected $allowedFields = [
 
         'frage',
-        'hinweis'
+        'hinweis',
+        'antwort1',
+        'antwort2',
+        'antwort3',
+        'antwort4',
+        'antwort1',
+        'antwortLoesung',
+        '5050Joker1',
+        '5050Joker2',
+
 
     ];
-    public function getFrage($fragenkatalogId=null)
+    public function getFrage($fragenkatalogbezeichnung)
     {
-        $query=$this->where('fragenkatalogId',$fragenkatalogId)->findAll();
-        var_dump( $query);
+       $results=$this
+                        ->table('frage')
+                        ->select('*')
+                        ->join('fragenkatalog', 'fragenkatalog.fragenkatalogId = frage.fragenkatalogId')
+                        ->where('fragenkatalog.fragenkatalogbezeichnung',$fragenkatalogbezeichnung);
+        return $results->get()->getResultArray();
 
-        return $query;
     }
+    public function findFrage($frageId) {
+       return $this->where('frageId',$frageId)->first();
 
+}
 }

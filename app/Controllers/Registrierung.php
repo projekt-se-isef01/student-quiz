@@ -1,8 +1,6 @@
 <?php
 namespace App\Controllers;
 use App\Models\Student;
-use CodeIgniter\Model;
-use App\Models\Fragenkatalog;
 
 class Registrierung extends BaseController
 {
