@@ -32,7 +32,7 @@ $routes->setAutoRoute(true);
  */
 
 $routes->get('/', 'Startseite::index');
-$routes->get('Accounts', 'Account::index',['filter' => 'AuthGuard']);
+$routes->get('Account', 'Account::index',['filter' => 'AuthGuard']);
 $routes->get('Spielmodi', 'Spielmodi::index',['filter' => 'AuthGuard']);
 $routes->get('Logout', 'Logout::index',['filter' => 'AuthGuard']);
 $routes->get('Statistik', 'Statistik::index',['filter' => 'AuthGuard']);
