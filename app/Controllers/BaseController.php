@@ -48,8 +48,10 @@ class BaseController extends Controller
         $data['title'] = ucfirst($page); // Capitalize the first letter
 
         echo view('templates/header', $data);
-        echo view('templates/menu',$data);
+        echo view('templates/menu');
         echo view('pages/' . $page, $data);
+        echo view('templates/footer');
+
 
     }
 

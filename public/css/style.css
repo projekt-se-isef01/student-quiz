@@ -17,16 +17,11 @@
 #top { top: 0; }
 #bottom { bottom: 0; }
 
-nav.head  {
+nav.head {
     z-index: 2;
     color: white;
     font-size: 25px;
     text-align: center;
-}
-table {
-    width: 100%;
-
-
 }
 
 h2 {

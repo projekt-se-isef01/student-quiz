@@ -1,4 +1,6 @@
+
 <section class="intro">
+
     <div class="mask d-flex align-items-center h-100">
         <div class="container " >
             <div class="row justify-content-center">
@@ -49,6 +51,3 @@
     </div>
 
 </section>
-
-</body>
-</html>

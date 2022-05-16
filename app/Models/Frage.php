@@ -19,7 +19,6 @@ class Frage extends Model
         'antwort2',
         'antwort3',
         'antwort4',
-        'antwort1',
         'antwortLoesung',
         '5050Joker1',
         '5050Joker2',

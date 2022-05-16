@@ -1,115 +1,94 @@
-<div class="container" xmlns="http://www.w3.org/1999/html">
-<?php if (! empty($frage)&& is_array($frage)):?>
-    <?php foreach($frage as $frage): ?>
-    <table id="Fragen" class="display" style="width:100%">
-        <h2 class="text-center"><?= esc($frage['fragenkatalogbezeichnung']) ?></h2>
-            <div class="container">
-                    <input type="text" hidden="hidden" name="frageId">
-                    <div class="row g-2">
-                        <div class="col-8 mx-auto">
-                            <div class="form-floating">
+<div class="container mt-4 table-responsive">
+    <div class="d-flex justify-content-end">
+<a class="btn btn-sm btn-info" href="<?= site_url('Fragenkatalog/add') ?>">Add</a>
+    </div>
 
-                                <input type="text" name="frage1" class="form-control text-center" readonly style="height:100px " value="<?php echo set_value('frage',$frage['frage'])?>"/>
-                                <label for="floatingInputGrid" class="text-center">Frage</label>
+            <div class="mt3">
 
-                            </div>
-                        </div>
-                <div class="row g-2">
-                    <div class="col-6">
-                        <div class="form-floating">
+    <table id="Fragen" class="display table table-striped" style="width: 100%">
 
-                            <input type="text" name="antwort1" class="form-control" style="height: 100px" readonly value="<?php echo set_value('antwort1',$frage['antwort1'])?>"/>
-                            <label for="floatingInputGrid">Antwort 1</label>
+        <thead>
+        <tr>
 
-                        </div>
-                        </div>
+            <th>Frage</th>
 
-                    <div class="col-6">
-                        <div class="form-floating">
+            <th>Antwort1</th>
+            <th>Antwort2</th>
 
-                        <input type="text" name="antwort2" class="form-control"  readonly style="height: 100px" value="<?php echo set_value('antwort2',$frage['antwort2'])?>"
+            <th>Antwort3</th>
+            <th>Antwort4</th>
+            <th>Lösung</th>
+            <th>Hinweis</th>
 
-                        />
-                            <label for="floatingInputGrid">Antwort 2</label>
+            <th>50:50 Joker</th>
+            <th>50:50 Joker</th>
 
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-floating">
+        </tr>
+        </thead>
+        <tbody>
+        <?php if (! empty($frage)&& is_array($frage)):?>
+        <?php foreach($frage as $frage): ?>
+        <tr>
 
-                            <input type="text" name="antwort3" class="form-control" readonly  style="height: 100px" value="<?php echo set_value('antwort3',$frage['antwort3'])?>"/>
-                            <label for="floatingInputGrid">Antwort 3</label>
+            <td>
 
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-floating">
+                <?=esc($frage['frage'])?>
 
-                            <input type="text" name="antwort4" class="form-control" style="height: 100px"readonly value="<?php echo set_value('antwort4',$frage['antwort4'])?>"/>
-                            <label for="floatingInputGrid">Antwort 4</label>
+            </td>
 
-                        </div>
-                    </div>
+            <td>
+                <?=esc($frage['antwort1'])?>
+            </td>
 
-                </div>
-                        <div class="row g-2">
-                            <div class="col-6 mx-auto">
-                                <div class="form-floating">
+            <td>
+                <?=esc($frage['antwort2'])?>
+            </td>
 
-                                    <input type="text" name="antwortLoesung" class="form-control" style="height: 100px" readonly  value="<?php echo set_value('antwortLoesung',$frage['antwortLoesung'])?>"/>
-                                    <label for="floatingInputGrid">Lösung</label>
+            <td>
+                <?=esc($frage['antwort3'])?>
+            </td>
 
-                                </div>
-                            </div>
-                        <div class="row g-2">
-                            <div class="col-6 mx-auto">
-                                <div class="form-floating">
+            <td>
+                <?=esc($frage['antwort4'])?>
+            </td>
 
-                                    <input type="text" name="hinweis" class="form-control text-center" readonly style="height: 100px" value="<?php echo set_value('hinweis',$frage['hinweis'])?>"/>
-                                    <label for="floatingInputGrid" class="text-center">Hinweis</label>
+             <td>
+            <?=esc($frage['antwortLoesung'])?>
+             </td>
 
-                                </div>
-                            </div>
-                        </div>
+            <td>
+             <?=esc($frage['hinweis'])?>
+            </td>
 
+            <td>
+                <?=esc($frage['5050Joker1'])?>
+            </td>
 
-                            <div class="row g-2 justify-content-center ">
-                            <div class="col-3">
-                                <div class="form-floating">
+    <td>
 
-                                    <input type="text" name="5050Joker1" class="form-control" style="height: 100px" readonly  value="<?php echo set_value('5050Joker1',$frage['5050Joker1'])?>"/>
-                                    <label for="floatingInputGrid">50:50 Joker</label>
+        <?=esc($frage['5050Joker2'])?>"
 
-                                </div>
-                            </div>
+    </td>
 
-                            <div class="col-3">
-                                <div class="form-floating">
+        </tr>
 
-                                    <input type="text" name="5050Joker2" class="form-control" placeholder="name@example.com" readonly style="height: 100px" value="<?php echo set_value('5050Joker2',$frage['5050Joker2'])?>"
-
-                                    />
-                                    <label for="floatingInputGrid">50:50 Joker</label>
-
-                                </div>
-                                <a class="btn btn-sm btn-info" href="<?= site_url('Fragenkatalog/edit/'.$frage['frageId']) ?>">Edit</a>
-                                <a class="btn btn-sm btn-info" href="<?= site_url('Fragenkatalog/add') ?>">Add</a>
-
-                            </div>
-                                </table>
-            </div>
-        <?php endforeach; ?>
+<?php endforeach; ?>
     <?php endif; ?>
 
-
-
-</div>
-</div>
+               </tbody>
+    </table>
             </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script>$(document).ready( function () {
-$('#Fragen').DataTable();
+
+
+</div><link rel="stylesheet"type="text/css" href="//cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="javascript"  src="//cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+<script>
+
+    $(document).ready( function () {
+        $.noConflict();
+        var table = $('#Fragen').DataTable();{
+}
 } );</script>

@@ -45,7 +45,6 @@ class Fragenkatalog extends BaseController
             '5050Joker2' => 'max_length[1]',
 
         ];
-        $frageId = $this->request->getVar('frageId');
 
 
         if ($this->validate($rules)) {
@@ -61,6 +60,7 @@ class Fragenkatalog extends BaseController
    public function store() {
 
 
+       $frageId = $this->request->getVar('frageId');
 
        $data = [
 

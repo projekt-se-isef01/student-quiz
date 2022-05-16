@@ -1,10 +1,4 @@
- <title>Statistik</title>
-    <script src="/js/menu.js"></script>
 
-
-
-
-</head>
 <body>
 
 <table>
@@ -19,6 +13,3 @@
     </tr>
 
 </table>
-
-</body>
-</html>
