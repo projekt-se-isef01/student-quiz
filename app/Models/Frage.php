@@ -14,14 +14,15 @@ class Frage extends Model
     protected $allowedFields = [
 
         'frage',
+        'fragenkatalogId',
         'hinweis',
         'antwort1',
         'antwort2',
         'antwort3',
         'antwort4',
         'antwortLoesung',
-        '5050Joker1',
-        '5050Joker2',
+        'Joker50501',
+        'Joker50502',
 
 
     ];
@@ -39,4 +40,8 @@ class Frage extends Model
        return $this->where('frageId',$frageId)->first();
 
 }
+    public function findAddFrage($fragenkatalogbezeichnung)
+    {
+
+    }
 }

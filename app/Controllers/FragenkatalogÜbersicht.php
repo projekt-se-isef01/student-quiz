@@ -6,7 +6,6 @@ class FragenkatalogÜbersicht extends BaseController
 {
     public function index()
     {
-        helper(['form']);
         {
             $model = new FragenkatalogModel();
 

@@ -22,7 +22,7 @@
                                         <?= session()->getFlashdata('msg') ?>
                                     </div>
                                 <?php endif;?>
-                                <form  action="<?php echo base_url(); ?>/Login/login" method="post">
+                                <form  action="/Login/login" method="post">
                                     <?= csrf_field() ?>
                                     <div class="form-outline mb-4">
                                         <input type="text" name="name" placeholder="Name" value=""  class="form-control form-control-lg"  style="width: 100%" />
