@@ -1,8 +1,8 @@
 <link rel="stylesheet" type="text/css" href="/css/error.css">
+<?php if(isset($frage)):?>
 
 <div class="container">
 
-        <?php if(isset($frage)):?>
 
 <br>
         <form id="editForm" action="<?php echo base_url();?>/Fragenkatalog/updateFrage" method="post">
@@ -34,7 +34,7 @@
                     <div class="form-floating">
 
                         <input type="text" id="antwort2" name="antwort2" class="form-control" placeholder=""  style="height: 100px" value="<?php echo $frage['antwort2']?>"
-
+                            <?php echo $frage['antwort1']?>
                         />
                         <label for="floatingInputGrid">Antwort 2</label>
 

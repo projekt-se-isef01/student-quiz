@@ -10,7 +10,8 @@ class Fragenkatalog extends BaseController
     {
         $fragemodel = model(Frage::class);
 
-
+        $modelkatalog = new FragenkatalogModel();
+        $data['fragenkatalog']=$modelkatalog->getKatalog($fragenkatalogbezeichnung);
         $data ['frage'] = $fragemodel->getFrage($fragenkatalogbezeichnung);
 
         $this->template('Fragenkatalog', $data);

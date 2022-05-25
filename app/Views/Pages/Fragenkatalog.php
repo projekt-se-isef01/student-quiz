@@ -1,9 +1,8 @@
 <div class="container mt-4 table-responsive">
     <div class="d-flex ">
-        <?php if (! empty($frage)&& is_array($frage)):?>
-        <?php foreach($frage as $frage): ?>
-<a class="btn btn-sm btn-info" href="<?= site_url('Fragenkatalog/addFrage/'.$frage['fragenkatalogbezeichnung']) ?>">Add</a>
-
+        <?php if (isset($fragenkatalog)):?>
+        <a class="btn btn-sm btn-info" href="<?= site_url('Fragenkatalog/addFrage/'.$fragenkatalog['fragenkatalogbezeichnung']) ?>">Add</a>
+        <?php endif;?>
     </div>
 <br>
 
@@ -29,7 +28,8 @@
 
 
         <tbody>
-
+        <?php if (! empty($frage)&& is_array($frage)):?>
+            <?php foreach($frage as $frage): ?>
         <tr>
             <td>
                 <a class="btn btn-sm btn-success" href="<?= site_url('Fragenkatalog/edit/' .$frage['frageId']) ?>">Bearbeiten</a>
@@ -94,7 +94,7 @@
 <script>
 
     $(document).ready( function () {
-        $('#Fragen').DataTable();{
-            paging:true
-}
+        $('#Fragen').DataTable();
+
+
 } );</script>>

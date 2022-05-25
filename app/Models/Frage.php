@@ -33,7 +33,43 @@ class Frage extends Model
                         ->select('*')
                         ->join('fragenkatalog', 'fragenkatalog.fragenkatalogId = frage.fragenkatalogId')
                         ->where('fragenkatalog.fragenkatalogbezeichnung',$fragenkatalogbezeichnung);
-        return $results->get()->getResultArray();
+        return $results ->get()->getResultArray();
+
+    }
+    public function getFirstFrage($fragenkatalogbezeichnung) {
+       $result=$this
+            ->table('frage')
+            ->select('*')
+            ->join('fragenkatalog', 'fragenkatalog.fragenkatalogId = frage.fragenkatalogId')
+            ->where('fragenkatalog.fragenkatalogbezeichnung',$fragenkatalogbezeichnung);
+
+       return $result->first();
+
+
+    }
+    public function vergleichLoesung($frageId,$antwort)
+    {
+        $data=$this->find($frageId);
+        if ($data['antwortLoesung']===$antwort) {
+            return true;
+        }
+        else {
+            return  false;
+        }
+
+    }
+    public function getNextFrage($fragenkatalogbezeichnung,$frageId)
+    {
+        $results=$this
+            ->table('frage')
+            ->select('*')
+            ->join('fragenkatalog', 'fragenkatalog.fragenkatalogId = frage.fragenkatalogId')
+            ->where('fragenkatalog.fragenkatalogbezeichnung',$fragenkatalogbezeichnung)
+            ->where('frageId >',  $frageId);
+
+
+
+        return $results->first();
 
     }
     public function findFrage($frageId) {

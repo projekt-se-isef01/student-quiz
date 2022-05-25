@@ -40,9 +40,13 @@ $routes->get('FragenkatalogÜbersicht/', 'FragenkatalogÜbersicht::index');
 $routes->get('Fragenkatalog/edit/(:num)', 'Fragenkatalog::edit/$1');
 $routes->get('Fragenkatalog/loeschen/(:num)', 'Fragenkatalog::loeschen/$1');
 $routes->get('Fragenkatalog/addFrage/(:segment)', 'Fragenkatalog::addFrage/$1');
+$routes->post('Singleplayer/getNextFrage', 'Singleplayer::getNextFrage');
 
+$routes->get('Singleplayer/(:segment)', 'Singleplayer::getFirstFrage/$1');
+$routes->get('Singleplayer', 'Singleplayer::index');
 
 $routes->get('Fragenkatalog/(:any)', 'Fragenkatalog::index/$1');
+
 
 /*
  *
