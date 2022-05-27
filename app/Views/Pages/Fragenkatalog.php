@@ -2,6 +2,7 @@
     <div class="d-flex ">
         <?php if (isset($fragenkatalog)):?>
         <a class="btn btn-sm btn-info" href="<?= site_url('Fragenkatalog/addFrage/'.$fragenkatalog['fragenkatalogbezeichnung']) ?>">Add</a>
+
         <?php endif;?>
     </div>
 <br>
@@ -32,7 +33,8 @@
             <?php foreach($frage as $frage): ?>
         <tr>
             <td>
-                <a class="btn btn-sm btn-success" href="<?= site_url('Fragenkatalog/edit/' .$frage['frageId']) ?>">Bearbeiten</a>
+                <a class="btn btn-sm btn-success mb-2" href="<?= site_url('Fragenkatalog/edit/' .$frage['frageId']) ?>">Bearbeiten</a>
+
                 <a class="btn btn-sm btn-danger" href="<?= site_url('Fragenkatalog/loeschen/'.$frage['frageId']) ?>">Löschen</a>
 
             </td>
@@ -72,7 +74,7 @@
 
     <td>
 
-        <?=esc($frage['Joker50502'])?>"
+        <?=esc($frage['Joker50502'])?>
 
     </td>
 

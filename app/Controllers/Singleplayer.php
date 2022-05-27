@@ -16,40 +16,52 @@ class Singleplayer extends BaseController
 
         $data ['katalog'] = $model->getKatalog();
 
-        $this->template('Singleplayerauswahl',$data);
+        $this->template('Singleplayerauswahl', $data);
     }
+
     public function getFirstFrage($fragenkatalogbezeichnung)
     {
-        $model= new Frage();
+        $model = new Frage();
 
-        $frage['frage']=$model->getFirstFrage($fragenkatalogbezeichnung);
+        $frage['frage'] = $model->getFirstFrage($fragenkatalogbezeichnung);
 
         $singleplayerSession = session();
-        $data= [
-            'fragenkatalogbezeichnung'=> $fragenkatalogbezeichnung,
-            'score'=> 0
+        $data = [
+            'fragenkatalogbezeichnung' => $fragenkatalogbezeichnung,
+            'score' => 0
         ];
         $singleplayerSession->set($data);
 
-        $this->template('Singleplayer',$frage);
+        $this->template('Singleplayer', $frage);
     }
+
     public function getNextFrage()
     {
-        $antwort= $this->request->getPost('antwort');
-        $frageId= $this->request->getPost('frageId');
+        $antwort = $this->request->getVar('antwort');
+        $frageId = $this->request->getVar('frageId');
 
-        $model= new Frage();
+        $model = new Frage();
 
         $singleplayerSession = session();
 
-        if ($model ->vergleichLoesung($frageId,$antwort)===true) {
-            $singleplayerSession->set('score',($_SESSION['score']+1));
-            $data= [
-                'frage'=> $model->getNextFrage($_SESSION['fragenkatalogbezeichnung'],$frageId)
+        if ($model->vergleichLoesung($frageId, $antwort) === true) {
+            $singleplayerSession->set('score', ($_SESSION['score'] + 1));
+            $data = [
+                'data' => $model->getNextFrage($_SESSION['fragenkatalogbezeichnung'], $frageId),
+                'success' => true,
+                'msg' => "Success"
             ];
 
-            $this->template('Singleplayer',$data);
-        }
+            return $this->response->setJSON($data);
+        } else if (!$model->vergleichLoesung($frageId, $antwort) === true) {
+            $data = [
+                'data' => $model->getNextFrage($_SESSION['fragenkatalogbezeichnung'], $frageId),
+                'success' => true,
+                'msg' => "Success"
+            ];
+
+            return $this->response->setJSON($data);
         }
 
+    }
 }

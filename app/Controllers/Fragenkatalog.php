@@ -61,9 +61,7 @@ class Fragenkatalog extends BaseController
 
             ];
             $frage = new Frage();
-            var_dump($data);
             $frage->insert($data);
-            var_dump($frage);
 
         }
     }
@@ -133,6 +131,7 @@ class Fragenkatalog extends BaseController
        ];
        $frage = new Frage();
        $frage->update($frageId,$data);
+
 
    }
 }

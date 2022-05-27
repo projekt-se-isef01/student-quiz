@@ -30,10 +30,13 @@ if ($("#editForm").length > 0) {
                 digits: true
             },
             hinweis: {
-                required: true,
                 maxlength: 128
             },
-            'Joker50501': {
+            Joke50501: {
+                maxlength: 1,
+                digits: true
+            },
+            Joke50502: {
                 maxlength: 1,
                 digits: true
             },
@@ -100,7 +103,7 @@ if ($("#editForm").length > 0) {
 $("#antwortLoesung").inputFilter(function(value) {
     return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 4); });
 $("#Joker50501").inputFilter(function(value) {
-    return /^d*$/.test(value) && (value === ""|| value <= 4);
+    return /^\d*$/.test(value) && (value === ""|| value <= 4);
 });
 $("#Joker50502").inputFilter(function(value) {
     return /^\d*$/.test(value) && (value === ""|| value <= 4);

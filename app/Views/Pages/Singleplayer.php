@@ -11,9 +11,10 @@
 
                 </div>
             </div>
-            <form id="singleplayerForm" action="<?php echo base_url();?>/Singleplayer/getNextFrage" method="post">
+            <br>
+            <?= \Config\Services::validation()->listErrors(); ?> <span class="d-none alert alert-success mb-3" id="res_message"></span>
+            <form id="singleplayerForm" name="singleplayerForm" accept-charset="utf-8" action="javascript:void(0)" method="post">
                 <?= csrf_field() ?>
-
                 <input type="hidden" id="frageId" name="frageId"  value="<?php echo $frage['frageId']?>"/>
 
                 <div class="row p-2">
@@ -49,8 +50,12 @@
             <div class="">
 
 
-                <button class="btn btn-secondary" type="submit"style="height: auto">Bestätigen</button>
+                <button class="btn btn-secondary" id="send_form" type="submit"style="height: auto">Bestätigen</button>
             </div>
                         </form>
                         </div>
     <?php endif; ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
+<script src="/js/SP.js"></script

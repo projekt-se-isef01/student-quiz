@@ -5,7 +5,7 @@
             <?= $validation->listErrors() ?>
         </div>
     <?php endif;?>
-<form action="<?php echo base_url(); ?>/Fragenkatalogerstellung/neuerKatalog" method="post">
+<form action="<?php echo base_url(); ?>/Fragenkatalog/erstellen" method="post">
     <div class="mb-3">
         <label for="fragenkatalogbezeichnung" class="form-label">Fragenkatalog Bezeichnung</label>
         <input type="text" name="fragenkatalogbezeichnung" class="form-control" />
