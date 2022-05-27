@@ -35,7 +35,7 @@ class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['form'];
     public function template($page='Startseite', $data=null)
     {
 
@@ -48,8 +48,10 @@ class BaseController extends Controller
         $data['title'] = ucfirst($page); // Capitalize the first letter
 
         echo view('templates/header', $data);
-        echo view('templates/menu',$data);
+        echo view('templates/menu');
         echo view('pages/' . $page, $data);
+        echo view('templates/footer');
+
 
     }
 

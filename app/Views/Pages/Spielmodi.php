@@ -5,7 +5,7 @@
     <tr>
         <td class="t3"></td>
         <td class="t4">
-            Singeplayer
+            <a href="Singleplayer"  > Singeplayer</a>
             <br>
             Multiplayer - kooperativ
             <br>
@@ -18,5 +18,3 @@
 
 </table>
 </div>
-</body>
-</html>

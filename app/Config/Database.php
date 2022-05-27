@@ -34,7 +34,7 @@ class Database extends Config
         'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'root',
-        'password' => '',
+        'password' => '123456',
         'database' => 'qdata',
         'DBDriver' => 'mysqli',
         'DBPrefix' => '',

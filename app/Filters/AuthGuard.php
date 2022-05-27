@@ -1,4 +1,5 @@
 <?php namespace App\Filters;
+use App\Controllers\Startseite;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
@@ -12,6 +13,8 @@ class AuthGuard implements FilterInterface
             return redirect()
                 ->to('/Login');
         }
+
+
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)

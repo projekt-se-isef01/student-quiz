@@ -23,7 +23,7 @@ $routes->setDefaultController('Startseite');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -32,14 +32,36 @@ $routes->setAutoRoute(true);
  */
 
 $routes->get('/', 'Startseite::index');
-$routes->get('Accounts', 'Account::index',['filter' => 'AuthGuard']);
+$routes->get('Startseite', 'Startseite::index');
+$routes->get('Registrierung', 'Registrierung::index');
+
+$routes->get('Login', 'Login::index');
+$routes->match(['get','post'],'Registrierung/registrieren', 'Registrierung:registrieren');
+
+$routes->match(['get','post'],'Login/login', 'Login::login');
+$routes->get('Account', 'Account::index',['filter' => 'AuthGuard']);
+$routes->get('FragenkatalogÜbersicht/(:any)', 'FragenkatalogÜbersicht::index',['filter' => 'AuthGuard']);
+$routes->get('Fragenkatalogerstellung/(:any)', 'Fragenkatalogerstellung::index',['filter' => 'AuthGuard']);
+
 $routes->get('Spielmodi', 'Spielmodi::index',['filter' => 'AuthGuard']);
 $routes->get('Logout', 'Logout::index',['filter' => 'AuthGuard']);
 $routes->get('Statistik', 'Statistik::index',['filter' => 'AuthGuard']);
 $routes->get('FragenkatalogÜbersicht/', 'FragenkatalogÜbersicht::index');
-$routes->get('Fragenkatalog/edit/(:num)', 'Fragenkatalog::edit/$1');
+$routes->match(['get','post'],'Fragenkatalog/storeFrage', 'Fragenkatalog::storeFrage');
+$routes->match(['get','post'],'Fragenkatalog/updateFrage', 'Fragenkatalog::updateFrage');
+$routes->match(['get','post'],'Fragenkatalog/erstellen', 'Fragenkatalogerstellung/neuerKatalog');
+$routes->match(['get','post'],'Fragenkatalogerstellung', 'Fragenkatalogerstellung::index');
 
-$routes->get('Fragenkatalog/(:any)', 'Fragenkatalog::index/$1');
+$routes->get('Fragenkatalog/edit/(:num)', 'Fragenkatalog::edit/$1');
+$routes->get('Fragenkatalog/loeschen/(:num)', 'Fragenkatalog::loeschen/$1');
+$routes->get('Fragenkatalog/addFrage/(:segment)', 'Fragenkatalog::addFrage/$1');
+$routes->post('Singleplayer/getNextFrage', 'Singleplayer::getNextFrage');
+
+$routes->get('Singleplayer/(:segment)', 'Singleplayer::getFirstFrage/$1');
+$routes->get('Singleplayer', 'Singleplayer::index');
+
+$routes->get('Fragenkatalog/(:any)', 'Fragenkatalog::index/$1',['filter' => 'AuthGuard']);
+
 
 /*
  *

@@ -8,6 +8,7 @@ use CodeIgniter\Model;
 class FragenkatalogModel extends Model
 {
     protected $table = 'fragenkatalog';
+    protected $primaryKey='fragenkatalogId';
 
     protected $allowedFields = [
         'fragenkatalogbezeichnung'

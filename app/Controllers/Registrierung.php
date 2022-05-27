@@ -1,19 +1,18 @@
 <?php
 namespace App\Controllers;
 use App\Models\Student;
+use function PHPUnit\Framework\returnCallback;
 
 class Registrierung extends BaseController
 {
     public function index() // zeigt leere Registrierungsseite
     {
         $data=[];
-        helper(['form']);
         $this->template('Registrierung', $data);
     }
 
     public function registrieren()
     {
-        helper(['form']);
 
         $rules=[
             'name' => 'required|min_length[3]|max_length[128]|is_unique[student.name,id,{id}]',
@@ -27,7 +26,9 @@ class Registrierung extends BaseController
 
 
              $this->store();
-            }
+             return redirect()->to('/Registrierung');
+
+         }
 
         else {
 
