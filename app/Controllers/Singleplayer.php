@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\Frage;
 use App\Models\FragenkatalogModel;
 use App\Models\Student;
+use phpDocumentor\Reflection\Location;
+use function PHPUnit\Framework\returnArgument;
 
 class Singleplayer extends BaseController
 {
@@ -28,10 +30,10 @@ class Singleplayer extends BaseController
         $singleplayerSession = session();
         $data = [
             'fragenkatalogbezeichnung' => $fragenkatalogbezeichnung,
-            'score' => 0
+
         ];
         $singleplayerSession->set($data);
-
+        session_write_close();
         $this->template('Singleplayer', $frage);
     }
 
@@ -39,29 +41,44 @@ class Singleplayer extends BaseController
     {
         $antwort = $this->request->getVar('antwort');
         $frageId = $this->request->getVar('frageId');
+        $score = $this->request->getVar('score');
 
         $model = new Frage();
+        $hasNext = $model->getNextFrage($_SESSION['fragenkatalogbezeichnung'], $frageId);
 
-        $singleplayerSession = session();
 
-        if ($model->vergleichLoesung($frageId, $antwort) === true) {
-            $singleplayerSession->set('score', ($_SESSION['score'] + 1));
-            $data = [
-                'data' => $model->getNextFrage($_SESSION['fragenkatalogbezeichnung'], $frageId),
-                'success' => true,
-                'msg' => "Success"
-            ];
+            if ($model->vergleichLoesung($frageId, $antwort) === true) {
+                if ($hasNext !== null) {
 
-            return $this->response->setJSON($data);
-        } else if (!$model->vergleichLoesung($frageId, $antwort) === true) {
-            $data = [
-                'data' => $model->getNextFrage($_SESSION['fragenkatalogbezeichnung'], $frageId),
-                'success' => true,
-                'msg' => "Success"
-            ];
+                    $data = [
+                        'data' => $model->getNextFrage($_SESSION['fragenkatalogbezeichnung'], $frageId),
+                        'success' => true,
+                        'score' => (int)$score + 1,
+                    ];
+                    return $this->response->setJSON($data);
+                }
+                elseif ($hasNext == null) {
+                   $score = (int)$score + 1;
 
-            return $this->response->setJSON($data);
+                    return $this->response->setJSON(array('end'=>true,'score'=>$score));
+
+                }
+            } else if ($model->vergleichLoesung($frageId, $antwort) === false) {
+                if ($hasNext !== null) {
+
+                    $data = [
+                    'data' => $model->getNextFrage($_SESSION['fragenkatalogbezeichnung'], $frageId),
+                    'success' => true,
+                    'score' => (int)$score,
+
+                ];
+
+                return $this->response->setJSON($data);}
+                else {
+                   return redirect()->to('/Ergebnis');
+
+                    }
+            }
         }
 
     }
-}
