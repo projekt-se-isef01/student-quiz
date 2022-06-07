@@ -24,6 +24,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'AuthGuard'     => AuthGuard::class,
+        'csrf'          => CSRF::class
     ];
 
     /**
@@ -34,9 +35,11 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [ 'AuthGuard'=> ['except' => ['Registrierung','Registrierung/*','Login','Login/*', '/','Startseite']],
-            // 'honeypot',
+            'csrf'=>['except' => ['/Singleplayer/getNextFrage']],
+
             // 'invalidchars',
         ],
+
         'after' => [
             'toolbar',
             // 'honeypot',
@@ -54,7 +57,9 @@ class Filters extends BaseConfig
      * @var array
      */
     public $methods = [
-
+        'get'  => ['csrf'],
+        'post' => ['csrf'],
+    
     ];
 
     /**
