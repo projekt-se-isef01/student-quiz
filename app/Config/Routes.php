@@ -31,42 +31,64 @@ $routes->setAutoRoute(false);
  * --------------------------------------------------------------------
  */
 
+//Startseite
 $routes->get('/', 'Startseite::index');
 $routes->get('Startseite', 'Startseite::index');
+
+//Register
 $routes->get('Registrierung', 'Registrierung::index');
+$routes->match(['get','post'],'Registrierung/registrieren', 'Registrierung::registrieren');
 
+//Login
 $routes->get('Login', 'Login::index');
-$routes->match(['get','post'],'Registrierung/registrieren', 'Registrierung:registrieren');
-
 $routes->match(['get','post'],'Login/login', 'Login::login');
-$routes->get('Account', 'Account::index',['filter' => 'AuthGuard']);
-$routes->get('FragenkatalogÜbersicht/(:any)', 'FragenkatalogÜbersicht::index',['filter' => 'AuthGuard']);
-$routes->get('Fragenkatalogerstellung/(:any)', 'Fragenkatalogerstellung::index',['filter' => 'AuthGuard']);
+$routes->match(['get','post'],'Login/logout', 'Login::logout');
+$routes->get('Logout', 'Logout::index');
 
-$routes->get('Spielmodi', 'Spielmodi::index',['filter' => 'AuthGuard']);
-$routes->get('Logout', 'Logout::index',['filter' => 'AuthGuard']);
-$routes->get('Statistik', 'Statistik::index',['filter' => 'AuthGuard']);
+//Account
+$routes->get('Account', 'Account::index');
+
+//Fragenkatalog
+$routes->get('FragenkatalogÜbersicht/(:any)', 'FragenkatalogÜbersicht::index');
+$routes->get('Fragenkatalogerstellung/(:any)', 'Fragenkatalogerstellung::index');
 $routes->get('FragenkatalogÜbersicht/', 'FragenkatalogÜbersicht::index');
+
+//Fragen
 $routes->match(['get','post'],'Fragenkatalog/storeFrage', 'Fragenkatalog::storeFrage');
 $routes->match(['get','post'],'Fragenkatalog/updateFrage', 'Fragenkatalog::updateFrage');
 $routes->match(['get','post'],'Fragenkatalog/erstellen', 'Fragenkatalogerstellung/neuerKatalog');
 $routes->match(['get','post'],'Fragenkatalogerstellung', 'Fragenkatalogerstellung::index');
-
 $routes->get('Fragenkatalog/edit/(:num)', 'Fragenkatalog::edit/$1');
 $routes->get('Fragenkatalog/loeschen/(:num)', 'Fragenkatalog::loeschen/$1');
 $routes->get('Fragenkatalog/addFrage/(:segment)', 'Fragenkatalog::addFrage/$1');
+$routes->get('Fragenkatalog/(:any)', 'Fragenkatalog::index/$1');
+
+$routes->get('Statistik', 'Statistik::index');
+
+//Spielmodi
+$routes->get('Spielmodi', 'Spielmodi::index');
+
+//Single
 $routes->match(['get','post'],'Singleplayer/getNextFrage', 'Singleplayer::getNextFrage');
 $routes->get('Ergebnis', 'Ergebnis::index');
-
+$routes->get('Singleplayer', 'Singleplayer::index');
 $routes->get('Singleplayer/(:segment)', 'Singleplayer::getFirstFrage/$1');
 $routes->get('Singleplayer', 'Singleplayer::index');
 
-$routes->get('Fragenkatalog/(:any)', 'Fragenkatalog::index/$1',['filter' => 'AuthGuard']);
+//VS
+
+
+$routes->get('VS', 'VS::index');
+$routes->get('VS/(:num)' ,'VS::start/$1');
+$routes->get('VS/addGame', 'VS::addGame');
+$routes->match(['get','post'],'VS/endGame', 'VS::endGame');
+
+
 
 
 /*
  *
- * --------------$routes->get('(:any)', 'Pages::view/$1');
+ * $routes->get('(:any)', 'Pages::view/$1');
 ------------------------------------------------------
  * Additional Routing
  * --------------------------------------------------------------------

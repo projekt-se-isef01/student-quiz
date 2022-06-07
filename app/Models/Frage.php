@@ -28,8 +28,7 @@ class Frage extends Model
     ];
     public function getFrage($fragenkatalogbezeichnung)
     {
-       $results=$this
-                        ->table('frage')
+       $results=$this->table('frage')
                         ->select('*')
                         ->join('fragenkatalog', 'fragenkatalog.fragenkatalogId = frage.fragenkatalogId')
                         ->where('fragenkatalog.fragenkatalogbezeichnung',$fragenkatalogbezeichnung);

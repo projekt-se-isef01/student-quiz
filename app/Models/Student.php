@@ -8,10 +8,11 @@ use CodeIgniter\Model;
 class Student extends Model
 {
     protected $table = 'student';
-
+    protected $primaryKey = 'id';
     protected $allowedFields = [
         'name',
         'password',
-        'date'
+        'date',
+        'score'
     ];
 }

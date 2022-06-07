@@ -33,7 +33,7 @@ class Filters extends BaseConfig
      * @var array
      */
     public $globals = [
-        'before' => [
+        'before' => [ 'AuthGuard'=> ['except' => ['Registrierung','Registrierung/*','Login','Login/*', '/','Startseite']],
             // 'honeypot',
             // 'invalidchars',
         ],

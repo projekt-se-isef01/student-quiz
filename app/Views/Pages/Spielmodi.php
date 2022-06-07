@@ -7,11 +7,8 @@
         <td class="t4">
             <a href="Singleplayer"  > Singeplayer</a>
             <br>
-            Multiplayer - kooperativ
-            <br>
-            Multiplayer - konkurrierend
-            <br>
-            Fragenkatalog bearbeiten
+            <a href="VS" >Multiplayer - konkurrierend</a>
+
         </td>
         <td class="t5"></td>
     </tr>
