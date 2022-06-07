@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="0.263246">
+    <testsuite name="App" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="0.263246">
+      <testsuite name="Tests\Support\Controllers\RegistrierungTest" file="C:\xamppnew\htdocs\student-quiz\tests\_support\Controllers\RegistrierungTest.php" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="0.263246">
+        <testcase name="testregistrieren" class="Tests\Support\Controllers\RegistrierungTest" classname="Tests.Support.Controllers.RegistrierungTest" file="C:\xamppnew\htdocs\student-quiz\tests\_support\Controllers\RegistrierungTest.php" line="22" assertions="0" time="0.263246">
+          <error type="Error">Tests\Support\Controllers\RegistrierungTest::testregistrieren
+Error: Interface "iterable" not found
+
+C:\xamppnew\htdocs\student-quiz\vendor\codeigniter4\framework\system\Test\TestResponse.php:32
+C:\xamppnew\htdocs\student-quiz\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php:264
+C:\xamppnew\htdocs\student-quiz\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php:241
+C:\xamppnew\htdocs\student-quiz\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php:219
+C:\xamppnew\htdocs\student-quiz\vendor\codeigniter4\framework\system\Test\FeatureTestTrait.php:209
+C:\xamppnew\htdocs\student-quiz\tests\_support\Controllers\RegistrierungTest.php:24</error>
+        </testcase>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

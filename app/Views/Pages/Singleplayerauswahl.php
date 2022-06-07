@@ -8,9 +8,9 @@
         <?php foreach ($katalog as $katalog_item): ?>
 
             <div class="main">
-                <?= esc($katalog_item['fragenkatalogbezeichnung']) ?>
             </div>
-            <p><a href="/Singleplayer/<?= esc($katalog_item['fragenkatalogbezeichnung']) ?>">Zum Katalog</a></p>
+            <p><a href="/Singleplayer/<?= esc($katalog_item['fragenkatalogbezeichnung']) ?>">                <?= esc($katalog_item['fragenkatalogbezeichnung']) ?>
+                </a></p>
         <?php endforeach ?>
 
 

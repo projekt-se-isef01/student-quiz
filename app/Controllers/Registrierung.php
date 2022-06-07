@@ -26,7 +26,7 @@ class Registrierung extends BaseController
 
 
              $this->store();
-             return redirect()->to('/Registrierung');
+             return redirect()->to('/Login');
 
          }
 
