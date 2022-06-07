@@ -54,6 +54,8 @@ class Singleplayer extends BaseController
                         'data' => $model->getNextFrage($_SESSION['fragenkatalogbezeichnung'], $frageId),
                         'success' => true,
                         'score' => (int)$score + 1,
+                        'csrf'=> $data['token'] = csrf_hash()
+
                     ];
                     return $this->response->setJSON($data);
                 }
@@ -70,12 +72,14 @@ class Singleplayer extends BaseController
                     'data' => $model->getNextFrage($_SESSION['fragenkatalogbezeichnung'], $frageId),
                     'success' => true,
                     'score' => (int)$score,
+                        'token'=> $data['token'] = csrf_hash()
 
-                ];
+
+                    ];
 
                 return $this->response->setJSON($data);}
                 else {
-                   return redirect()->to('/Ergebnis');
+                    return $this->response->setJSON(array('end'=>true,'score'=>$score));
 
                     }
             }

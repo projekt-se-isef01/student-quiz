@@ -13,6 +13,9 @@ class Student extends Model
         'name',
         'password',
         'date',
-        'score'
+        'score',
+        'singleGamesGesamt',
+        'vsGamesGesamt',
+        'vsGamesWin'
     ];
 }

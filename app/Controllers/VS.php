@@ -37,22 +37,33 @@ class VS extends BaseController
     public function endGame(){
         $frageId=$this->request->getVar('frageId');
         $antwort=$this->request->getVar('antwort');
-        $score=0;
+        if ($frageId !==null && $antwort!==null) {
+            $score = 0;
 
-        for ($i = 0; $i < count($frageId); $i++) {
-                $fId=$frageId[$i];
-                $ant=$antwort[$fId];
-                $model=new Frage();
-                if($model->vergleichLoesung($fId,$ant)===true) {
-                    $score=$score+1;
+            for ($i = 0; $i < count($frageId); $i++) {
+                $fId = $frageId[$i];
+                $ant = $antwort[$fId];
+                $model = new Frage();
+                if ($model->vergleichLoesung($fId, $ant) === true) {
+                    $score = $score + 1;
 
                 }
-        }
-        $s['score']=$score;
-        $studmodel= new Student();
-        $studmodel->update($_SESSION['id'],$s);
+            }
+            $s['score'] = $score;
+            var_dump($s['score']);
+            $studmodel = new Student();
+            $getrec = $studmodel->find($_SESSION['id']);
+            $getScore = $getrec['score'];
 
-        $this->template('Ergebnis',$s);
+            $scoregesamt = (int)$getScore + (int)$s;
+            $data = ['score' => $scoregesamt,
+                'vsGamesGesamt' => (int)$getrec['vsGamesGesamt'] + 1
+            ];
+            $studmodel->update($_SESSION['id'], $data);
+            $session=session();
+            $session->setFlashdata('message', 'hhhhhhh');
+            return redirect()->to('Ergebnis');
+        }
 
     }
 }

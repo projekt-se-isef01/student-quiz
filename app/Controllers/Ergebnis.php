@@ -17,10 +17,12 @@ class Ergebnis extends BaseController
         $getrec=$model->find($_SESSION['id']);
         $getScore=$getrec['score'];
         $scoregesamt=(int)$getScore+(int)$s;
-        $data2=['score'=>$scoregesamt];
-        if($s!==null) {
+        $data2=['score'=>$scoregesamt,
+                'singleGamesGesamt' =>(int)$getrec['singleGamesGesamt']+1
+        ];
+
             $model->update($_SESSION['id'], $data2);
-        }
+
         $this->template('Ergebnis',$data);
 
         delete_cookie('score');
