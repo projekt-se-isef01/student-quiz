@@ -47,6 +47,8 @@ $routes->get('Logout', 'Logout::index');
 
 //Account
 $routes->get('Account', 'Account::index');
+$routes->match(['get','post'],'Account/loeschen', 'Account::loeschen');
+
 
 //Fragenkatalog
 $routes->get('FragenkatalogÜbersicht/(:any)', 'FragenkatalogÜbersicht::index');
@@ -70,7 +72,9 @@ $routes->get('Spielmodi', 'Spielmodi::index');
 
 //Single
 $routes->match(['get','post'],'Singleplayer/getNextFrage', 'Singleplayer::getNextFrage');
-$routes->get('Ergebnis', 'Ergebnis::index');
+$routes->get('ErgebnisSingle', 'ErgebnisSingle::index');
+$routes->match(['get','post'],'Ergebnis', 'Ergebnis::index');
+
 $routes->get('Singleplayer', 'Singleplayer::index');
 $routes->get('Singleplayer/(:segment)', 'Singleplayer::getFirstFrage/$1');
 $routes->get('Singleplayer', 'Singleplayer::index');

@@ -33,7 +33,7 @@
             <?php foreach($frage as $frage): ?>
         <tr>
             <td>
-                <a class="btn btn-sm btn-success mb-2" href="<?= site_url('Fragenkatalog/edit/' .$frage['frageId']) ?>">Bearbeiten</a>
+                <a class="btn btn-sm btn-success " href="<?= site_url('Fragenkatalog/edit/' .$frage['frageId']) ?>">Bearbeiten</a>
 
                 <a class="btn btn-sm btn-danger" href="<?= site_url('Fragenkatalog/loeschen/'.$frage['frageId']) ?>">Löschen</a>
 

@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="/css/error.css">
-<?php if(isset($frage)):?>
+<?php if(isset($frage) ):?>
 
 <div class="container">
 

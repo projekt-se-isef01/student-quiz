@@ -40,7 +40,7 @@
                             </div>
 
                             <div>
-                                <p class="mb-0">Noch nicht registriert? <a href="registrierung" class="text-body fw-bold"><br>Zur Registrierung</a></p>
+                                <p class="mb-0">Noch nicht registriert? <a href="Registrierung" class="text-body fw-bold"><br>Zur Registrierung</a></p>
                             </div>
 
                         </div>

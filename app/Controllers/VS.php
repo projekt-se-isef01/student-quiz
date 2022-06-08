@@ -50,6 +50,7 @@ class VS extends BaseController
                 }
             }
             $s['score'] = $score;
+
             var_dump($s['score']);
             $studmodel = new Student();
             $getrec = $studmodel->find($_SESSION['id']);
@@ -61,8 +62,8 @@ class VS extends BaseController
             ];
             $studmodel->update($_SESSION['id'], $data);
             $session=session();
-            $session->setFlashdata('message', 'hhhhhhh');
-            return redirect()->to('Ergebnis');
+            $session->setFlashdata('message', $score);
+            return redirect()->to('/Ergebnis');
         }
 
     }

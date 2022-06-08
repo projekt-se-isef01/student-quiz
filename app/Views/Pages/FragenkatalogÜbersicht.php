@@ -1,18 +1,47 @@
 
 <div class="container">
 
-<a href="Fragenkatalogerstellung"  class="btn btn-link" style="height: auto">Erstelle Fragenkatalog</a>
+<a href="Fragenkatalogerstellung"  class="btn btn btn-info my-4">Erstelle Fragenkatalog</a>
 
-<?php if (! empty($katalog) && is_array($katalog)): ?>
+
+
+<table id="Fragenkatalog" class="display ">
+
+    <thead>
+    <tr>
+
+        <th>Fragenkatalog</th>
+        <th></th>
+
+    </tr>
+
+
+    <tbody>
+    <?php if (! empty($katalog) && is_array($katalog)): ?>
 
     <?php foreach ($katalog as $katalog_item): ?>
-
-        <div class="main">
+    <tr>
+        <td>
             <?= esc($katalog_item['fragenkatalogbezeichnung']) ?>
-        </div>
-        <p><a href="/Fragenkatalog/<?= esc($katalog_item['fragenkatalogbezeichnung']) ?>">Zum Katalog</a></p>
-    <?php endforeach ?>
-
-
-<?php endif ?>
+        </td>
+        <td>
+            <p><a class="btn btn btn-success" href="/Fragenkatalog/<?= esc($katalog_item['fragenkatalogbezeichnung']) ?>">Zum Katalog</a></p>
+        </td>
+    </tr>
+        <?php endforeach ?>
+    <?php endif ?>
+    </tbody>
+</table>
 </div>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript"  src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+
+<script>
+
+    $(document).ready( function () {
+        $('#Fragenkatalog').DataTable();
+
+
+    } );</script>>

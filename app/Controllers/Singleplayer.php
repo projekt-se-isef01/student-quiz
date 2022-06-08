@@ -54,7 +54,7 @@ class Singleplayer extends BaseController
                         'data' => $model->getNextFrage($_SESSION['fragenkatalogbezeichnung'], $frageId),
                         'success' => true,
                         'score' => (int)$score + 1,
-                        'csrf'=> $data['token'] = csrf_hash()
+                        'token'=> $data['token'] = csrf_hash()
 
                     ];
                     return $this->response->setJSON($data);

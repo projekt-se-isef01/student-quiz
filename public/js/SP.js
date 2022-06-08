@@ -28,7 +28,7 @@
                                 const expires = new Date(Date.now() + 1000).toUTCString()
                                 document.cookie = 'score' + '=' + data.score + ';' + 'expires' + '=' + '${expires}' + ';' + 'path' + '=' + '/' + ';';
                                 localStorage.clear();
-                                window.location.href = `/Ergebnis`;
+                                window.location.href = `/ErgebnisSingle`;
 
                             }
                             $('#score').attr("value", data.score);
