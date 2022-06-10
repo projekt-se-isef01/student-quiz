@@ -43,7 +43,6 @@ $routes->match(['get','post'],'Registrierung/registrieren', 'Registrierung::regi
 $routes->get('Login', 'Login::index');
 $routes->match(['get','post'],'Login/login', 'Login::login');
 $routes->match(['get','post'],'Login/logout', 'Login::logout');
-$routes->get('Logout', 'Logout::index');
 
 //Account
 $routes->get('Account', 'Account::index');
@@ -86,6 +85,10 @@ $routes->get('VS', 'VS::index');
 $routes->get('VS/(:num)' ,'VS::start/$1');
 $routes->get('VS/addGame', 'VS::addGame');
 $routes->match(['get','post'],'VS/endGame', 'VS::endGame');
+$routes->match(['get','post'],'VS/wait/(:num)' ,'VS::wait/$1');
+$routes->get('VS/startWait/(:num)' ,'VS::startWait/$1');
+
+
 
 
 

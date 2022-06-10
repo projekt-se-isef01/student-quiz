@@ -13,7 +13,8 @@ class Game extends Model
         'gameName',
         'studentId',
         'fragenkatalogId',
-        'gegnerstudentId'
+        'gegnerstudentId',
+        'status'
     ];
     public function getPlayers($gameId) {
        $result= $this->where('gameId',$gameId)->where('gegnerstudentId !=', null)->first();

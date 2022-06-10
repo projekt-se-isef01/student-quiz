@@ -6,6 +6,7 @@ use App\Models\Frage;
 use App\Models\Game;
 use App\Models\FragenkatalogModel;
 use App\Models\Student;
+use phpDocumentor\Reflection\Types\True_;
 
 class VS extends BaseController
 {
@@ -25,15 +26,42 @@ class VS extends BaseController
         $this->template('Spielerstellung',$data);
 
     }
-    public function start($gameId) {
-         $model = new Game();
-         $fmodel= new Frage;
-        $prove=$model->getPlayers($gameId);
-        $data['frage']=$model->getFragen($gameId);
-        if($prove==null) {
+    public function startWait($gameId) {
+        $model = new Game();
+        $ersteller=$model->find($gameId);
+        if($ersteller['studentId']==$_SESSION['id']) {
+            $this->template('Warten');
+
+            }
+        else {
+            $upgegner= [
+                'gegnerstudentId' => $_SESSION['id'],
+            ];
+            $model->update($gameId, $upgegner);
+            $data['frage'] = $model->getFragen($gameId);
             $this->template('VS',$data);
         }
+}
+    public function wait($gameId)
+    {
+        $model = new Game();
+        $status = $model->find($gameId);
+        $prove = $model->getPlayers($gameId);
+        var_dump($prove);
+        if ($prove !== null && $status['status'] == 'inaktiv') {
+            $upstatus = [
+                'status' => 'aktiv',
+            ];
+            $model->update($gameId, $upstatus);
+            $data['frage'] = $model->getFragen($gameId);
+            return $this->template('VS', $data);
+
+        } else {
+       $this->template('Warten', );
     }
+
+    }
+
     public function endGame(){
         $frageId=$this->request->getVar('frageId');
         $antwort=$this->request->getVar('antwort');

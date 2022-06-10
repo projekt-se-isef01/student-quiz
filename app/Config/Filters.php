@@ -35,7 +35,7 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [ 'AuthGuard'=> ['except' => ['Registrierung','Registrierung/*','Login','Login/*', '/','Startseite']],
-            'csrf'=>['except' => ['/Singleplayer/getNextFrage']],
+            'csrf'=>['except' => 'VS/*'],
 
             // 'invalidchars',
         ],
@@ -57,8 +57,7 @@ class Filters extends BaseConfig
      * @var array
      */
     public $methods = [
-        'get'  => ['csrf'],
-        'post' => ['csrf'],
+
     
     ];
 
