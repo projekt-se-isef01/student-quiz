@@ -47,7 +47,7 @@ class VS extends BaseController
         $model = new Game();
         $status = $model->find($gameId);
         $prove = $model->getPlayers($gameId);
-        var_dump($prove);
+
         if ($prove !== null && $status['status'] == 'inaktiv') {
             $upstatus = [
                 'status' => 'aktiv',
@@ -56,7 +56,12 @@ class VS extends BaseController
             $data['frage'] = $model->getFragen($gameId);
             return $this->template('VS', $data);
 
-        } else {
+        }
+        if($status['status'] == 'aktiv'){
+            $data['frage'] = $model->getFragen($gameId);
+            $this->template('VS', $data);
+        }
+        else {
        $this->template('Warten', );
     }
 
@@ -92,6 +97,19 @@ class VS extends BaseController
             $session=session();
             $session->setFlashdata('message', $score);
             return redirect()->to('/Ergebnis');
+        }
+
+    }
+    public function getErgebnis($gameId) {
+        $game= new Game();
+        //prüfe ob Spiel zu Ende
+        if($game->getErgebnis($gameId===null)) {
+            $this->template('Ergebnis');
+        }
+        else{
+            if($_SESSION['id'])
+            $this->template('Ergebnis',$data);
+
         }
 
     }

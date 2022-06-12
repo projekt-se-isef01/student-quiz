@@ -105,3 +105,15 @@ window.addEventListener('load', (event) => {
 
 
 });
+    $(document).ready(function() {
+
+        $("#show").click(function () {
+            $("#hinweis").removeClass('d-none');
+
+
+        });
+        $("#show2").click(function () {
+            $("#joker").removeClass('d-none');
+
+        });
+    });
