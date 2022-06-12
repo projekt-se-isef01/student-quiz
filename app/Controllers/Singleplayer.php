@@ -85,4 +85,7 @@ class Singleplayer extends BaseController
             }
         }
 
+        public function joker() {
+
+        }
     }

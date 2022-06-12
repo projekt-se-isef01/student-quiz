@@ -1,7 +1,7 @@
 <?php if ( isset($frage)):
     ?>
 
-        <div class="container pt-xl-5 text-center">
+    <div class="container pt-xl-5 text-center" xmlns="http://www.w3.org/1999/html">
             <br>
         <div class="row g-2">
             <div class="col-8 mx-auto">
@@ -48,12 +48,33 @@
                 </div>
 
                 </div>
-            <div class="pt-5">
+
+                <div class="pt-5">
 
 
                 <button class="btn btn-secondary" id="send_form" type="submit"style="height: auto">Bestätigen</button>
             </div>
                         </form>
+            <?php if(!isset($_SESSION['joker'])): ?>
+
+            <a class="btn btn-secondary bg-light text-black-50 mt-4" id="show">Hinweis</a>
+
+            <div id="hinweis" class="d-none row pt-4">
+
+                <?php echo $frage['hinweis']?>
+            </div>
+            <form action="joker">
+                <button class="btn btn-secondary bg-light text-black-50 mt-4" id="show2">Hinweis</button>
+
+                <div id="joker" class="d-none row pt-4">
+
+                    <?php echo $frage['Joker50502']?>
+                    <?php echo $frage['Joker50501']?>
+
+                </div>
+            </form>
+            <?php endif;?>
+
                         </div>
     <?php endif; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

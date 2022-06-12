@@ -14,7 +14,9 @@ class Game extends Model
         'studentId',
         'fragenkatalogId',
         'gegnerstudentId',
-        'status'
+        'status',
+        'gegnerscore',
+        'studentscore'
     ];
     public function getPlayers($gameId) {
        $result= $this->where('gameId',$gameId)->where('gegnerstudentId !=', null)->first();
@@ -36,5 +38,10 @@ class Game extends Model
         table('frage')->select('*')
             ->where(' fragenkatalogId', $Id)->get()->getResultArray();
 
+    }
+    public function getErgebnis($gameId) {
+        $result= $this->where('gameId',$gameId)->where('gegnerscore !=', 0)->where('studentscore !=', 0)->first();
+
+        return $result;
     }
 }

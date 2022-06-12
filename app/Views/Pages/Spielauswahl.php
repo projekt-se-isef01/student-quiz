@@ -8,7 +8,7 @@
 
         <?php foreach ($spiel as $spiel_item): ?>
 
-            <p><a href="<?= site_url("/VS/startWait/".$spiel_item['gameId'])?>">
+            <p><a href="<?= site_url("/VS/".$spiel_item['gameId'])?>">
                     <?= esc($spiel_item['gameName']) ?>
                 </a></p>
         <?php endforeach ?>
