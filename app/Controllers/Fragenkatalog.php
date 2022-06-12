@@ -21,6 +21,8 @@ class Fragenkatalog extends BaseController
         $model = new FragenkatalogModel();
 
         $data ['frage'] = $model->getKatalog($fragenkatalogbezeichnung);
+
+        session()->set('fragenkatalogbezeichnung',$fragenkatalogbezeichnung);
         $this->template('Add',$data);
 
 
@@ -62,7 +64,7 @@ class Fragenkatalog extends BaseController
             ];
             $frage = new Frage();
             $frage->insert($data);
-
+            return redirect()->to('Fragenkatalog/'.$_SESSION['fragenkatalogbezeichnung']);
         }
     }
     public function edit($frageId)

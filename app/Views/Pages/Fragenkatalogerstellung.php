@@ -5,7 +5,8 @@
             <?= $validation->listErrors() ?>
         </div>
     <?php endif;?>
-<form action="<?php echo base_url(); ?>/Fragenkatalog/erstellen" method="post">
+<form action="<?php echo base_url(); ?>/Fragenkatalogerstellung/neuerKatalog" method="post">
+   <?= csrf_field()?>
     <div class="row g-2 pb-5 mt-4">
         <div class="col-8 mx-auto">
         <label for="fragenkatalogbezeichnung" class="form-label">Fragenkatalog Bezeichnung</label>

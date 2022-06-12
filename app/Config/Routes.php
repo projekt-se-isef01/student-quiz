@@ -57,7 +57,7 @@ $routes->get('FragenkatalogÜbersicht/', 'FragenkatalogÜbersicht::index');
 //Fragen
 $routes->match(['get','post'],'Fragenkatalog/storeFrage', 'Fragenkatalog::storeFrage');
 $routes->match(['get','post'],'Fragenkatalog/updateFrage', 'Fragenkatalog::updateFrage');
-$routes->match(['get','post'],'Fragenkatalog/erstellen', 'Fragenkatalogerstellung/neuerKatalog');
+$routes->match(['get','post'],'Fragenkatalogerstellung/neuerKatalog', 'Fragenkatalogerstellung::neuerKatalog');
 $routes->match(['get','post'],'Fragenkatalogerstellung', 'Fragenkatalogerstellung::index');
 $routes->get('Fragenkatalog/edit/(:num)', 'Fragenkatalog::edit/$1');
 $routes->get('Fragenkatalog/loeschen/(:num)', 'Fragenkatalog::loeschen/$1');
