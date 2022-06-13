@@ -17,7 +17,7 @@
             <form id="singleplayerForm" name="singleplayerForm" accept-charset="utf-8" action="javascript:void(0)" method="post">
                 <input type="hidden" class="txt_csrfname" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                 <input type="hidden" id="frageId" name="frageId"  value="<?php echo $frage['frageId']?>"/>
-                <input type="hidden" id="score" name="score" value="">
+                <input type="hidden" id="score" name="score" value="0">
                 <div class="row pt-4">
                     <div class="col">
 
