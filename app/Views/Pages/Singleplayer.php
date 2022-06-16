@@ -1,3 +1,4 @@
+
 <?php if ( isset($frage)):
     ?>
 
@@ -55,28 +56,40 @@
                 <button class="btn btn-secondary" id="send_form" type="submit"style="height: auto">Bestätigen</button>
             </div>
                         </form>
-            <?php if(!isset($_SESSION['joker'])): ?>
+        <?php         helper('cookie');?>
 
-            <a class="btn btn-secondary bg-light text-black-50 mt-4" id="show">Hinweis</a>
+            <button class="btn btn-secondary bg-light text-black-50 mt-4" id="show">Hinweis</button>
+        <button  class="btn btn-secondary bg-light text-black-50 mt-4" id="show2">Joker</button>
+        <div class="row">
+            <div class="col">
+                <?php if (isset($_COOKIE['hinweis'])):?>
+                <?php if ($_COOKIE['hinweis']==="1"):?>
+        <div id="hinweis" class=" col pt-4">
 
-            <div id="hinweis" class="d-none row pt-4">
+             <?php echo $frage['hinweis']?>
+        </div>
+        <?php endif; ?>
+                <?php endif; ?>
+    </div>
+    <div class="col">
+        <?php if (isset($_COOKIE['joker'])):?>
+        <?php if ($_COOKIE['joker']==="1"):?>
+      <div id="joker1"  class=" pt-4">
 
-                <?php echo $frage['hinweis']?>
-            </div>
-            <form action="joker">
-                <button class="btn btn-secondary bg-light text-black-50 mt-4" id="show2">Hinweis</button>
-
-                <div id="joker" class="d-none row pt-4">
-
+            <span class="j1">
                     <?php echo $frage['Joker50502']?>
+                </span>
+            <span class="j2">
                     <?php echo $frage['Joker50501']?>
+                </span></div>
+      </div>
 
-                </div>
-            </form>
-            <?php endif;?>
-
+<?php endif; ?>
+        </div>
                         </div>
     <?php endif; ?>
+<?php endif; ?>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>

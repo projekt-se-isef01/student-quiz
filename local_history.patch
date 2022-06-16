@@ -1,0 +1,37 @@
+Index: app/Models/Game.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/Models/Game.php b/app/Models/Game.php
+--- a/app/Models/Game.php	
++++ b/app/Models/Game.php	(date 1655289840382)
+@@ -22,6 +22,19 @@
+        $result= $this->where('gameId',$gameId)->where('gegnerstudentId !=', null)->first();
+ 
+         return $result;
++    }
++    public  function status($gameId) {
++        $r=$this
++            ->table('vs')
++            ->select('status')
++            ->where('gameId',$gameId);
++        if ($r==="inaktiv") {
++            return true;
++        }
++        else {
++            return  false;
++        }
++
+     }
+     public function getFragen($gameId) {
+         $fragenkataloId=$this
+@@ -42,6 +55,6 @@
+     public function getErgebnis($gameId) {
+         $result= $this->where('gameId',$gameId)->where('gegnerscore !=', 0)->where('studentscore !=', 0)->first();
+ 
+-        return var_dump($result);
++        return $result;
+     }
+ }
+\ No newline at end of file

@@ -39,6 +39,13 @@
                             $('.next2').text(data.data['antwort2']);
                             $('.next3').text(data.data['antwort3']);
                             $('.next4').text(data.data['antwort4']);
+                            $('#hinweis').text(data.data['hinweis']);
+                            var h= $('#hinweis').text();
+                            $('.j1').text(data.data['Joker50501']);
+                            var j1= $('.j1').text();
+                            $('.j2').text(data.data['Joker50502']);
+                            var j2= $('.j2').text();
+
                             var a1 = $('.next1').text();
                             var a2 = $('.next2').text();
                             var a3 = $('.next3').text();
@@ -53,7 +60,19 @@
                             localStorage.setItem("a2", a2);
                             localStorage.setItem("a3", a3);
                             localStorage.setItem("a4", a4);
+                            localStorage.setItem("h", h);
+                            localStorage.setItem("j1", j1);
+                            localStorage.setItem("j2",j2);
+                            if (getCookie("hinweis") ==="1") {
 
+                                document.cookie = 'hinweis' + '=' + 0 + ';'+ 'path' + '=' + '/' + ';'+'SameSite=Lax'+';';
+                            window.location.reload();
+                            }
+                            if (getCookie("joker") ==="1") {
+
+                                document.cookie = 'joker' + '=' + 0 + ';'+ 'path' + '=' + '/' + ';'+'SameSite=Lax'+';';
+                                window.location.reload();
+                            }
                         }
                     }
                 );
@@ -82,6 +101,9 @@ window.addEventListener('popstate', function () {
 
 
 window.addEventListener('load', (event) => {
+
+
+
     var f= localStorage.getItem("frage");
     if (f !== null) $('#frage').attr("value",f);
 
@@ -103,17 +125,63 @@ window.addEventListener('load', (event) => {
     var ant4= localStorage.getItem("a4");
     if (ant4 !== null) $('.next4').text(ant4);
 
+    var  h = localStorage.getItem("h");
+    if (h !== null) $('#hinweis').text(h);
+
+    var  j1 = localStorage.getItem("j1");
+    if (j1 !== null) $('.j1').text(j1);
+
+    var  j2 = localStorage.getItem("j2");
+    if (j2 !== null) $('.j2').text(j2);
+
 
 });
-    $(document).ready(function() {
 
-        $("#show").click(function () {
-            $("#hinweis").removeClass('d-none');
+        $(function () {
+            $('#show2').on('click', function () {
+                $.ajax({
+                    type: "GET",
+                    complete: function (data) {
+                        let joker = getCookie("joker");
+                        if (joker ==="") {
+                            document.cookie = 'joker' + '=' + 1 + ';'+ 'path' + '=' + '/' + ';'+'SameSite=Lax'+';';
+                                window.location.reload();
+                        }
+                        }
+                });
+            });
+        })
+    $(function () {
+        $('#show').on('click', function () {
+            $.ajax({
+                type: "GET",
+                complete: function (data) {
+                    let hinweis = getCookie("hinweis");
+                    if (hinweis ==="") {
+                        document.cookie = 'hinweis' + '=' + 1 + ';'+ 'path' + '=' + '/' + ';'+'SameSite=Lax'+';';
+                        window.location.reload();
 
-
+                    }
+                }
+            });
         });
-        $("#show2").click(function () {
-            $("#joker").removeClass('d-none');
+    })
 
-        });
-    });
+
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+
+    }

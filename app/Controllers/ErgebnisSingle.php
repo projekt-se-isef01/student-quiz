@@ -26,5 +26,7 @@ class ErgebnisSingle extends BaseController
         $this->template('ErgebnisSingle',$data);
 
         delete_cookie('score');
+        delete_cookie('hinweis');
+        delete_cookie('joker');
     }
 }

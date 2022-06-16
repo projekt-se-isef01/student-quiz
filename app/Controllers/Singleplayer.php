@@ -17,17 +17,26 @@ class Singleplayer extends BaseController
         $model = new FragenkatalogModel();
 
         $data ['katalog'] = $model->getKatalog();
+        helper('cookie');
+        delete_cookie('hinweis');
+        delete_cookie('joker');
+        echo '<script type="text/JavaScript"> 
+                localStorage.clear();
 
+     </script>';
         $this->template('Singleplayerauswahl', $data);
     }
 
     public function getFirstFrage($fragenkatalogbezeichnung)
     {
+
+
         $model = new Frage();
 
         $frage['frage'] = $model->getFirstFrage($fragenkatalogbezeichnung);
 
         $singleplayerSession = session();
+        $singleplayerSession->remove('fragenkatalogbezeichnung');
         $data = [
             'fragenkatalogbezeichnung' => $fragenkatalogbezeichnung,
 
@@ -85,7 +94,5 @@ class Singleplayer extends BaseController
             }
         }
 
-        public function joker() {
 
-        }
     }

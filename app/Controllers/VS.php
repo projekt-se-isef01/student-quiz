@@ -14,8 +14,8 @@ class VS extends BaseController
 
         $model = new Game();
         $data=
-        ['spiel'=>$model->findAll()
-        ];
+            ['spiel'=>$model->findAll()
+            ];
 
         $this->template('Spielauswahl',$data);
 
@@ -29,11 +29,13 @@ class VS extends BaseController
     public function startWait($gameId) {
         $model = new Game();
         $ersteller=$model->find($gameId);
-        if($ersteller['studentId']==$_SESSION['id']) {
+        if($ersteller['studentId']===$_SESSION['id']) {
             $this->template('Warten');
 
-            }
+        }
         else {
+            $prove = $model->getPlayers($gameId);
+            if ($prove == null){
             $upgegner= [
                 'gegnerstudentId' => $_SESSION['id'],
             ];
@@ -41,31 +43,43 @@ class VS extends BaseController
             $data['frage'] = $model->getFragen($gameId);
             $this->template('VS',$data);
         }
-}
+            else {
+                $model = new Game();
+                $data=
+                    ['spiel'=>$model->findAll()
+                    ];
+                $session=session();
+                $session->setFlashdata('msg1', 'Spiel bereits gestartet');
+                $this->template('Spielauswahl',$data);
+            }
+        }
+    }
     public function wait($gameId)
     {
         $model = new Game();
-        $status = $model->find($gameId);
+        $statusf = $model->find($gameId);
         $prove = $model->getPlayers($gameId);
 
-        if ($prove !== null && $status['status'] == 'inaktiv') {
+
+        if ($prove !== null &  $statusf['status']=='inaktiv') {
             $upstatus = [
                 'status' => 'aktiv',
             ];
             $model->update($gameId, $upstatus);
             $data['frage'] = $model->getFragen($gameId);
-            return $this->template('VS', $data);
+            $this->template('VS', $data);
 
         }
-        if($status['status'] == 'aktiv'){
+        if( $statusf['status'] == 'aktiv'){
             $data['frage'] = $model->getFragen($gameId);
-            $this->template('VS', $data);
+            return $this->template('VS', $data);
         }
         else {
-       $this->template('Warten', );
-    }
+            $this->template('Warten');
+        }
 
     }
+
 
     public function endGame(){
         $frageId=$this->request->getVar('frageId');
@@ -100,17 +114,6 @@ class VS extends BaseController
         }
 
     }
-    public function getErgebnis($gameId) {
-        $game= new Game();
-        //prüfe ob Spiel zu Ende
-        if($game->getErgebnis($gameId===null)) {
-            $this->template('Ergebnis');
-        }
-        else{
-            if($_SESSION['id'])
-            $this->template('Ergebnis',$data);
 
-        }
 
-    }
 }

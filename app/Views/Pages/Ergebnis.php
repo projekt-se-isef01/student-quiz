@@ -1,4 +1,5 @@
 <div class="container d-flex align-items-center justify-content-center" style="height:80vh">
+
     <?php if(session()->getFlashdata('message')):?>
 
     <div class="p-5 mb-4 bg-light  rounded-3">
