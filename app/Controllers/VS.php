@@ -29,21 +29,32 @@ class VS extends BaseController
     public function startWait($gameId) {
         $model = new Game();
         $ersteller=$model->find($gameId);
+        $prove = $model->getPlayers($gameId);
         if($ersteller['studentId']===$_SESSION['id']) {
-            $this->template('Warten');
+            if ($prove !== null){
+                $data['frage'] = $model->getFragen($gameId);
+                $this->template('VS',$data);
+            }
+            else{ $this->template('Warten');
+            }
 
         }
-        else {
-            $prove = $model->getPlayers($gameId);
-            if ($prove == null){
-            $upgegner= [
-                'gegnerstudentId' => $_SESSION['id'],
-            ];
-            $model->update($gameId, $upgegner);
-            $data['frage'] = $model->getFragen($gameId);
-            $this->template('VS',$data);
+        if($ersteller['gegnerstudentId']===$_SESSION['id']) {
+
+            if ($prove == null) {
+                $upgegner = [
+                    'gegnerstudentId' => $_SESSION['id'],
+                ];
+                $model->update($gameId, $upgegner);
+                $data['frage'] = $model->getFragen($gameId);
+                $this->template('VS', $data);
+            }
+            else{
+                $data['frage'] = $model->getFragen($gameId);
+                $this->template('VS',$data);
+            }
         }
-            else {
+           if($ersteller['gegnerstudentId']!==$_SESSION['id']) {
                 $model = new Game();
                 $data=
                     ['spiel'=>$model->findAll()
@@ -52,7 +63,9 @@ class VS extends BaseController
                 $session->setFlashdata('msg1', 'Spiel bereits gestartet');
                 $this->template('Spielauswahl',$data);
             }
-        }
+
+
+
     }
     public function wait($gameId)
     {
@@ -110,7 +123,7 @@ class VS extends BaseController
             $studmodel->update($_SESSION['id'], $data);
             $session=session();
             $session->setFlashdata('message', $score);
-            return redirect()->to('/Ergebnis');
+            return redirect()->to('/Ergebnis/5');
         }
 
     }

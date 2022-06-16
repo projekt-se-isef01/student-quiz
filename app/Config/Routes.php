@@ -88,7 +88,7 @@ $routes->get('VS/addGame', 'VS::addGame');
 $routes->match(['get','post'],'VS/endGame', 'VS::endGame');
 $routes->match(['get','post'],'VS/wait/(:num)' ,'VS::wait/$1');
 $routes->get('VS/(:num)' ,'VS::startWait/$1');
-$routes->get('Ergebnis/getErgebnis/(:num)', 'Ergebnis::getErgebnis/$1');
+$routes->match(['get','post'],'Ergebnis/(:num)', 'Ergebnis::getErgebnis/$1');
 
 
 

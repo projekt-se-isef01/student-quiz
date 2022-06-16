@@ -49,7 +49,7 @@ public function status($gameId){
 }
     public function getErgebnis($gameId)
     {
-        $result = $this->where('gameId', $gameId)->where('gegnerscore !=', null)->where('studentscorescore !=', null)->first();
+        $result = $this->where('gameId', $gameId)->where('gegnerscore !=', null)->where('studentscore !=', null)->first();
 
         return $result;
     }

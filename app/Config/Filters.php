@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Controllers\Ergebnis;
 use App\Filters\AuthGuard;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
@@ -35,7 +36,7 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [ 'AuthGuard'=> ['except' => ['Registrierung','Registrierung/*','Login','Login/*', '/','Startseite']],
-            'csrf'=>['except' => 'VS/*'],
+            'csrf'=>['except' => 'VS/*','Ergebnis/*'],
 
             // 'invalidchars',
         ],

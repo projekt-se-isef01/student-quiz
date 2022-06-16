@@ -9,15 +9,46 @@ class Ergebnis extends BaseController
             $game= new Game();
             //
             if($game->getErgebnis($gameId)===null) {
-                $this->template('Ergebnis');
+                $this->template('ErgebnisWait');
             }
-            else{
-                $data['score']=$game->find();
-                $this->template('Ergebnis',$data);
+            else
+                {
+
+                $data=$game->getErgebnis($gameId);
+                if($data['studentscore']>$data['gegnerscore'])   {
+                    if ($_SESSION['id']===$data['studentId']) {
+                        $session=session();
+                        $session->setFlashdata('score', 'Gewonnen');
+                        $this->template('Ergebnis');
+                    }
+                    else {
+                        $session=session();
+                        $session->setFlashdata('score', 'Verloren');
+                        $this->template('Ergebnis');
+                    }
+
+                }
+                elseif ($data['studentscore']<$data['gegnerscore']){
+                    if ($_SESSION['id']===$data['studentId']) {
+                        $session=session();
+                        $session->setFlashdata('score', 'Verloren');
+                        $this->template('Ergebnis');
+                    }
+                    else {
+                        $session=session();
+                        $session->setFlashdata('score', 'Gewonnen');
+                        $this->template('Ergebnis');
+                    }
+
+                }
+                elseif($data['studentscore']===$data['gegnerscore']){
+                    $session=session();
+                    $session->setFlashdata('score', 'Unentschieden');
+                    $this->template('Ergebnis');
+                }
 
             }
 
-        $this->template('Ergebnis');
 
     }
 }
