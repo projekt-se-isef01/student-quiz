@@ -28,41 +28,46 @@ class VS extends BaseController
     }
     public function startWait($gameId) {
         $model = new Game();
-        $ersteller=$model->find($gameId);
+        $game=$model->find($gameId);
         $prove = $model->getPlayers($gameId);
-        if($ersteller['studentId']===$_SESSION['id']) {
-            if ($prove !== null){
-                $data['frage'] = $model->getFragen($gameId);
-                $this->template('VS',$data);
-            }
-            else{ $this->template('Warten');
-            }
-
-        }
-        if($ersteller['gegnerstudentId']===$_SESSION['id']) {
-
-            if ($prove == null) {
-                $upgegner = [
-                    'gegnerstudentId' => $_SESSION['id'],
+        // Spiel beendet
+        if( $game['status'] == 'beendet' ){
+            $data=
+                ['spiel'=>$model->findAll()
                 ];
-                $model->update($gameId, $upgegner);
-                $data['frage'] = $model->getFragen($gameId);
-                $this->template('VS', $data);
-            }
-            else{
-                $data['frage'] = $model->getFragen($gameId);
-                $this->template('VS',$data);
-            }
+            $session=session();
+            $session->setFlashdata('msg1', 'Spiel bereits zu Ende');
+            return $this->template('Spielauswahl',$data);        }
+
+        if($game['gegnerstudentId']==$_SESSION['id'] && $game['gegnerscore']!==null) {
+            return redirect()->to('VS/Ergebnis/'.$gameId);
+ ;
         }
-           if($ersteller['gegnerstudentId']!==$_SESSION['id']) {
-                $model = new Game();
-                $data=
-                    ['spiel'=>$model->findAll()
-                    ];
-                $session=session();
-                $session->setFlashdata('msg1', 'Spiel bereits gestartet');
-                $this->template('Spielauswahl',$data);
-            }
+        if($game['studentId']==$_SESSION['id'] && $game['studentscore']!==null) {
+            return redirect()->to('VS/Ergebnis/'.$gameId);
+            ;
+        }
+        //Prüfen, ob Spiel bereits begonnen hat, wenn ja leite zum Spiel
+        if( $game['status'] == 'aktiv' && ($game['gegnerstudentId']==$_SESSION['id'] or($game['studentId']==$_SESSION['id']))){
+            $data['frage'] = $model->getFragen($gameId);
+            return $this->template('VS', $data);
+        }
+        // Wenn nein, warte auf Mitspieler
+        if( $game['status'] == 'inaktiv' ){
+            return $this->template('Warten');
+        }
+
+        // Spiel schon gestartet und Benutzer kein Mitspieler
+        if($game['gegnerstudentId']!==$_SESSION['id'] ) {
+            $data=
+                ['spiel'=>$model->findAll()
+                ];
+            $session=session();
+            $session->setFlashdata('msg1', 'Spiel bereits gestartet');
+           return $this->template('Spielauswahl',$data);
+        }
+
+
 
 
 
@@ -70,31 +75,40 @@ class VS extends BaseController
     public function wait($gameId)
     {
         $model = new Game();
-        $statusf = $model->find($gameId);
+        $game = $model->find($gameId);
         $prove = $model->getPlayers($gameId);
 
+        // Gegenspieler klickt auf den Spielraum, das Spiel startet
+        if($game['status'] == 'inaktiv' && $game['studentId']!==$_SESSION['id']) {
 
-        if ($prove !== null &  $statusf['status']=='inaktiv') {
-            $upstatus = [
-                'status' => 'aktiv',
-            ];
-            $model->update($gameId, $upstatus);
-            $data['frage'] = $model->getFragen($gameId);
-            $this->template('VS', $data);
+                $upgegner = [
+                    'gegnerstudentId' => $_SESSION['id'],
+                    'status' => 'aktiv',
+                ];
 
-        }
-        if( $statusf['status'] == 'aktiv'){
+
+                $model->update($gameId, $upgegner);
+                $data['frage'] = $model->getFragen($gameId);
+              return  $this->template('VS', $data);
+            }
+        // Falls Spieler Seite verlässt und mit Back Button zurück kommt
+        if( $game['status'] == 'aktiv' && ($game['gegnerstudentId']==$_SESSION['id'] or($game['studentId']==$_SESSION['id']))){
+           if($game['studentscore']==null or $game['gegnerscore']==null) {
             $data['frage'] = $model->getFragen($gameId);
             return $this->template('VS', $data);
+
+           }
+           else {
+               return redirect()->to('VS/Ergebnis/'.$gameId);
+           }
         }
-        else {
-            $this->template('Warten');
-        }
+        else
+            return $this->template('Warten');
 
     }
 
 
-    public function endGame(){
+    public function endGame($gameId){
         $frageId=$this->request->getVar('frageId');
         $antwort=$this->request->getVar('antwort');
         if ($frageId !==null && $antwort!==null) {
@@ -110,8 +124,37 @@ class VS extends BaseController
                 }
             }
             $s['score'] = $score;
+            $model=new Game();
+            $game=$model->find($gameId);
+           if($game['studentId']==$_SESSION['id']){
+              if ($game['gegnerscore']!==null) {
+                  $data1 = ['status' => 'beendet',
 
-            var_dump($s['score']);
+                  ];
+               $model->update($gameId, $data1);
+              }
+            $data1 = ['studentscore' => $s,
+
+            ];
+               $model->update($gameId, $data1);
+               $session=session();
+               $session->set('score',$score);
+           }
+           if($game['gegnerstudentId']==$_SESSION['id']) {
+               if ($game['studentscore']!==null) {
+                   $data1 = ['status' => 'beendet',
+
+                   ];
+                   $model->update($gameId, $data1);
+               }
+           $data1 = ['gegnerscore' => $s,
+
+               ];
+               $model->update($gameId, $data1);
+               $session=session();
+               $session->set('score',$score);
+        }
+
             $studmodel = new Student();
             $getrec = $studmodel->find($_SESSION['id']);
             $getScore = $getrec['score'];
@@ -121,12 +164,56 @@ class VS extends BaseController
                 'vsGamesGesamt' => (int)$getrec['vsGamesGesamt'] + 1
             ];
             $studmodel->update($_SESSION['id'], $data);
-            $session=session();
-            $session->setFlashdata('message', $score);
-            return redirect()->to('/Ergebnis/5');
+
+            return redirect()->to('VS/Ergebnis/'.$gameId);
         }
 
     }
 
+    public function getErgebnis($gameId) {
+        $game= new Game();
+        if($game->getErgebnis($gameId)==null) {
+            return $this->template('ErgebnisWait');
+        }
+        else
+        {
+
+            $data=$game->getErgebnis($gameId);
+            if($data['studentscore']>$data['gegnerscore'])   {
+                if ($_SESSION['id']===$data['studentId']) {
+                    $session=session();
+                    $session->setFlashdata('score', 'Gewonnen');
+                    return  $this->template('Ergebnis');
+                }
+                else {
+                    $session=session();
+                    $session->setFlashdata('score', 'Verloren');
+                    return  $this->template('Ergebnis');
+                }
+
+            }
+            elseif ($data['studentscore']<$data['gegnerscore']){
+                if ($_SESSION['id']===$data['studentId']) {
+                    $session=session();
+                    $session->setFlashdata('score', 'Verloren');
+                    return $this->template('Ergebnis');
+                }
+                else {
+                    $session=session();
+                    $session->setFlashdata('score', 'Gewonnen');
+                    return $this->template('Ergebnis');
+                }
+
+            }
+            elseif($data['studentscore']===$data['gegnerscore']){
+                $session=session();
+                $session->setFlashdata('score', 'Unentschieden');
+                return $this->template('Ergebnis');
+            }
+
+        }
+
+
+    }
 
 }

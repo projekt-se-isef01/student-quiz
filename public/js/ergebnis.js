@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-    time=setTimeout(callAjax,5000)
+    time=setTimeout(callAjax,5000);
 
 });
 
@@ -13,13 +13,19 @@ function callAjax() {
     var parts = url.split("/");
     var last_part = parts[parts.length - 1];
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: last_part,
-        data: $(this).serialize(),
+        data:$(this).serialize(),
+        dataType:'html',
         success: function (data) {
-            $('#ergebnis').html(data);
-            clearTimeout(time);
+
+                $('#ergebnis').html(data);
+                clearTimeout(time);
+
+
         }
 
+
+
     });
-};
+}

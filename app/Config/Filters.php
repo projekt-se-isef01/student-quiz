@@ -36,7 +36,8 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [ 'AuthGuard'=> ['except' => ['Registrierung','Registrierung/*','Login','Login/*', '/','Startseite']],
-            'csrf'=>['except' => 'VS/*','Ergebnis/*'],
+            'csrf'=>['except' => 'VS/*'],
+
 
             // 'invalidchars',
         ],

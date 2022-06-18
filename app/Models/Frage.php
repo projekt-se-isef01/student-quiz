@@ -31,8 +31,18 @@ class Frage extends Model
        $results=$this->table('frage')
                         ->select('*')
                         ->join('fragenkatalog', 'fragenkatalog.fragenkatalogId = frage.fragenkatalogId')
-                        ->where('fragenkatalog.fragenkatalogbezeichnung',$fragenkatalogbezeichnung);
+           ->where('fragenkatalog.fragenkatalogbezeichnung',$fragenkatalogbezeichnung);
+
+
         return $results ->get()->getResultArray();
+
+    }
+    public function getFK($frageId){
+        $results=$this->table('frage')
+            ->select('*')
+            ->join('fragenkatalog', 'fragenkatalog.fragenkatalogId = frage.fragenkatalogId');
+        return $results ->get()->getResultArray();
+
 
     }
     public function getFirstFrage($fragenkatalogbezeichnung) {
@@ -75,8 +85,5 @@ class Frage extends Model
        return $this->where('frageId',$frageId)->first();
 
 }
-    public function findAddFrage($fragenkatalogbezeichnung)
-    {
 
-    }
 }

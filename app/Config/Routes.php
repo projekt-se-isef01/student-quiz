@@ -85,10 +85,10 @@ $routes->match(['get','post'],'Singleplayer/joker' ,'Singleplayer::joker');
 
 $routes->get('VS', 'VS::index');
 $routes->get('VS/addGame', 'VS::addGame');
-$routes->match(['get','post'],'VS/endGame', 'VS::endGame');
-$routes->match(['get','post'],'VS/wait/(:num)' ,'VS::wait/$1');
+$routes->match(['post'],'VS/endGame/(:num)', 'VS::endGame/$1');
+$routes->match(['post'],'VS/wait/(:num)' ,'VS::wait/$1');
 $routes->get('VS/(:num)' ,'VS::startWait/$1');
-$routes->match(['get','post'],'Ergebnis/(:num)', 'Ergebnis::getErgebnis/$1');
+$routes->match(['post','get'],'VS/Ergebnis/(:num)', 'VS::getErgebnis/$1');
 
 
 

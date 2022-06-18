@@ -12,9 +12,14 @@ class Fragenkatalog extends BaseController
 
         $modelkatalog = new FragenkatalogModel();
         $data['fragenkatalog']=$modelkatalog->getKatalog($fragenkatalogbezeichnung);
+        if(empty($data['fragenkatalog'])){
+            session()->setFlashdata('fk','Fragenkatalog existiert nicht');
+        }
+
         $data ['frage'] = $fragemodel->getFrage($fragenkatalogbezeichnung);
 
         $this->template('Fragenkatalog', $data);
+        session()->remove('fk');
     }
     public function addFrage($fragenkatalogbezeichnung=0)
     {
@@ -64,23 +69,24 @@ class Fragenkatalog extends BaseController
             ];
             $frage = new Frage();
             $frage->insert($data);
-            return redirect()->to('Fragenkatalog/'.$_SESSION['fragenkatalogbezeichnung']);
+          return redirect()->to('Fragenkatalog/'.$_SESSION['fragenkatalogbezeichnung']);
         }
     }
     public function edit($frageId)
     {
         $frage = new Frage();
         $data ['frage'] = $frage->findFrage($frageId);
-
+        if(empty($data['frage'])){
+            session()->setFlashdata('edit','Frage existiert nicht');
+        }
         $this->template('Edit', $data);
-
-
+        session()->remove('edit');
     }
 
     public function loeschen($frageId) {
-        $frage = new Frage();
+        $frage = new Frage();        $datafk=$frage->getFK($frageId);
         $data ['frage'] = $frage->where('frageId',$frageId)->delete();
-        return redirect()->to(site_url('Fragenkatalog/edit/'.$frageId))->with('validation',$this->validator);
+        return redirect()->to(site_url('Fragenkatalog/'.$datafk[0]['fragenkatalogbezeichnung']))->with('validation',$this->validator);
     }
 
     public function updateFrage()

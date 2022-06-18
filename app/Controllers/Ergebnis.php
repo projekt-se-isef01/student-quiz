@@ -7,48 +7,50 @@ class Ergebnis extends BaseController
 {
         public function getErgebnis($gameId) {
             $game= new Game();
-            //
-            if($game->getErgebnis($gameId)===null) {
-                $this->template('ErgebnisWait');
-            }
-            else
-                {
+
+            if($game->getErgebnis($gameId)!==null) {
 
                 $data=$game->getErgebnis($gameId);
                 if($data['studentscore']>$data['gegnerscore'])   {
                     if ($_SESSION['id']===$data['studentId']) {
                         $session=session();
                         $session->setFlashdata('score', 'Gewonnen');
-                        $this->template('Ergebnis');
+                        return  $this->template('Ergebnis');
+
                     }
                     else {
                         $session=session();
                         $session->setFlashdata('score', 'Verloren');
-                        $this->template('Ergebnis');
+                        return $this->response->setJSON($data);
                     }
 
                 }
-                elseif ($data['studentscore']<$data['gegnerscore']){
+                if ($data['studentscore']<$data['gegnerscore']){
                     if ($_SESSION['id']===$data['studentId']) {
                         $session=session();
                         $session->setFlashdata('score', 'Verloren');
-                        $this->template('Ergebnis');
+                       return $this->response->setJSON($data);
+;
                     }
                     else {
                         $session=session();
                         $session->setFlashdata('score', 'Gewonnen');
-                        $this->template('Ergebnis');
+                       return $this->response->setJSON($data);
+;
                     }
 
                 }
                 elseif($data['studentscore']===$data['gegnerscore']){
                     $session=session();
                     $session->setFlashdata('score', 'Unentschieden');
-                    $this->template('Ergebnis');
+                   return $this->response->setJSON($data);
+;
                 }
 
             }
-
+               else  {
+                  return  $this->template('ErgebnisWait');
+                }
 
     }
 }

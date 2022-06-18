@@ -1,8 +1,15 @@
 <link rel="stylesheet" type="text/css" href="/css/error.css">
-<?php if(isset($frage) ):?>
+<?php if(session()->getFlashdata('edit')):?>
+<div class="container  d-flex align-items-center justify-content-center" style="height:80vh">
+    <div class="container-fluid py-5 p alert alert-warning ">
 
+    <div class="text-center display-5 ">
+    <?= session()->getFlashdata('edit') ?>
+    </div></div>
+<?php endif;?>
+</div>
 <div class="container">
-
+    <?php if(isset($frage) ):?>
 
 <br>
         <form id="editForm" action="<?php echo base_url();?>/Fragenkatalog/updateFrage" method="post">

@@ -1,12 +1,23 @@
-<div class="container mt-4 table-responsive">
-    <div class="d-flex ">
-        <?php if (isset($fragenkatalog)):?>
+    <?php if(session()->getFlashdata('fk')):?>
+
+    <div class="container  d-flex align-items-center justify-content-center" style="height:80vh">
+        <div class="container-fluid py-5 p alert alert-warning ">
+            <div class="text-center display-5 " >
+                <?= session()->getFlashdata('fk') ?>
+            </div>
+        </div>
+    </div>
+<?php endif;?>
+        <div class="container mt-4 table-responsive">
+
+        <div class="d-flex ">
+        <?php if (isset($fragenkatalog) & !empty($fragenkatalog)):?>
         <a class="btn btn-sm btn-info" href="<?= site_url('Fragenkatalog/addFrage/'.$fragenkatalog['fragenkatalogbezeichnung']) ?>">Add</a>
 
         <?php endif;?>
     </div>
 <br>
-
+        <?php if (! empty($frage)&& is_array($frage)):?>
     <table id="Fragen" class="display " style="width: 100%">
 
         <thead>
@@ -29,8 +40,8 @@
 
 
         <tbody>
-        <?php if (! empty($frage)&& is_array($frage)):?>
-            <?php foreach($frage as $frage): ?>
+        <?php foreach($frage as $frage): ?>
+
         <tr>
             <td>
                 <a class="btn btn-sm btn-success " href="<?= site_url('Fragenkatalog/edit/' .$frage['frageId']) ?>">Bearbeiten</a>
@@ -88,6 +99,15 @@
             </div>
 
 
+    <?php if(session()->getFlashdata('del')):?>
+    <div class="container  d-flex align-items-center justify-content-center" style="height:80vh">
+        <div class="container-fluid py-5 p alert alert-warning ">
+
+            <div class="text-center display-5 ">
+                <?= session()->getFlashdata('del') ?>
+            </div></div>
+        <?php endif;?>
+    </div>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css"/>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

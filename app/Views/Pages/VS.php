@@ -1,12 +1,12 @@
 <div class="container text-center">
     <div class=" pt-4">
     <button class="btn btn-secondary" form="VSform" type="submit"style="height: auto">Bestätigen</button>
-</div>
-<form id="VSform" name="VSform" accept-charset="utf-8" action="<?php echo base_url(); ?>/VS/endGame" method="post">
-    <?= csrf_field() ?>
-<?php if (! empty($frage) && is_array($frage)): ?>
+</div><?php if (! empty($frage) && is_array($frage)): ?>
 
     <?php foreach ($frage as $frage_i): ?>
+<form id="VSform" name="VSform" accept-charset="utf-8" action="<?php echo base_url(); ?>/VS/endGame/<?=esc($frage_i['gameId']) ?>" method="post">
+    <?= csrf_field() ?>
+
 
 
             <br>
