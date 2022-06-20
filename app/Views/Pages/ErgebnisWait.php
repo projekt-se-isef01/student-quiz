@@ -1,5 +1,9 @@
+<link rel="stylesheet" type="text/css" href="/css/load2.css">
+
 <body id="ergebnis">
-<div class="container d-flex align-items-center justify-content-center" style="height:80vh">
+
+<div class="container d-flex align-items-center justify-content-center" style="height:50vh">
+   <div class="row">
     <?php if(!session()->get('score')):?>
     <div class="p-5 mb-4 bg-light  rounded-3">
         <div class="container-fluid py-5 ">
@@ -27,8 +31,16 @@
 
         </div>
     </div>
+
 </div>
 <?php endif;?>
+<div class="row"
+<div class="" id="load">
+    <div class="loader-circle-9">Warte auf Mitspieler
+        <span></span>
+    </div>
+</div>
+</div>
 </body><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/js/ergebnis.js" >
 

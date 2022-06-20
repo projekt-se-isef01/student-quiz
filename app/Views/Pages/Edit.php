@@ -1,13 +1,13 @@
-<link rel="stylesheet" type="text/css" href="/css/error.css">
-<?php if(session()->getFlashdata('edit')):?>
-<div class="container  d-flex align-items-center justify-content-center" style="height:80vh">
-    <div class="container-fluid py-5 p alert alert-warning ">
 
-    <div class="text-center display-5 ">
-    <?= session()->getFlashdata('edit') ?>
-    </div></div>
+       <?php if(isset($_SESSION['validation'])):?>
+
+        <br>
+            <div class="alert text-center alert-warning">
+                <?= $_SESSION['validation'] ?>
+            </div>
+
 <?php endif;?>
-</div>
+
 <div class="container">
     <?php if(isset($frage) ):?>
 
@@ -23,7 +23,7 @@
             <div class="col-8 mx-auto">
                 <div class="form-floating">
 
-                    <textarea type="text" id="frage" name="frage" class="form-control text-center" placeholder="" style="height:100px " value=""><?php echo $frage['frage']?></textarea>
+                    <textarea type="text" id="frage" name="frage" class="form-control text-center" placeholder="" style="height:100px " ><?php echo $frage['frage']?></textarea>
                     <label for="floatingInputGrid" class="text-center">Frage</label>
 
                 </div>
@@ -107,6 +107,7 @@
 
             </div
         </form>
+    <br>
                 </div>
 <?php endif;?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

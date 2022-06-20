@@ -20,16 +20,12 @@ class VS extends BaseController
         $this->template('Spielauswahl',$data);
 
     }
-    public function addGame () {
-        $modelkatalog = new FragenkatalogModel();
-        $data['katalog']=$modelkatalog->getKatalog();
-        $this->template('Spielerstellung',$data);
 
-    }
     public function startWait($gameId) {
         $model = new Game();
         $game=$model->find($gameId);
         $prove = $model->getPlayers($gameId);
+        session()->set('gameId',$gameId);
         // Spiel beendet
         if( $game['status'] == 'beendet' ){
             $data=
@@ -77,6 +73,7 @@ class VS extends BaseController
         $model = new Game();
         $game = $model->find($gameId);
         $prove = $model->getPlayers($gameId);
+        session()->set('gameId',$gameId);
 
         // Gegenspieler klickt auf den Spielraum, das Spiel startet
         if($game['status'] == 'inaktiv' && $game['studentId']!==$_SESSION['id']) {
@@ -99,7 +96,7 @@ class VS extends BaseController
 
            }
            else {
-               return redirect()->to('VS/Ergebnis/'.$gameId);
+               return redirect()->to('VS/Spielauswahl/'.$gameId);
            }
         }
         else
@@ -143,7 +140,7 @@ class VS extends BaseController
            if($game['gegnerstudentId']==$_SESSION['id']) {
                if ($game['studentscore']!==null) {
                    $data1 = ['status' => 'beendet',
-
+                    session()->u
                    ];
                    $model->update($gameId, $data1);
                }
@@ -165,20 +162,25 @@ class VS extends BaseController
             ];
             $studmodel->update($_SESSION['id'], $data);
 
-            return redirect()->to('VS/Ergebnis/'.$gameId);
+            return redirect()->to('/VS/Ergebnis/'.$gameId);
         }
 
     }
 
     public function getErgebnis($gameId) {
         $game= new Game();
+
         if($game->getErgebnis($gameId)==null) {
+            $data=$game->find($gameId);
+
+            $session=session();
+            $session->setFlashdata('score',$data['studentscore']);
             return $this->template('ErgebnisWait');
         }
         else
         {
-
             $data=$game->getErgebnis($gameId);
+
             if($data['studentscore']>$data['gegnerscore'])   {
                 if ($_SESSION['id']===$data['studentId']) {
                     $session=session();

@@ -13,13 +13,34 @@ class Registrierung extends BaseController
 
     public function registrieren()
     {
-
         $rules=[
-            'name' => 'required|min_length[3]|max_length[128]|is_unique[student.name,id,{id}]',
-            'password' => 'required|min_length[3]|max_length[128]',
-            'confirmpassword' => 'matches[password]'
+            'name'=> [
+                'label'=>'Name',
+                'rules' => 'required|min_length[3]|max_length[128]|is_unique[student.name,id,{id}]',
+                'errors'=> ['required' => 'Bitte Name angegeben.',
+                             'min_length' => 'Name muss mindestens 3 Zeichen lang sein.',
+                            'max_length'=>'Name darf höchstens 128 Zeichen lang sein.',
+                            'is_unique' => 'Name bereits vergeben'
+                    ]
+                 ],
+            'password'=>[
+                'label'=>'password',
+                'rules' => 'required|min_length[3]|max_length[128]',
+                'errors'=> ['required' => 'Bitte Passwort angegeben.',
+                    'min_length' => 'Passwort muss mindestens 3 Zeichen lang sein.',
+                    'max_length'=>'Passwort darf höchstens 128 Zeichen lang sein.',
+                ]
+            ],
+            'confirmpassword' => [
+                 'label'=>'password',
+                 'rules' => 'matches[password]',
+                 'errors'=> ['matches' => 'Passwort stimmt nicht überein.',
 
-        ];
+    ]
+        ],
+
+
+];
 
 
          if ($this->validate($rules)) {

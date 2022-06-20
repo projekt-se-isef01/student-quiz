@@ -34,20 +34,78 @@ class Fragenkatalog extends BaseController
     }
     public function storeFrage()
     {
-
-
         $rules = [
-            'frage' => 'required|max_length[128]',
-            'antwort1' => 'required|max_length[128]',
-            'antwort2' => 'required|max_length[128]',
-            'antwort3' => 'required|max_length[128]',
-            'antwort4' => 'required|max_length[128]',
-            'antwortLoesung' => 'required|max_length[128]',
-            'hinweis' => 'max_length[128]',
-            'Joker50501' => 'max_length[1]',
-            'Joker50502' => 'max_length[1]'
+            'frage' => [
+                'label'=>'Frage',
+                'rules' => 'required|max_length[128]',
+                'errors'=> ['required' => 'Bitte Frage angegeben.',
+                    'max_length'=>'Frage darf höchstens 128 Zeichen lang sein.',
+                    ]
+                ],
+            'antwort1' => [
+                'label'=>'antwort1',
+                'rules' => 'required|max_length[128]',
+                'errors'=> ['required' => 'Bitte Antwort 1 angegeben.',
+                    'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
+                ]
+            ],
+            'antwort2' => [
+                'label'=>'antwort2',
+                'rules' => 'required|max_length[128]',
+                'errors'=> ['required' => 'Bitte Antwort 2 angegeben.',
+                    'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
+                ]
+            ],
+            'antwort3' => [
+                'label'=>'antwort3',
+                'rules' => 'required|max_length[128]',
+                'errors'=> ['required' => 'Bitte Antwort 3 angegeben.',
+                    'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
+                ]
+            ],
+            'antwort4' => [
+                'label'=>'antwort4',
+                'rules' => 'required|max_length[128]',
+                'errors'=> ['required' => 'Bitte Antwort 4 angegeben.',
+                    'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
+                ]
+            ],
+            'antwortLoesung' => [
+                'label'=>'antwort',
+                'rules' => 'required|max_length[1]|antwortValidation',
+                'errors'=> [
+                    'required' => 'Bitte Lösung angegeben.',
+                    'max_length'=>'Lösung darf höchstens 128 Zeichen lang sein.',
+                    'antwortValidation'=>'Lösung darf nur Zahlen 1-4 enthalten',
 
-        ];
+                ]
+            ],
+            'hinweis' => [
+                'label'=>'hinweis',
+                'rules' => 'max_length[128]',
+                'errors'=> [
+                    'max_length'=>'Hinweis darf höchstens 128 Zeichen lang sein.',
+                    ]
+            ],
+            'Joker50501' => [
+                'label'=>'joker1',
+                'rules' => 'max_length[128]|jokerValidation',
+                'errors'=> [
+                    'max_length'=>'Joker darf höchstens 1 Zeichen lang sein.',
+                    'jokerValidation'=>'Joker darf nur Zahlen 1-4 enthalten',
+                    ]
+                ],
+
+            'Joker50502' => [
+                'label'=>'joker12',
+                'rules' => 'max_length[128]|jokerValidation',
+                'errors'=> [
+                    'max_length'=>'Joker darf höchstens 1 Zeichen lang sein.',
+                    'jokerValidation'=>'Joker darf nur Zahlen 1-4 enthalten',
+                    ]
+
+        ]
+            ];
 
 
         if ($this->validate($rules)) {
@@ -71,8 +129,10 @@ class Fragenkatalog extends BaseController
             $frage->insert($data);
           return redirect()->to('Fragenkatalog/'.$_SESSION['fragenkatalogbezeichnung']);
         }
+        else return redirect()->back()->withInput()->with('validation',$this->validator->listErrors());
+
     }
-    public function edit($frageId)
+        public function edit($frageId)
     {
         $frage = new Frage();
         $data ['frage'] = $frage->findFrage($frageId);
@@ -92,32 +152,92 @@ class Fragenkatalog extends BaseController
     public function updateFrage()
     {
 
-        $rules = [
-            'frage' => 'required|max_length[128]',
-            'antwort1' => 'required|max_length[128]',
-            'antwort2' => 'required|max_length[128]',
-            'antwort3' => 'required|max_length[128]',
-            'antwort4' => 'required|max_length[128]',
-            'antwortLoesung' => 'required|max_length[128]',
-            'hinweis' => 'max_length[128]',
-            'Joker50501' => 'max_length[1]',
-            'Joker50502' => 'max_length[1]'
 
+        $rules = [
+            'frage' => [
+                'label'=>'Frage',
+                'rules' => 'required|max_length[128]',
+                'errors'=> ['required' => 'Bitte Frage angegeben.',
+                    'max_length'=>'Frage darf höchstens 128 Zeichen lang sein.',
+                ]
+            ],
+            'antwort1' => [
+                'label'=>'antwort1',
+                'rules' => 'required|max_length[128]',
+                'errors'=> ['required' => 'Bitte Antwort 1 angegeben.',
+                    'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
+                ]
+            ],
+            'antwort2' => [
+                'label'=>'antwort2',
+                'rules' => 'required|max_length[128]',
+                'errors'=> ['required' => 'Bitte Antwort 2 angegeben.',
+                    'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
+                ]
+            ],
+            'antwort3' => [
+                'label'=>'antwort3',
+                'rules' => 'required|max_length[128]',
+                'errors'=> ['required' => 'Bitte Antwort 3 angegeben.',
+                    'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
+                ]
+            ],
+            'antwort4' => [
+                'label'=>'antwort4',
+                'rules' => 'required|max_length[128]',
+                'errors'=> ['required' => 'Bitte Antwort 4 angegeben.',
+                    'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
+                ]
+            ],
+            'antwortLoesung' => [
+                'label'=>'antwort',
+                'rules' => 'required|max_length[1]|antwortValidation',
+                'errors'=> [
+                    'required' => 'Bitte Lösung angegeben.',
+                    'max_length'=>'Lösung darf höchstens 1 Zeichen lang sein.',
+                    'antwortValidation'=>'Lösung darf nur Zahlen 1-4 enthalten',
+
+                ]
+            ],
+            'hinweis' => [
+                'label'=>'hinweis',
+                'rules' => 'max_length[128]',
+                'errors'=> [
+                    'max_length'=>'Hinweis darf höchstens 128 Zeichen lang sein.',
+                ]
+            ],
+            'Joker50501' => [
+                'label'=>'joker1',
+                'rules' => 'max_length[128]|jokerValidation',
+                'errors'=> [
+                    'max_length'=>'Joker darf höchstens 1 Zeichen lang sein.',
+                    'jokerValidation'=>'Joker darf nur Zahlen 1-4 enthalten',
+                ]
+            ],
+
+            'Joker50502' => [
+                'label'=>'joker12',
+                'rules' => 'max_length[128]|jokerValidation',
+                'errors'=> [
+                    'max_length'=>'Joker darf höchstens 1 Zeichen lang sein.',
+                    'jokerValidation'=>'Joker darf nur Zahlen 1-4 enthalten',
+                ]
+
+            ]
         ];
 
         $frageId = $this->request->getVar('frageId');
 
         if ($this->validate($rules)) {
           $this->storeUpdateFrage();
-            return redirect()->to(site_url('Fragenkatalog/edit/'.$frageId))->with('validation',$this->validator);
+            return redirect()->to(site_url('Fragenkatalog/edit/'.$frageId));
 
 
         }
 
-        else {
 
-            return redirect()->to(site_url('Fragenkatalog/edit/'.$frageId))->with('validation',$this->validator);
-                }
+        else return redirect()->back()->withInput()->with('validation',$this->validator->listErrors());
+
             }
    public function storeUpdateFrage() {
 

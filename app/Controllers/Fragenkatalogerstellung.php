@@ -14,8 +14,17 @@ class Fragenkatalogerstellung extends BaseController
     {
 
         $rules = [
-            'fragenkatalogbezeichnung' => 'required|min_length[3]|max_length[128]|is_unique[fragenkatalog.fragenkatalogbezeichnung,fragenkatalogId,{fragenkatalogId}]'
-        ];
+            'fragenkatalogbezeichnung' => [
+                'label'=>'fragenkatalogbezeichnung',
+                'rules'=> 'required|min_length[3]|max_length[128]|is_unique[fragenkatalog.fragenkatalogbezeichnung,fragenkatalogId,{fragenkatalogId}]',
+                'errors'=> ['required' => 'Bitte Fragenkatalogname angegeben.',
+                    'max_length'=>'Frage darf höchstens 128 Zeichen lang sein.',
+                    'is_unique'=>'Fragenkatalogname bereits vergeben.',
+                    'min_length'=>'Fragenkatalog darf höchstens 128 Zeichen lang sein.',
+
+                ]
+            ],
+            ];
 
 
         if ($this->validate($rules)) {

@@ -39,8 +39,7 @@ class Game extends Model
             }
 
             return $this->db->
-            table('frage')->select('*')
-                ->from('vs')
+            table('frage')
                 ->where('frage.fragenkatalogId', $Id)->get()->getResultArray();
         }
     }

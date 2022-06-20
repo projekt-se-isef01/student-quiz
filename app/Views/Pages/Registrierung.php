@@ -5,7 +5,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
 
-                <div class="card" style="border-radius: 1rem;margin-top: 2rem; height: 680px;border-width:  0.5rem; border-style: double;border-color: black">
+                <div class="card" style="border-radius: 1rem;margin-top: 2rem; height: 800px;border-width:  0.5rem; border-style: double;border-color: black">
                     <div class="card-body px-5 py-0 text-center">
 
                         <div class="my-md-5 pb-5">

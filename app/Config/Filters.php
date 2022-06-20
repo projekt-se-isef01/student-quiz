@@ -2,7 +2,7 @@
 
 namespace Config;
 
-use App\Controllers\Ergebnis;
+use App\Controllers\Spielerstellung;
 use App\Filters\AuthGuard;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;

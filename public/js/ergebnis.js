@@ -18,6 +18,7 @@ function callAjax() {
         data:$(this).serialize(),
         dataType:'html',
         success: function (data) {
+            $(#load).addClass('d-none');
 
                 $('#ergebnis').html(data);
                 clearTimeout(time);

@@ -1,10 +1,12 @@
+
+<?php if(isset($validation)):?>
+    <br>
+    <div class="alert mt-5  text-center alert-warning">
+        <?= $validation->listErrors() ?>
+    </div>
+<?php endif;?>
 <div class="container ">
 
-    <?php if(isset($validation)):?>
-        <div class="alert alert-warning">
-            <?= $validation->listErrors() ?>
-        </div>
-    <?php endif;?>
 <form action="<?php echo base_url(); ?>/Fragenkatalogerstellung/neuerKatalog" method="post">
    <?= csrf_field()?>
     <div class="row g-2 pb-5 mt-4">

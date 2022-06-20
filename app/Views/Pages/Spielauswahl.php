@@ -1,7 +1,7 @@
 
 <div class="container w-50 mb-lg-3">
     <br>
-    <h3 class="text-center "> Wähle Spiel oder <a href="<?= site_url("/VS/addGame")?>">erstelle neues </a> </h3>
+    <h3 class="text-center "> Wähle Spiel oder <a href="<?= site_url("/Spielerstellung")?>">erstelle neues </a> </h3>
     <?php if (! empty($spiel) && is_array($spiel)): ?>
 <br>
 <table id="Multispiel" class="table mt-xl-5 table-striped">
