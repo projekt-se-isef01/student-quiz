@@ -1,5 +1,13 @@
-<link rel="stylesheet" type="text/css" href="/css/error.css">
+<?php if(session()->getFlashdata('add')):?>
 
+<div class="container  d-flex align-items-center justify-content-center" style="height:80vh">
+    <div class="container-fluid py-5 p alert alert-warning ">
+        <div class="text-center display-5 " >
+            <?= session()->getFlashdata('add') ?>
+        </div>
+    </div>
+</div>
+<?php endif;?>
 <div class="container">
     <br>
     <?php if(isset($_SESSION['validation'])):?>
@@ -9,10 +17,12 @@
     <?php endif;?>
     <?php if(isset($frage)):?>
 
-    <br>
+
     <form id="editForm"  action="<?php echo base_url();?>/Fragenkatalog/storeFrage" method="post">
         <?= csrf_field() ?>
-
+        <div class="text-center p-6">
+            <button type="submit" class="btn btn-secondary">Speichern</button>
+        </div> <br>
         <input type="text" hidden="hidden" name="fragenkatalogId"id="fragenkatalogId" value="<?php echo $frage['fragenkatalogId']?>"/>
         <div class="row g-2">
             <div class="col-8 mx-auto">
@@ -68,7 +78,6 @@
 
                     </div>
                 </div>
-                <div class="row g-2">
                     <div class="col-6 mx-auto">
                         <div class="form-floating">
 
@@ -97,12 +106,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-center p-6">
-                    <button type="submit" class="btn btn-secondary">Speichern</button>
-                </div>
+
 
     </form>
 </div>
+<br>
 
 <?php endif;?>
 

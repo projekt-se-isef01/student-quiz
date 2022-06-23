@@ -1,4 +1,13 @@
+<?php if(session()->getFlashdata('edit')):?>
 
+    <div class="container  d-flex align-items-center justify-content-center" style="height:80vh">
+        <div class="container-fluid py-5 p alert alert-warning ">
+            <div class="text-center display-5 " >
+                <?= session()->getFlashdata('edit') ?>
+            </div>
+        </div>
+    </div>
+<?php endif;?>
        <?php if(isset($_SESSION['validation'])):?>
 
         <br>
@@ -8,7 +17,7 @@
 
 <?php endif;?>
 
-<div class="container">
+<div class="container d-flex ">
     <?php if(isset($frage) ):?>
 
 <br>
@@ -19,7 +28,7 @@
             <button type="submit" class="btn btn-secondary" >Speichern</button>
     </div>
 
-            <div class="row g-2">
+            <div class="justify-content-center align-items-center row g-2">
             <div class="col-8 mx-auto">
                 <div class="form-floating">
 
@@ -28,11 +37,11 @@
 
                 </div>
             </div>
-            <div class="row g-2">
+            <div class="row g-2 ">
                 <div class="col-6">
                     <div class="form-floating">
 
-                        <textarea type="text" id="antwort1" name="antwort1" class="form-control" placeholder="" style="height: 100px"  value=""><?php echo $frage['antwort1']?></textarea>
+                        <textarea type="text" id="antwort1" name="antwort1" class=" text-center form-control" placeholder="" style="height: 100px"  value=""><?php echo $frage['antwort1']?></textarea>
                         <label for="floatingInputGrid">Antwort 1</label>
 
                     </div>
@@ -41,7 +50,7 @@
                 <div class="col-6">
                     <div class="form-floating">
 
-                        <textarea type="text" id="antwort2" name="antwort2" class="form-control" placeholder=""  style="height: 100px" value=""><?php echo $frage['antwort2']?></textarea>
+                        <textarea type="text" id="antwort2" name="antwort2" class="text-center text-center  form-control" placeholder=""  style="height: 100px" value=""><?php echo $frage['antwort2']?></textarea>
                         <label for="floatingInputGrid">Antwort 2</label>
 
                     </div>
@@ -49,7 +58,7 @@
                 <div class="col-6">
                     <div class="form-floating">
 
-                        <textarea type="text" id="antwort3"  name="antwort3" class="form-control" placeholder=""  style="height: 100px" value=""><?php echo $frage['antwort3']?></textarea>
+                        <textarea type="text" id="antwort3"  name="antwort3" class=" text-center form-control" placeholder=""  style="height: 100px" value=""><?php echo $frage['antwort3']?></textarea>
                         <label for="floatingInputGrid">Antwort 3</label>
 
                     </div>
@@ -57,23 +66,22 @@
                 <div class="col-6">
                     <div class="form-floating">
 
-                        <textarea type="text" id="antwort4" name="antwort4" class="form-control" placeholder=""style="height: 100px" value=""><?php echo $frage['antwort4']?></textarea>
+                        <textarea type="text" id="antwort4" name="antwort4" class=" text-center form-control" placeholder=""style="height: 100px" value=""><?php echo $frage['antwort4']?></textarea>
                         <label for="floatingInputGrid"> Antwort 4</label>
 
                     </div>
                 </div>
 
             </div>
-            <div class="row g-2">
-                <div class="col-6 mx-auto">
+            <div class="row justify-content-center align-items-center g-2">
+                <div class="col-6 mx-auto ">
                     <div class="form-floating">
 
-                        <textarea type="text" id="antwortLoesung" name="antwortLoesung" class="form-control" placeholder="" style="height: 100px"   value=""><?php echo $frage['antwortLoesung']?></textarea>
+                        <textarea type="text" id="antwortLoesung" name="antwortLoesung" class="text-center form-control" placeholder="" style="height: 100px"    value=""><?php echo $frage['antwortLoesung']?></textarea>
                         <label for="floatingInputGrid">Lösung</label>
 
                     </div>
                 </div>
-                <div class="row g-2">
                     <div class="col-6 mx-auto">
                         <div class="form-floating">
 
@@ -89,7 +97,7 @@
                     <div class="col-3">
                         <div class="form-floating">
 
-                            <textarea type="text" id="Joker50501" name="Joker50501" class="form-control" placeholder="" style="height: 100px"><?php echo $frage['Joker50501']?></textarea>
+                            <textarea type="text" id="Joker50501" name="Joker50501" class="form-control text-center" placeholder="" style="height: 100px"><?php echo $frage['Joker50501']?></textarea>
                             <label for="floatingInputGrid">50:50 Joker</label>
 
                         </div>
@@ -97,7 +105,7 @@
 
                     <div class="col-3">
                         <div class="form-floating">
-                            <textarea type="text" id="Joker50502" name="Joker50502" class="form-control" placeholder="name@example.com"  style="height: 100px"><?php echo $frage['Joker50502']?></textarea>
+                            <textarea type="text" id="Joker50502" name="Joker50502" class="form-control text-center" placeholder="name@example.com"  style="height: 100px"><?php echo $frage['Joker50502']?></textarea>
                             <label for="floatingInputGrid">50:50 Joker</label>
                         </div>
                         </div>

@@ -16,10 +16,14 @@ function callAjax() {
         type: 'POST',
         url: "wait/"+last_part,
         data: $(this).serialize(),
+
         success: function (data) {
+
             $('#d').html(data);
             clearTimeout(time);
-        }
+
+
+    }
 
     });
 }

@@ -21,11 +21,13 @@
 
     <?php foreach ($katalog as $katalog_item): ?>
     <tr>
-        <td>
+        <td class="fs-2">
             <?= esc($katalog_item['fragenkatalogbezeichnung']) ?>
         </td>
         <td>
-            <p><a class="btn btn btn-success" href="/Fragenkatalog/<?= esc($katalog_item['fragenkatalogbezeichnung']) ?>">Zum Katalog</a></p>
+            <a class="btn btn btn-success" href="/Fragenkatalog/<?= esc($katalog_item['fragenkatalogbezeichnung']) ?>">Zum Katalog</a></p>
+
+            <p><a class="btn btn btn-danger" href="<?= site_url('/FragenkatalogÜbersicht/del/'.$katalog_item['fragenkatalogbezeichnung']) ?>">Löschen</a></p>
         </td>
     </tr>
         <?php endforeach ?>

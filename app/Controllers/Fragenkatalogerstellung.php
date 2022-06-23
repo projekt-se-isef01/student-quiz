@@ -31,6 +31,8 @@ class Fragenkatalogerstellung extends BaseController
 
 
             $this->store();
+            return redirect()->to('/Fragenkatalog/'.$this->request->getVar('fragenkatalogbezeichnung'));
+
         } else {
 
             $data['validation'] = $this->validator;

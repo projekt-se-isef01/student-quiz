@@ -26,10 +26,13 @@ class Fragenkatalog extends BaseController
         $model = new FragenkatalogModel();
 
         $data ['frage'] = $model->getKatalog($fragenkatalogbezeichnung);
+        if(empty($data['frage'])){
+            session()->setFlashdata('add','Fragenkatalog existiert nicht');
+        }
 
         session()->set('fragenkatalogbezeichnung',$fragenkatalogbezeichnung);
         $this->template('Add',$data);
-
+        session()->remove('add');
 
     }
     public function storeFrage()

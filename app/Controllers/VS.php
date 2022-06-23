@@ -26,6 +26,7 @@ class VS extends BaseController
         $game=$model->find($gameId);
         $prove = $model->getPlayers($gameId);
         session()->set('gameId',$gameId);
+
         // Spiel beendet
         if( $game['status'] == 'beendet' ){
             $data=
@@ -37,11 +38,11 @@ class VS extends BaseController
 
         if($game['gegnerstudentId']==$_SESSION['id'] && $game['gegnerscore']!==null) {
             return redirect()->to('VS/Ergebnis/'.$gameId);
- ;
+
         }
         if($game['studentId']==$_SESSION['id'] && $game['studentscore']!==null) {
             return redirect()->to('VS/Ergebnis/'.$gameId);
-            ;
+
         }
         //Prüfen, ob Spiel bereits begonnen hat, wenn ja leite zum Spiel
         if( $game['status'] == 'aktiv' && ($game['gegnerstudentId']==$_SESSION['id'] or($game['studentId']==$_SESSION['id']))){
@@ -73,8 +74,7 @@ class VS extends BaseController
         $model = new Game();
         $game = $model->find($gameId);
         $prove = $model->getPlayers($gameId);
-        session()->set('gameId',$gameId);
-
+session()->set('gameId',$gameId);
         // Gegenspieler klickt auf den Spielraum, das Spiel startet
         if($game['status'] == 'inaktiv' && $game['studentId']!==$_SESSION['id']) {
 
@@ -90,7 +90,7 @@ class VS extends BaseController
             }
         // Falls Spieler Seite verlässt und mit Back Button zurück kommt
         if( $game['status'] == 'aktiv' && ($game['gegnerstudentId']==$_SESSION['id'] or($game['studentId']==$_SESSION['id']))){
-           if($game['studentscore']==null or $game['gegnerscore']==null) {
+           if($game['studentscore']==null  or $game['gegnerscore']==null) {
             $data['frage'] = $model->getFragen($gameId);
             return $this->template('VS', $data);
 
@@ -106,6 +106,8 @@ class VS extends BaseController
 
 
     public function endGame($gameId){
+
+
         $frageId=$this->request->getVar('frageId');
         $antwort=$this->request->getVar('antwort');
         if ($frageId !==null && $antwort!==null) {
@@ -169,7 +171,9 @@ class VS extends BaseController
 
     public function getErgebnis($gameId) {
         $game= new Game();
-
+        helper('cookie');
+        delete_cookie('timer');
+        session()->remove('gameId');
         if($game->getErgebnis($gameId)==null) {
             $data=$game->find($gameId);
 

@@ -17,7 +17,7 @@
         <?php endif;?>
     </div>
 <br>
-        <?php if (! empty($frage)&& is_array($frage)):?>
+
     <table id="Fragen" class="display " style="width: 100%">
 
         <thead>
@@ -37,7 +37,7 @@
             <th>50:50 Joker</th>
 
         </tr>
-
+        <?php if (! empty($frage)&& is_array($frage)):?>
 
         <tbody>
         <?php foreach($frage as $frage): ?>

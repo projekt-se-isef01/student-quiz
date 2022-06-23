@@ -1,4 +1,9 @@
-<div id="k" style="width: 15%; margin-right: 3rem;right:0" class=" position-fixed   mt-xl-5 ml" ></div>
+<div class="container">
+
+    <div class="timer position-fixed display-2 mr-0" style="margin-top: 5rem; margin-right: 5rem;right:0"   ></div>
+<div>
+    <img src="/img/832.svg" class="position-fixed  display-2 mr-0" style=" margin-right: 5rem;right:0">
+</div>
 </div>
 <div class="container-sm text-center">
 
@@ -76,26 +81,62 @@
 
     <button class="btn btn-secondary " form="VSform" id="VSform" type="submit"style="height: auto">Bestätigen</button>
 </div>
+
+
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-countdown/2.1.0/css/jquery.countdown.css" integrity="sha512-DJrwSwUmDqcoRNH/Pw8W20fMn0ds22imuXi8uk2nei9GpoM5f5xkDmOEOKONfF0i7OTnDKe8lgfZElFurNajrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-countdown/2.1.0/js/jquery.plugin.js" integrity="sha512-ZMHxmg2SMSxswpqNZquBcX+RMYOGEjijxobpYckxXneH80PkrGtE0KKg10VPm17qinoSqG1b7nlIuJEvTRbflQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-countdown/2.1.0/js/jquery.countdown.js" integrity="sha512-XPChL99z4/eKTVwCsKRUoZ96oj/WcmGRJw09G/U7Q98FMAH4Ok3TNZob+Adb9aN0DgfSbkKJj8Da+8udoT39KA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <script>
+   <script>
 
 
+       function createCookie(name, value, days) {
+           if (days) {
+               var date = new Date();
+               date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+               var expires = "; expires=" + date.toGMTString();
+           } else var expires = "";
+           document.cookie = name + "=" + value  +";" +expires + "; path=/"+";";
+       }
 
-    $(function () {
-        var dt = new Date();
-        dt.setMinutes( dt.getMinutes() + 1 );
+       function readCookie(name) {
+           var nameEQ = name + "=";
+           var ca = document.cookie.split(';');
+           for (var i = 0; i < ca.length; i++) {
+               var c = ca[i];
+               while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+               if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+           }
+           return null;
+       }
 
-        $('#k').countdown({until: dt, format:'MS',
-            onExpiry: liftOff});
+       function eraseCookie(name) {
+           createCookie(name, "", -1);
+       }
 
+       $(function () {
 
-    });
+           var count = 10;
+           if (readCookie("timer") !== undefined && readCookie("timer") !==null) count = parseInt(readCookie("timer"));
+
+           var counter = setInterval(timer, 1000);
+
+           function timer() {
+               createCookie("timer", count, 365);
+               count--;
+               if (count <= 0) {
+                   clearInterval(counter);
+
+                   eraseCookie("timer");
+                   liftOff();
+                   return;
+               }
+               console.log(count);
+               console.log(readCookie("timer"));
+               $('.timer').html(count);
+           }
+       });
     function liftOff() {
         $("#VSform").submit();
     }

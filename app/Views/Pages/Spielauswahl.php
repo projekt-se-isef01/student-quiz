@@ -7,7 +7,8 @@
 <table id="Multispiel" class="table mt-xl-5 table-striped">
     <thead>
     <tr>
-        <th ></th>
+        <th >Spiel</th>
+        <th>Status</th>
     </tr>
     </thead>
 
@@ -21,8 +22,9 @@
                     </a>
 
             </th>
-
+            <th> <?= esc($spiel_item['status']) ?></th>
         </tr>
+
 
         <?php endforeach ?>
         </tbody>
