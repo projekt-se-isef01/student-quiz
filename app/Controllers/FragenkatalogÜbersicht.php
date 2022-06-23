@@ -19,10 +19,8 @@ class FragenkatalogÜbersicht extends BaseController
         }
     }
     public function del($fk) {
-        $db = \Config\Database::connect();
         $g=new FragenkatalogModel();
 
-         $error = $db->error();
-         session()->set('p',$error);
+        $g->del($fk);
     }
 }

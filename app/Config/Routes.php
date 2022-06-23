@@ -90,7 +90,7 @@ $routes->match(['post'],'VS/endGame/(:num)', 'VS::endGame/$1');
 $routes->match(['post'],'VS/wait/(:num)' ,'VS::wait/$1');
 $routes->match(['post','get'],'VS/Ergebnis/(:num)', 'VS::getErgebnis/$1');
 
-$routes->get( 'FragenkatalogÜbersicht/del/(:segment)','FragenkatalogÜbersicht::del/$1');
+$routes->get( 'FragenkatalogUebersicht/del/(:segment)','FragenkatalogÜbersicht::del/$1');
 
 
 

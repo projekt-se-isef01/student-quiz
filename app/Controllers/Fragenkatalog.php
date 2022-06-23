@@ -147,7 +147,8 @@ class Fragenkatalog extends BaseController
     }
 
     public function loeschen($frageId) {
-        $frage = new Frage();        $datafk=$frage->getFK($frageId);
+        $frage = new Frage();
+        $datafk=$frage->getFK($frageId);
         $data ['frage'] = $frage->where('frageId',$frageId)->delete();
         return redirect()->to(site_url('Fragenkatalog/'.$datafk[0]['fragenkatalogbezeichnung']))->with('validation',$this->validator);
     }
