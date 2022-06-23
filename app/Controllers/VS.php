@@ -22,6 +22,10 @@ class VS extends BaseController
     }
 
     public function startWait($gameId) {
+        echo '<script type="text/JavaScript"> 
+                localStorage.clear();
+
+     </script>';
         $model = new Game();
         $game=$model->find($gameId);
         $prove = $model->getPlayers($gameId);
@@ -106,7 +110,10 @@ session()->set('gameId',$gameId);
 
 
     public function endGame($gameId){
+        echo '<script type="text/JavaScript"> 
+                localStorage.clear();
 
+     </script>';
 
         $frageId=$this->request->getVar('frageId');
         $antwort=$this->request->getVar('antwort');
