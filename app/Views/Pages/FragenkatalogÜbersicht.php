@@ -1,7 +1,14 @@
+<br>
+<div class="container d-flex align-items-center justify-content-center">
 
-<div class="container">
+    <svg height="100" width="90" viewBox="0 0 110 120">
 
-<a href="Fragenkatalogerstellung"  class="btn btn btn-info my-4">Erstelle Fragenkatalog</a>
+        <polygon points="50 3,100 28,100 75, 50 100,3 75,3 25" fill="#677cb1" /> <text x=50 y=65 font-size="45" fill="white" text-anchor="middle">?</text>
+    </svg>
+</div>
+<div class="container ">
+
+<a href="Fragenkatalogerstellung"  class="mb-xl-5 btn btn btn-info my-4">Erstelle Fragenkatalog</a>
 
 
 
@@ -11,6 +18,7 @@
     <tr>
 
         <th>Fragenkatalog</th>
+        <th></th>
         <th></th>
 
     </tr>
@@ -26,8 +34,29 @@
         </td>
         <td>
             <a class="btn btn btn-success" href="/Fragenkatalog/<?= esc($katalog_item['fragenkatalogbezeichnung']) ?>">Zum Katalog</a></p>
+</td><td>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Löschen
+            </button>
 
-            <p><a class="btn btn btn-danger" href="<?= site_url('/FragenkatalogUebersicht/del/'.$katalog_item['fragenkatalogbezeichnung']) ?>">Löschen</a></p>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title " id="exampleModalLabel">Fragenkatalog</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            Möchtest du den Fragenkatalog wirklich löschen?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a class="btn btn-danger" href="<?= site_url('/FragenkatalogUebersicht/del/'.$katalog_item['fragenkatalogbezeichnung']) ?>">Löschen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </td>
     </tr>
         <?php endforeach ?>
@@ -39,7 +68,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript"  src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 
     $(document).ready( function () {

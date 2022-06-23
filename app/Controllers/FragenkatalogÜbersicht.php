@@ -22,5 +22,6 @@ class FragenkatalogÜbersicht extends BaseController
         $g=new FragenkatalogModel();
 
         $g->del($fk);
+        return redirect()->back();
     }
 }

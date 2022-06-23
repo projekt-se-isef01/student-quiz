@@ -36,28 +36,28 @@
                     <div class="row pt-4 p-2">
                         <div class="col">
 
-                            <input checked type="radio" id="antwort1<?php echo $frage_i['frageId']?>" name="antwort[<?php echo $frage_i['frageId']?>]" class="btn-check" autocomplete="off" required value="1"/>
+                            <input checked type="radio" id="antwort1<?php echo $frage_i['frageId']?>" name="antwort[<?php echo $frage_i['frageId']?>]" class="btn-check u" autocomplete="off" required value="1"/>
                             <label class="btn btn-outline-warning " style="width: 80%; height:120%" for="antwort1<?php echo $frage_i['frageId']?>"><span class="next1"> <?php echo $frage_i['antwort1']?> </span> </label>
                         </div>
 
                         <div class="col">
 
 
-                            <input type="radio" id="antwort2<?php echo $frage_i['frageId']?>" name="antwort[<?php echo $frage_i['frageId']?>]" class="btn-check" autocomplete="off" value="2"/>
+                            <input type="radio" id="antwort2<?php echo $frage_i['frageId']?>" name="antwort[<?php echo $frage_i['frageId']?>]" class="btn-check u" autocomplete="off" value="2"/>
                             <label class="btn btn-outline-warning " style="width: 80%; height:120%" for="antwort2<?php echo $frage_i['frageId']?>" ><span class="next2"><?php echo $frage_i['antwort2']?></span></label>
                         </div>
                     </div>
                     <div class="row pt-4 ">
                         <div class="col">
 
-                            <input type="radio" id="antwort3<?php echo $frage_i['frageId']?>"  name="antwort[<?php echo $frage_i['frageId']?>]"  class="btn-check" autocomplete="off" value="3"/>
+                            <input type="radio" id="antwort3<?php echo $frage_i['frageId']?>"  name="antwort[<?php echo $frage_i['frageId']?>]"  class="btn-check u" autocomplete="off" value="3"/>
                             <label class="btn btn-outline-warning " style="width: 80%; height:120%" for="antwort3<?php echo $frage_i['frageId']?>"><span class="next3"> <?php echo $frage_i['antwort3']?></span></label>
                         </div>
 
                         <div class="col">
 
 
-                            <input type="radio" id="antwort4<?php echo $frage_i['frageId']?>" name="antwort[<?php echo $frage_i['frageId']?>]" class="btn-check" autocomplete="off" value="4"/>
+                            <input type="radio" id="antwort4<?php echo $frage_i['frageId']?>" name="antwort[<?php echo $frage_i['frageId']?>]" class="btn-check u" autocomplete="off" value="4"/>
                             <label class="btn btn-outline-warning" style="width: 80%; height:120%" for="antwort4<?php echo $frage_i['frageId']?>"><span class="next4"><?php echo $frage_i['antwort4']?> </span> </label>
                         </div>
                     </div>
@@ -66,16 +66,38 @@
 
 
 
-<?php endforeach ?>
+
+</form><br>
+
+
+                <button  id="hinw" class="btn btn-secondary" onclick="showhinw(<?=esc($frage_i['frageId'])?>)">Hinweis</button>
+                <button  id="joker" class="btn btn-secondary" onclick="showjoker(<?=esc($frage_i['frageId'])?>)">Joker</button>
+
+    <div class="row " style="margin-left: 8rem">
+       <div class="col ">
+    <div class="d-none hinweis alert alert-info" role="alert" id="hinw<?=esc($frage_i['frageId'])?>">
+        <?=esc($frage_i['hinweis'])?>
+    </div>
+       </div>
+    <div class="col " style="margin-right: 8rem">
+                <div class="d-none joker alert alert-info" role="alert" id="joker<?=esc($frage_i['frageId'])?>">
+                  Antwort <?=esc($frage_i['Joker50501'])?> und
+
+                    <?=esc($frage_i['Joker50502'])?>
+                fallen weg
+                </div>
+            </div>
+
+
+    </div>
+        <div
+
+
+        <?php endforeach ?>
 
 
 
-<?php endif ?>
-
-
-</form>
-
-
+    <?php endif ?>
 <div class="pb-5 text-center pt-4">
 
 
@@ -138,6 +160,32 @@
            }
        });
     function liftOff() {
-        $("#VSform").submit();
+
     }
-    </script>
+    function showhinw(id) {
+        $('#hinw'+id).removeClass("d-none");
+        $( "#hinw:not(#hinw"+id+")").remove();
+        localStorage.setItem('idhinweis',id);
+
+    }
+       function showjoker(id) {
+           $('#joker'+id).removeClass("d-none");
+           $( "#joker:not(#joker"+id+")").remove();
+           localStorage.setItem('idjoker',id);
+
+       }
+       (function() {
+        var id= localStorage.getItem('idhinweis')
+           if(id!== null) {
+               $('#hinw' + id).removeClass("d-none");
+
+               $("#hinw:not(#hinw" + id + ")").remove();
+           }
+           var id= localStorage.getItem('idjoker')
+           if(id!== null) {
+               $('#joker' + id).removeClass("d-none");
+
+               $("#joker:not(#joker" + id + ")").remove();
+           }
+       })();
+</script>
