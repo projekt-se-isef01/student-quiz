@@ -11,7 +11,10 @@ use phpDocumentor\Reflection\Types\True_;
 class VS extends BaseController
 {
     public function index() {
+        echo '<script type="text/JavaScript"> 
+                localStorage.clear();
 
+     </script>';
         $model = new Game();
         $data=
             ['spiel'=>$model->findAll()
@@ -22,10 +25,7 @@ class VS extends BaseController
     }
 
     public function startWait($gameId) {
-        echo '<script type="text/JavaScript"> 
-                localStorage.clear();
 
-     </script>';
         $model = new Game();
         $game=$model->find($gameId);
         $prove = $model->getPlayers($gameId);
@@ -94,7 +94,7 @@ session()->set('gameId',$gameId);
             }
         // Falls Spieler Seite verlässt und mit Back Button zurück kommt
         if( $game['status'] == 'aktiv' && ($game['gegnerstudentId']==$_SESSION['id'] or($game['studentId']==$_SESSION['id']))){
-           if($game['studentscore']==null  or $game['gegnerscore']==null) {
+           if($game['studentId']==$_SESSION['id'] && $game['studentscore']==null  or $game['gegnerstudentId']==$_SESSION['id'] && $game['gegnerscore']==null) {
             $data['frage'] = $model->getFragen($gameId);
             return $this->template('VS', $data);
 
@@ -110,10 +110,6 @@ session()->set('gameId',$gameId);
 
 
     public function endGame($gameId){
-        echo '<script type="text/JavaScript"> 
-                localStorage.clear();
-
-     </script>';
 
         $frageId=$this->request->getVar('frageId');
         $antwort=$this->request->getVar('antwort');
@@ -129,7 +125,7 @@ session()->set('gameId',$gameId);
 
                 }
             }
-            $s['score'] = $score;
+            $s= $score;
             $model=new Game();
             $game=$model->find($gameId);
            if($game['studentId']==$_SESSION['id']){
@@ -139,24 +135,26 @@ session()->set('gameId',$gameId);
                   ];
                $model->update($gameId, $data1);
               }
-            $data1 = ['studentscore' => $s,
+            $data2 = ['studentscore' => $s,
 
             ];
-               $model->update($gameId, $data1);
+               $model->update($gameId, $data2);
                $session=session();
                $session->set('score',$score);
            }
            if($game['gegnerstudentId']==$_SESSION['id']) {
                if ($game['studentscore']!==null) {
-                   $data1 = ['status' => 'beendet',
-                    session()->u
+                   $data3 = ['status' => 'beendet',
+
                    ];
-                   $model->update($gameId, $data1);
+                   $model->update($gameId, $data3);
+                   $session=session();
+                   $session->set('score',$score);
                }
-           $data1 = ['gegnerscore' => $s,
+           $data4 = ['gegnerscore' => $s,
 
                ];
-               $model->update($gameId, $data1);
+               $model->update($gameId, $data4);
                $session=session();
                $session->set('score',$score);
         }
@@ -166,12 +164,13 @@ session()->set('gameId',$gameId);
             $getScore = $getrec['score'];
 
             $scoregesamt = (int)$getScore + (int)$s;
+
             $data = ['score' => $scoregesamt,
                 'vsGamesGesamt' => (int)$getrec['vsGamesGesamt'] + 1
             ];
             $studmodel->update($_SESSION['id'], $data);
-
             return redirect()->to('/VS/Ergebnis/'.$gameId);
+
         }
 
     }
@@ -184,9 +183,18 @@ session()->set('gameId',$gameId);
         if($game->getErgebnis($gameId)==null) {
             $data=$game->find($gameId);
 
+            if($_SESSION['id']==$data['studentId']) {
+
             $session=session();
             $session->setFlashdata('score',$data['studentscore']);
             return $this->template('ErgebnisWait');
+            }
+            elseif ($_SESSION['id']==$data['gegnerstudentId']) {
+
+                $session = session();
+                $session->setFlashdata('score', $data['studentscore']);
+                return $this->template('ErgebnisWait');
+            }
         }
         else
         {
@@ -196,12 +204,24 @@ session()->set('gameId',$gameId);
                 if ($_SESSION['id']===$data['studentId']) {
                     $session=session();
                     $session->setFlashdata('score', 'Gewonnen');
-                    return  $this->template('Ergebnis');
+                    $data1['erg']=$game->getErgebnis($gameId);
+                    $studmodel = new Student();
+                    $win=$studmodel->find($_SESSION['id']);
+                    $data = ['vsGamesWin' => 1+$win['vsGamesWin']];
+                    $studmodel->update($_SESSION['id'], $data);
+
+                    return  $this->template('Ergebnis',$data1);
                 }
                 else {
                     $session=session();
+                    $data1['erggeg']=$game->getErgebnis($gameId);
+
                     $session->setFlashdata('score', 'Verloren');
-                    return  $this->template('Ergebnis');
+                    $studmodel = new Student();
+                    $win=$studmodel->find($_SESSION['id']);
+                    $data = ['vsGamesLose' => 1+$win['vsGamesLose']];
+                    $studmodel->update($_SESSION['id'], $data);
+                    return $this->template('Ergebnis',$data1);
                 }
 
             }
@@ -209,19 +229,38 @@ session()->set('gameId',$gameId);
                 if ($_SESSION['id']===$data['studentId']) {
                     $session=session();
                     $session->setFlashdata('score', 'Verloren');
-                    return $this->template('Ergebnis');
+                    $data1['erg']=$game->getErgebnis($gameId);
+                    $studmodel = new Student();
+                    $win=$studmodel->find($_SESSION['id']);
+                    $data = ['vsGamesLose' => 1+$win['vsGamesLose']];
+                    $studmodel->update($_SESSION['id'], $data);
+                    $this->template('Ergebnis',$data1);
                 }
                 else {
                     $session=session();
                     $session->setFlashdata('score', 'Gewonnen');
-                    return $this->template('Ergebnis');
+                    $data1['erggeg']=$game->getErgebnis($gameId);
+                    $studmodel = new Student();
+                    $win=$studmodel->find($_SESSION['id']);
+                    $data = ['vsGamesWin' => 1+$win['vsGamesWin']];
+                    $studmodel->update($_SESSION['id'], $data);
+                    return $this->template('Ergebnis',$data1);
                 }
 
             }
             elseif($data['studentscore']===$data['gegnerscore']){
+
                 $session=session();
                 $session->setFlashdata('score', 'Unentschieden');
-                return $this->template('Ergebnis');
+                if ($_SESSION['id']===$data['studentId']) {
+                    $data1['erg']=$game->getErgebnis($gameId);
+                    return $this->template('Ergebnis',$data1);
+                }
+               elseif ($_SESSION['id']===$data['gegnerstudentId']) {
+                   $data1['erggeg']=$game->getErgebnis($gameId);
+                   return $this->template('Ergebnis',$data1);
+               }
+
             }
 
         }

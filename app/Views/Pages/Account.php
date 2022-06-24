@@ -43,6 +43,16 @@
 
         </tr>
         <tr>
+            <th >verlorene Mehrspieler Spiele - konkurrierend</th>
+            <th>  <?= esc($student['vsGamesLose'])?></th>
+
+        </tr>
+        <tr>
+            <th >uneentschiedene Mehrspieler Spiele - konkurrierend</th>
+            <th>  <?=  esc($student['vsGamesGesamt'])-esc($student['vsGamesLose'])-esc($student['vsGamesWin'])?></th>
+
+        </tr>
+        <tr>
             <th >Account erstellt am</th>
             <th>    <?= esc($student['date'])?></th>
 

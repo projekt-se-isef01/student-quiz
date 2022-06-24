@@ -16,6 +16,7 @@ class Student extends Model
         'score',
         'singleGamesGesamt',
         'vsGamesGesamt',
-        'vsGamesWin'
+        'vsGamesWin',
+        'vsGamesLose'
     ];
 }

@@ -34,14 +34,14 @@
 
 </div>
 <?php endif;?>
-<div class="row"
+
+</body><div class="row"
 <div class="" id="load">
     <div class="loader-circle-9">Warte auf Mitspieler
         <span></span>
     </div>
 </div>
-</div>
-</body><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/js/ergebnis.js" >
 
 

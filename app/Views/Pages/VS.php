@@ -13,12 +13,12 @@
 </div>
 
 
-    <?php if (! empty($frage) && is_array($frage)): ?>
-
-    <?php foreach ($frage as $frage_i): ?>
 
 <form id="VSform" name="VSform" accept-charset="utf-8" action="<?php echo base_url(); ?>/VS/endGame/<?=session()->get('gameId')?> " method="post">
     <?= csrf_field() ?>
+    <?php if (! empty($frage) && is_array($frage)): ?>
+
+    <?php foreach ($frage as $frage_i): ?>
 
             <br>
             <div class="row pt-4 g-2">
@@ -67,7 +67,7 @@
 
 
 
-</form><br>
+<br>
 
 
                 <button  id="hinw" class="btn btn-secondary" onclick="showhinw(<?=esc($frage_i['frageId'])?>)">Hinweis</button>
@@ -97,7 +97,7 @@
 
 
 
-    <?php endif ?>
+    <?php endif ?>  </form>
 <div class="pb-5 text-center pt-4">
 
 
@@ -158,34 +158,28 @@
                console.log(readCookie("timer"));
                $('.timer').html(count);
            }
-       });
+       })();
     function liftOff() {
 
     }
     function showhinw(id) {
-        $('#hinw'+id).removeClass("d-none");
         $( "#hinw:not(#hinw"+id+")").remove();
-        localStorage.setItem('idhinweis',id);
+        var id1= localStorage.getItem('idhinweis')
+        if(id1== null) {
+        $('#hinw'+id).removeClass("d-none");
 
+        localStorage.setItem('idhinweis',id);
+    }
     }
        function showjoker(id) {
-           $('#joker'+id).removeClass("d-none");
-           $( "#joker:not(#joker"+id+")").remove();
-           localStorage.setItem('idjoker',id);
+        $( "#joker:not(#joker"+id+")").remove();
+           var id1= localStorage.getItem('idhinweis')
+           if(id1== null) {
 
-       }
-       (function() {
-        var id= localStorage.getItem('idhinweis')
-           if(id!== null) {
-               $('#hinw' + id).removeClass("d-none");
-
-               $("#hinw:not(#hinw" + id + ")").remove();
-           }
-           var id= localStorage.getItem('idjoker')
-           if(id!== null) {
                $('#joker' + id).removeClass("d-none");
 
-               $("#joker:not(#joker" + id + ")").remove();
+               localStorage.setItem('idjoker', id);
            }
-       })();
+       }
+
 </script>

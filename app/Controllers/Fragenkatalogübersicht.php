@@ -3,7 +3,7 @@ namespace App\Controllers;
 use App\Models\FragenkatalogModel;
 use CodeIgniter\Debug\Toolbar\Collectors\Database;
 
-class FragenkatalogÜbersicht extends BaseController
+class Fragenkatalogübersicht extends BaseController
 {
     public function index()
     {
@@ -13,7 +13,7 @@ class FragenkatalogÜbersicht extends BaseController
             $data = [
                 'katalog' => $model->getKatalog(),
             ];
-            $this->template('FragenkatalogÜbersicht', $data);
+            $this->template('Fragenkatalogübersicht', $data);
 
 
         }

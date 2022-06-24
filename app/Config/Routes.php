@@ -50,9 +50,9 @@ $routes->match(['get','post'],'Account/loeschen', 'Account::loeschen');
 
 
 //Fragenkatalog
-$routes->get('FragenkatalogÜbersicht/(:any)', 'FragenkatalogÜbersicht::index');
+$routes->get('Fragenkatalogübersicht/(:any)', 'Fragenkatalogübersicht::index');
 $routes->get('Fragenkatalogerstellung/(:any)', 'Fragenkatalogerstellung::index');
-$routes->get('FragenkatalogÜbersicht/', 'FragenkatalogÜbersicht::index');
+$routes->get('Fragenkatalogübersicht/', 'Fragenkatalogübersicht::index');
 
 //Fragen
 $routes->match(['get','post'],'Fragenkatalog/storeFrage', 'Fragenkatalog::storeFrage');
@@ -90,7 +90,7 @@ $routes->match(['post'],'VS/endGame/(:num)', 'VS::endGame/$1');
 $routes->match(['post'],'VS/wait/(:num)' ,'VS::wait/$1');
 $routes->match(['post','get'],'VS/Ergebnis/(:num)', 'VS::getErgebnis/$1');
 
-$routes->get( 'FragenkatalogUebersicht/del/(:segment)','FragenkatalogÜbersicht::del/$1');
+$routes->get( 'FragenkatalogUebersicht/del/(:segment)','Fragenkatalogübersicht::del/$1');
 
 
 

@@ -73,18 +73,18 @@
         <?php endif; ?>
                 <?php endif; ?>
     </div>
-    <div class="col w-50 alert alert-info" role="alert" style="margin-right: 8rem">
+    <div class="col w-50"style="margin-right: 8rem">
         <?php if (isset($_COOKIE['joker'])):?>
         <?php if ($_COOKIE['joker']==="1"):?>
-      <div id="joker1"  class="h5">
+      <div id="joker1"  class="h5 alert alert-info" role="alert"">
           Antwort
             <span class="j1">
                     <?php echo $frage['Joker50502']?>
                 </span>
           und
             <span class="j2">
-                    <?php echo $frage['Joker50501']?> fallen weg
-                </span></div>
+                    <?php echo $frage['Joker50501']?>
+                </span>fallen weg</div>
 
       </div>
 
