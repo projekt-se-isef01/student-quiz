@@ -47,6 +47,7 @@ class Registrierung extends BaseController
 
 
              $this->store();
+             session()->setFlashdata('Regmes','Registrierung erfolgreich');
              return redirect()->to('/Login');
 
          }

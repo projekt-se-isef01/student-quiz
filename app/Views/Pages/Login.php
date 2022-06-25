@@ -1,4 +1,13 @@
+<?php if(session()->getFlashdata('Regmes')):?>
 
+<div class="container mt-4 d-flex align-items-center justify-content-center" >
+        <div class="container-fluid  p alert alert-warning ">
+            <div class="text-center display-5 " >
+                <?= session()->getFlashdata('Regmes') ?>
+            </div>
+        </div>
+    </div>
+<?php endif;?>
 <section class="intro">
 
     <div class="mask d-flex align-items-center h-100">
