@@ -47,11 +47,10 @@
     </a>
     <div class="">
 
-        <a  method="post" href="<?php echo base_url(); ?>/Login/logout" >         Logout
+        <a href="<?php echo base_url(); ?>/Login/logout" >         Logout
         </a>
 
-    </div>
-    </div>
+    </div> <?php endif;?>
 </div>
-    <?php endif;?>
+
 
