@@ -19,7 +19,7 @@
         <div class="row  g-2 pb-5 ">
             <div class="col ">
                 <label for="fragenkatalogbezeichnung" class="form-label h2 text-center">Fragenkatalog Bezeichnung</label>
-                <input type="text" name="fragenkatalogbezeichnung" class="form-control mt-3" />
+                <input type="text" name="fragenkatalogbezeichnung" class="form-control mt-3" required />
             </div>
         </div>
 

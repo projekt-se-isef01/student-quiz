@@ -74,13 +74,15 @@
 
             </div>
             <div class="row justify-content-center align-items-center g-2">
-                <div class="col-6 mx-auto ">
-                    <div class="form-floating">
+                <div class="col-6 mx-auto">
 
-                        <textarea type="text" id="antwortLoesung" name="antwortLoesung" class="text-center form-control" placeholder="" style="height: 100px"    value=""><?php echo $frage['antwortLoesung']?></textarea>
-                        <label for="floatingInputGrid">Lösung</label>
-
-                    </div>
+                    <label for="antwortLoesung"> Lösung</label>
+                   <?php echo form_dropdown('antwortLoesung', [
+                           '1'  => 'Antwort 1',
+                            '2'    => 'Antwort 2',
+                            '3'  => 'Antwort 3',
+                            '4' => 'Antwort 4',]
+                       ,$frage['antwortLoesung'],'class="form-select"');?>
                 </div>
                     <div class="col-6 mx-auto">
                         <div class="form-floating">
@@ -95,22 +97,30 @@
 
                 <div class="row g-2 justify-content-center">
                     <div class="col-3">
-                        <div class="form-floating">
-
-                            <textarea type="text" id="Joker50501" name="Joker50501" class="form-control text-center" placeholder="" style="height: 100px"><?php echo $frage['Joker50501']?></textarea>
-                            <label for="floatingInputGrid">50:50 Joker</label>
-
+                        <label for="Joker50501">50:50 Joker</label>
+                         <?php echo form_dropdown('Joker50501', [
+                                 null=>'',
+                                    '1'  => 'Antwort 1',
+                                    '2'    => 'Antwort 2',
+                                    '3'  => 'Antwort 3',
+                                    '4' => 'Antwort 4',]
+                                ,$frage['Joker50501'],'class="form-select"');?>
                         </div>
-                    </div>
+
 
                     <div class="col-3">
-                        <div class="form-floating">
-                            <textarea type="text" id="Joker50502" name="Joker50502" class="form-control text-center" placeholder="name@example.com"  style="height: 100px"><?php echo $frage['Joker50502']?></textarea>
-                            <label for="floatingInputGrid">50:50 Joker</label>
-                        </div>
+                        <label for="Joker50502">50:50 Joker</label>
+                        <?php echo form_dropdown('Joker50502', [
+                                null=>'',
+                                '1'  => 'Antwort 1',
+                                '2'    => 'Antwort 2',
+                                '3'  => 'Antwort 3',
+                                '4' => 'Antwort 4',]
+                            ,$frage['Joker50502'],'class="form-select"');?>
+                    </div>
                         </div>
                 </div>
-
+    </div>
                 <div class="">
 
             </div

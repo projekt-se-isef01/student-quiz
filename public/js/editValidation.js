@@ -59,7 +59,8 @@ if ($("#editForm").length > 0) {
                 required: "Antwort benötigt",
             },
             antwortLoesung: {
-                required: "Lösung benötigt. Kann nur Zahlen von 1 bis 4 enthalten"
+                required: "Lösung benötigt. Kann nur Zahlen von 1 bis 4 enthalten",
+                digits:"Nur 1-4"
             },
             hinweis: {
                 required: "Name benötigt",
