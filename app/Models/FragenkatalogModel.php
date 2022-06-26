@@ -23,8 +23,7 @@ class FragenkatalogModel extends Model
     }
 public function del($fragenkatalogbezeichnung){
 
-  $this
-     ->table('fragenkatalog')->where('fragenkatalogbezeichnung', $fragenkatalogbezeichnung)->delete();
+ return $this->where(['fragenkatalogbezeichnung'=> $fragenkatalogbezeichnung])->delete();
 
     }
 }

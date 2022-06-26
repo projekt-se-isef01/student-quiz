@@ -18,7 +18,7 @@
     <?php if(isset($frage)):?>
 
 
-    <form id="editForm"  action="<?php echo base_url();?>/Fragenkatalog/storeFrage" method="post">
+    <form id="editForm"   action="<?php echo base_url();?>/Fragenkatalog/storeFrage" method="post">
         <?= csrf_field() ?>
         <div class="text-center p-6">
             <button type="submit" class="btn btn-secondary">Speichern</button>
@@ -28,7 +28,7 @@
             <div class="col-8 mx-auto">
                 <div class="form-floating">
 
-                    <textarea  id="frage=" name="frage" class="form-control text-center" placeholder="" cols="95" style="height:100px"><?= old('frage')?></textarea>
+                    <textarea autocomplete="on" id="frage=" name="frage" class="form-control text-center" placeholder="" cols="95" style="height:100px"><?= old('frage')?></textarea>
                     <label for="frage">Frage</label>
 
                 </div>

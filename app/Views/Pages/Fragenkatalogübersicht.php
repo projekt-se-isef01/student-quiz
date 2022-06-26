@@ -35,12 +35,12 @@
         <td>
             <a class="btn btn btn-success" href="/Fragenkatalog/<?= esc($katalog_item['fragenkatalogbezeichnung']) ?>">Zum Katalog</a></p>
 </td><td>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#<?= esc($katalog_item['fragenkatalogbezeichnung']) ?>">
                 Löschen
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="<?= esc($katalog_item['fragenkatalogbezeichnung']) ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">

@@ -15,7 +15,7 @@
             </div>
             <br>
             <?= \Config\Services::validation()->listErrors(); ?> <span class="d-none alert alert-success mb-3" id="res_message"></span>
-            <form id="singleplayerForm" name="singleplayerForm" accept-charset="utf-8" action="javascript:void(0)" method="post">
+            <form id="singleplayerForm" name="singleplayerForm" accept-charset="utf-8"  action="javascript:void(0)" method="post">
                 <input type="hidden" class="txt_csrfname" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                 <input type="hidden" id="frageId" name="frageId"  value="<?php echo $frage['frageId']?>"/>
                 <input type="hidden" id="score" name="score" value="0">
@@ -24,27 +24,27 @@
 
                         <input type="radio" id="antwort1" name="antwort" class="btn-check" autocomplete="off" required value="1"/>
 
-                        <label class="btn btn-outline-warning " style="width: 80%; height:120%" for="antwort1">Antwort 1: <span class="next1"> <?php echo $frage['antwort1']?> </span> </label>
+                        <label class="btn text btn-outline-warning " style="color:#030201;font-weight:bold;width: 80%; height:120%" for="antwort1">Antwort 1: <span class="next1"> <?php echo $frage['antwort1']?> </span> </label>
                     </div>
 
                     <div class="col">
 
                         <input type="radio" id="antwort2" name="antwort" class="btn-check" autocomplete="off" required value="2"/>
-                        <label class="btn btn-outline-warning " style="width: 80%; height:120%" for="antwort2" >Antwort 2: <span class="next2"><?php echo $frage['antwort2']?></span></label>
+                        <label class="btn btn-outline-warning " style="color:#030201;font-weight:bold;width: 80%; height:120%" for="antwort2" >Antwort 2: <span class="next2"><?php echo $frage['antwort2']?></span></label>
                     </div>
                 </div>
                 <div class="row pt-4">
                     <div class="col">
 
                         <input type="radio" id="antwort3"  name="antwort"  class="btn-check" autocomplete="off" value="3"/>
-                        <label class="btn btn-outline-warning " style="width: 80%; height:120%" for="antwort3">Antwort 3: <span class="next3"> <?php echo $frage['antwort3']?></span></label>
+                        <label class="btn btn-outline-warning " style="color:#030201;font-weight:bold;width: 80%; height:120%" for="antwort3">Antwort 3: <span class="next3"> <?php echo $frage['antwort3']?></span></label>
                     </div>
 
                     <div class="col">
 
 
                         <input type="radio" id="antwort4" name="antwort" class="btn-check" autocomplete="off" value="4"/>
-                        <label class="btn btn-outline-warning " style="width: 80%; height:120%" for="antwort4">Antwort 4: <span class="next4"><?php echo $frage['antwort4']?> </span> </label>
+                        <label class="btn btn-outline-warning " style="color:#030201;font-weight:bold;width: 80%; height:120%" for="antwort4">Antwort 4: <span class="next4"><?php echo $frage['antwort4']?> </span> </label>
                     </div>
                 </div>
 

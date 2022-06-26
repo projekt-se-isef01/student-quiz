@@ -37,28 +37,28 @@
                         <div class="col">
 
                             <input checked type="radio" id="antwort1<?php echo $frage_i['frageId']?>" name="antwort[<?php echo $frage_i['frageId']?>]" class="btn-check u" autocomplete="off" required value="1"/>
-                            <label class="btn btn-outline-warning " style="width: 80%; height:120%" for="antwort1<?php echo $frage_i['frageId']?>"><span class="next1"> <?php echo $frage_i['antwort1']?> </span> </label>
+                            <label class="btn btn-outline-warning " style="color:#030201;font-weight:bold;width: 80%; height:120%" for="antwort1<?php echo $frage_i['frageId']?>"><span class="next1"> <?php echo $frage_i['antwort1']?> </span> </label>
                         </div>
 
                         <div class="col">
 
 
                             <input type="radio" id="antwort2<?php echo $frage_i['frageId']?>" name="antwort[<?php echo $frage_i['frageId']?>]" class="btn-check u" autocomplete="off" value="2"/>
-                            <label class="btn btn-outline-warning " style="width: 80%; height:120%" for="antwort2<?php echo $frage_i['frageId']?>" ><span class="next2"><?php echo $frage_i['antwort2']?></span></label>
+                            <label class="btn btn-outline-warning " style="color:#030201;font-weight:bold;width: 80%; height:120%" for="antwort2<?php echo $frage_i['frageId']?>" ><span class="next2"><?php echo $frage_i['antwort2']?></span></label>
                         </div>
                     </div>
                     <div class="row pt-4 ">
                         <div class="col">
 
                             <input type="radio" id="antwort3<?php echo $frage_i['frageId']?>"  name="antwort[<?php echo $frage_i['frageId']?>]"  class="btn-check u" autocomplete="off" value="3"/>
-                            <label class="btn btn-outline-warning " style="width: 80%; height:120%" for="antwort3<?php echo $frage_i['frageId']?>"><span class="next3"> <?php echo $frage_i['antwort3']?></span></label>
+                            <label class="btn btn-outline-warning " style="color:#030201;font-weight:bold;width: 80%; height:120%" for="antwort3<?php echo $frage_i['frageId']?>"><span class="next3"> <?php echo $frage_i['antwort3']?></span></label>
                         </div>
 
                         <div class="col">
 
 
                             <input type="radio" id="antwort4<?php echo $frage_i['frageId']?>" name="antwort[<?php echo $frage_i['frageId']?>]" class="btn-check u" autocomplete="off" value="4"/>
-                            <label class="btn btn-outline-warning" style="width: 80%; height:120%" for="antwort4<?php echo $frage_i['frageId']?>"><span class="next4"><?php echo $frage_i['antwort4']?> </span> </label>
+                            <label class="btn btn-outline-warning" style="color:#030201;font-weight:bold;width: 80%; height:120%" for="antwort4<?php echo $frage_i['frageId']?>"><span class="next4"><?php echo $frage_i['antwort4']?> </span> </label>
                         </div>
                     </div>
             </div>
@@ -171,14 +171,14 @@
         localStorage.setItem('idhinweis',id);
     }
     }
-       function showjoker(id) {
-        $( "#joker:not(#joker"+id+")").remove();
-           var id1= localStorage.getItem('idhinweis')
-           if(id1== null) {
+       function showjoker(id2) {
+        $( "#joker:not(#joker"+id2+")").remove();
+           var idh= localStorage.getItem('idjoker')
+           if(idh== null) {
 
-               $('#joker' + id).removeClass("d-none");
+               $('#joker' + id2).removeClass("d-none");color:#030201;font-weight:bold;
 
-               localStorage.setItem('idjoker', id);
+               localStorage.setItem('idjoker', id2);
            }
        }
 

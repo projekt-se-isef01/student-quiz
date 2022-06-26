@@ -20,7 +20,7 @@ class Fragenkatalogerstellung extends BaseController
                 'errors'=> ['required' => 'Bitte Fragenkatalogname angegeben.',
                     'max_length'=>'Frage darf höchstens 128 Zeichen lang sein.',
                     'is_unique'=>'Fragenkatalogname bereits vergeben.',
-                    'min_length'=>'Fragenkatalog darf höchstens 128 Zeichen lang sein.',
+                    'min_length'=>'Fragenkatalog muss mindestens 3 Zeichen lang sein.',
 
                 ]
             ],

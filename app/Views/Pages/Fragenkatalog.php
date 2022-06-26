@@ -17,14 +17,23 @@
     </div>
 
 <?php endif;?>
+<div class="container">
+    <div class="d-flex row gx-5 ">
+<div class="col-1 ">
+    <a class="btn btn-sm btn-info  " href="<?= site_url('Fragenkatalogübersicht/')?>">Zurück</a>
+    </div>
+        <div class="col-1 offset-1 mr-6">
+
+        <?php if (isset($fragenkatalog) & !empty($fragenkatalog)):?>
+        <a class="btn btn-sm btn-info ml-3" href="<?= site_url('Fragenkatalog/addFrage/'.$fragenkatalog['fragenkatalogbezeichnung']) ?>">Add</a>
+
+    <?php endif;?>
+        </div>
+</div>
+</div>
         <div class="container mt-4 table-responsive">
 
-        <div class="d-flex ">
-        <?php if (isset($fragenkatalog) & !empty($fragenkatalog)):?>
-        <a class="btn btn-sm btn-info" href="<?= site_url('Fragenkatalog/addFrage/'.$fragenkatalog['fragenkatalogbezeichnung']) ?>">Add</a>
 
-        <?php endif;?>
-    </div>
 <br>
 
     <table id="Fragen" class="display " style="width: 100%">
