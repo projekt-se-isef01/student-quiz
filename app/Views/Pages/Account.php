@@ -23,6 +23,12 @@
 
         </tr>
         <tr>
+            <th >gespielte Spiele gesamt</th>
+            <th>  <?=  esc($student['vsGamesGesamt'])+esc($student['singleGamesGesamt'])?></th>
+
+        </tr>
+        <tr>
+        <tr>
             <th >Gesamte Spielpunktzahl</th>
             <th> <?= esc($student['score'])?></th>
 
@@ -93,6 +99,7 @@
 
 <?php endif;?>
 </div>
+<br>
 <div class="row g-2 w-25">
     <!-- Button trigger modal -->
 
