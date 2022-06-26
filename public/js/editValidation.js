@@ -3,25 +3,25 @@ if ($("#editForm").length > 0) {
         rules: {
             frage: {
                 required: true,
-                maxlength: 128
+                maxlength: 255
 
             },
             antwort1: {
                 required: true,
-                maxlength: 128
+                maxlength: 255
             },
             antwort2: {
                 required: true,
-                maxlength: 128
+                maxlength: 255
             },
             antwort3: {
                 required: true,
-                maxlength: 128
+                maxlength: 255
 
             },
             antwort4: {
                 required: true,
-                maxlength: 128
+                maxlength: 255
             },
 
             antwortLoesung: {
@@ -60,7 +60,7 @@ if ($("#editForm").length > 0) {
             },
             antwortLoesung: {
                 required: "Lösung benötigt. Kann nur Zahlen von 1 bis 4 enthalten",
-                digits:"Nur 1-4"
+                digits:"Nur 255"
             },
             hinweis: {
                 required: "Name benötigt",

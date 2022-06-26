@@ -40,35 +40,35 @@ class Fragenkatalog extends BaseController
         $rules = [
             'frage' => [
                 'label'=>'Frage',
-                'rules' => 'required|max_length[128]',
+                'rules' => 'required|max_length[255]',
                 'errors'=> ['required' => 'Bitte Frage angegeben.',
                     'max_length'=>'Frage darf höchstens 128 Zeichen lang sein.',
                     ]
                 ],
             'antwort1' => [
                 'label'=>'antwort1',
-                'rules' => 'required|max_length[128]',
+                'rules' => 'required|max_length[255]',
                 'errors'=> ['required' => 'Bitte Antwort 1 angegeben.',
                     'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
                 ]
             ],
             'antwort2' => [
                 'label'=>'antwort2',
-                'rules' => 'required|max_length[128]',
+                'rules' => 'required|max_length[255]',
                 'errors'=> ['required' => 'Bitte Antwort 2 angegeben.',
                     'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
                 ]
             ],
             'antwort3' => [
                 'label'=>'antwort3',
-                'rules' => 'required|max_length[128]',
+                'rules' => 'required|max_length[255]',
                 'errors'=> ['required' => 'Bitte Antwort 3 angegeben.',
                     'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
                 ]
             ],
             'antwort4' => [
                 'label'=>'antwort4',
-                'rules' => 'required|max_length[128]',
+                'rules' => 'required|max_length[255]',
                 'errors'=> ['required' => 'Bitte Antwort 4 angegeben.',
                     'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
                 ]
@@ -85,14 +85,14 @@ class Fragenkatalog extends BaseController
             ],
             'hinweis' => [
                 'label'=>'hinweis',
-                'rules' => 'max_length[128]',
+                'rules' => 'max_length[255]',
                 'errors'=> [
                     'max_length'=>'Hinweis darf höchstens 128 Zeichen lang sein.',
                     ]
             ],
             'Joker50501' => [
                 'label'=>'joker1',
-                'rules' => 'max_length[128]|jokerValidation',
+                'rules' => 'max_length[1]|jokerValidation',
                 'errors'=> [
                     'max_length'=>'Joker darf höchstens 1 Zeichen lang sein.',
                     'jokerValidation'=>'Joker darf nur Zahlen 1-4 enthalten',
@@ -101,7 +101,7 @@ class Fragenkatalog extends BaseController
 
             'Joker50502' => [
                 'label'=>'joker12',
-                'rules' => 'max_length[128]|jokerValidation',
+                'rules' => 'max_length[1]|jokerValidation',
                 'errors'=> [
                     'max_length'=>'Joker darf höchstens 1 Zeichen lang sein.',
                     'jokerValidation'=>'Joker darf nur Zahlen 1-4 enthalten',
@@ -160,35 +160,35 @@ class Fragenkatalog extends BaseController
         $rules = [
             'frage' => [
                 'label'=>'Frage',
-                'rules' => 'required|max_length[128]',
+                'rules' => 'required|max_length[255]',
                 'errors'=> ['required' => 'Bitte Frage angegeben.',
                     'max_length'=>'Frage darf höchstens 128 Zeichen lang sein.',
                 ]
             ],
             'antwort1' => [
                 'label'=>'antwort1',
-                'rules' => 'required|max_length[128]',
+                'rules' => 'required|max_length[255]',
                 'errors'=> ['required' => 'Bitte Antwort 1 angegeben.',
                     'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
                 ]
             ],
             'antwort2' => [
                 'label'=>'antwort2',
-                'rules' => 'required|max_length[128]',
+                'rules' => 'required|max_length[255]',
                 'errors'=> ['required' => 'Bitte Antwort 2 angegeben.',
                     'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
                 ]
             ],
             'antwort3' => [
                 'label'=>'antwort3',
-                'rules' => 'required|max_length[128]',
+                'rules' => 'required|max_length[255]',
                 'errors'=> ['required' => 'Bitte Antwort 3 angegeben.',
                     'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
                 ]
             ],
             'antwort4' => [
                 'label'=>'antwort4',
-                'rules' => 'required|max_length[128]',
+                'rules' => 'required|max_length[255]',
                 'errors'=> ['required' => 'Bitte Antwort 4 angegeben.',
                     'max_length'=>'Antwort darf höchstens 128 Zeichen lang sein.',
                 ]
@@ -205,14 +205,14 @@ class Fragenkatalog extends BaseController
             ],
             'hinweis' => [
                 'label'=>'hinweis',
-                'rules' => 'max_length[128]',
+                'rules' => 'max_length[255]',
                 'errors'=> [
                     'max_length'=>'Hinweis darf höchstens 128 Zeichen lang sein.',
                 ]
             ],
             'Joker50501' => [
                 'label'=>'joker1',
-                'rules' => 'max_length[128]|jokerValidation',
+                'rules' => 'max_length[1]|jokerValidation',
                 'errors'=> [
                     'max_length'=>'Joker darf höchstens 1 Zeichen lang sein.',
                     'jokerValidation'=>'Joker darf nur Zahlen 1-4 enthalten',
@@ -221,7 +221,7 @@ class Fragenkatalog extends BaseController
 
             'Joker50502' => [
                 'label'=>'joker12',
-                'rules' => 'max_length[128]|jokerValidation',
+                'rules' => 'max_length[1]|jokerValidation',
                 'errors'=> [
                     'max_length'=>'Joker darf höchstens 1 Zeichen lang sein.',
                     'jokerValidation'=>'Joker darf nur Zahlen 1-4 enthalten',
