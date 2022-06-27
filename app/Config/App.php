@@ -23,7 +23,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://student-quiz';
+    public $baseURL = 'https://77de-82-135-85-30.eu.ngrok.io';
 
     /**
      * --------------------------------------------------------------------------

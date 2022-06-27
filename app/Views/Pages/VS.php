@@ -139,7 +139,7 @@
 
        $(function () {
 
-           var count = 10;
+           var count = 120;
            if (readCookie("timer") !== undefined && readCookie("timer") !==null) count = parseInt(readCookie("timer"));
 
            var counter = setInterval(timer, 1000);
@@ -160,7 +160,7 @@
            }
        })();
     function liftOff() {
-
+$("#VSform").submit();
     }
     function showhinw(id) {
         $( "#hinw:not(#hinw"+id+")").remove();
@@ -176,7 +176,7 @@
            var idh= localStorage.getItem('idjoker')
            if(idh== null) {
 
-               $('#joker' + id2).removeClass("d-none");color:#030201;font-weight:bold;
+               $('#joker' + id2).removeClass("d-none");
 
                localStorage.setItem('idjoker', id2);
            }
